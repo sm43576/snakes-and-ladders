@@ -1,5 +1,29 @@
-.start-page {
-    height: 100vh;
-    width: 100vw;
+
+.html, body{
+    height: 100%;
+    width: 100%;   
     background-color: #4B5683;
+
 }
+
+.body-container{
+    height: 100vh;
+    width: 100%;   
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    
+    color: #fff;
+    font-size: 40px;
+    margin-top:20%
+}
+
+.button-start{
+    position: flex;
+    margin-top: 90%;
+    border-radius: 15px;   /* ^radius = rounder button */
+    font-size: 30px;
+
+}  

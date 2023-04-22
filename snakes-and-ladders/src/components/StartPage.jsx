@@ -3,17 +3,22 @@ import { Link } from "react-router-dom"
 
 function StartPage() {
   return (
-    <div className="start-page">
-      <div>
-        This is the start page
+
+  <body>
+    <div className="body-container">
+      <div className="title">
+        Snakes and Ladders
       </div>
-      
-      <Link to="/players">
-        <button>
-          PLAY
-        </button>
-      </Link>
+    
+        <Link to="/players">
+          <button className="button-start" 
+          style={{height: '75px', width : '150px'}}>
+            PLAY
+          </button>
+        </Link>
+
     </div>
+  </body>
   )
 }
 
