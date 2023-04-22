@@ -13,7 +13,9 @@ function GamePage() {
         </div>
 
         <div className="div-players">
-          <div className="current-player"></div>
+        <p className="current-player-tag">Current Player:</p>
+          <div className="current-player">
+            </div>
         </div>
 
         <div className="other-players"/>
