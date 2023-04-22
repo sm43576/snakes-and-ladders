@@ -1,0 +1,22 @@
+.game-page {
+    width: 100vw;
+    height: 100vh;
+    background-color: #7D87B8;
+    display: flex;
+}
+
+.div-1 {
+    width: 30%
+}
+
+.div-2 {
+    width: 60%
+}
+
+.div-3 {
+    width: 10%
+}
+
+.dice-square {
+    background-color: white;
+}

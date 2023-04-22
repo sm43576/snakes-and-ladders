@@ -3,7 +3,22 @@ import { Link } from "react-router-dom"
 
 function GamePage() {
   return (
-    <div>
+    <div className="game-page">
+
+      <div className="div-1">
+        DIV 1
+
+        <div className="dice-sqaure">
+          
+        </div>
+
+      </div>
+
+
+
+      <div className="div-2">
+        DIV 2
+
       <div>
         This is the main game
       </div>
@@ -29,6 +44,14 @@ function GamePage() {
           RESULTS
         </button>
       </Link>
+      </div>
+
+
+
+      <div className="div-3">
+        DIV 3
+      </div>
+      
     </div>
   )
 }
