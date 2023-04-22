@@ -1,27 +1,30 @@
 import "../css/GamePage.css"
 import { Link } from "react-router-dom"
 
+// import homeIcon from "../images/home.png"
+
+
 function GamePage() {
-  document.body.style.backgroundColor = "#7D87B8";
+  document.body.style.backgroundColor = "#A5ACCD";
 
   return (
     <div className="game-page">
 
       <div className="div-1">
+
         <div className="dice-square">
           <p className="roll-dice-msg">Click to Roll!</p>
         </div>
 
         <div className="div-players">
-        <p className="current-player-tag">Current Player:</p>
+          <p className="current-player-tag">Current Player:</p>
           <div className="current-player">
-            </div>
+          </div>
         </div>
 
-        <div className="other-players"/>
-        <div className="other-players"/>
-        <div className="other-players"/>
-
+        <div className="circle-80 white-bgr" />
+        <div className="circle-80 white-bgr" />
+        <div className="circle-80 white-bgr" />
 
       </div>
 
@@ -34,33 +37,36 @@ function GamePage() {
           This is the main game
         </div>
 
-        <Link to="/">
-          <button>
-            BACK TO HOME
-          </button>
-        </Link>
-
-        {/* POPOVER NOT IMPLEMENTED */}
-        <button>
-          SETTINGS
-        </button>
-
-        {/* POPOVER NOT IMPLEMENTED */}
-        <button>
-          HOW TO PLAY
-        </button>
-
-        <Link to="/results">
-          <button>
-            RESULTS
-          </button>
-        </Link>
       </div>
 
 
 
       <div className="div-3">
-        DIV 3
+
+        <div className="left">
+          <Link to="/">
+            <button className="circle-80 gold-dark-bgr home btn"/>
+          </Link>
+        </div>
+
+        {/* POPOVER NOT IMPLEMENTED */}
+        <div className="right">
+
+          <button className="circle-80 purple-light-bgr settings btn"/>
+        </div>
+
+        {/* POPOVER NOT IMPLEMENTED */}
+        <div className="left">
+
+          <button className="circle-80 white-bgr tutorial btn"/>
+        </div>
+        <Link to="/results">
+          <button className="circle-80 btn">
+            R
+          </button>
+        </Link>
+
+
       </div>
 
     </div>
