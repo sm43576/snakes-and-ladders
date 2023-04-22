@@ -2,15 +2,24 @@ import "../css/GamePage.css"
 import { Link } from "react-router-dom"
 
 function GamePage() {
+  document.body.style.backgroundColor = "#7D87B8";
+
   return (
     <div className="game-page">
 
       <div className="div-1">
-        DIV 1
-
-        <div className="dice-sqaure">
-          
+        <div className="dice-square">
+          <p className="roll-dice-msg">Click to Roll!</p>
         </div>
+
+        <div className="div-players">
+          <div className="current-player"></div>
+        </div>
+
+        <div className="other-players"/>
+        <div className="other-players"/>
+        <div className="other-players"/>
+
 
       </div>
 
@@ -19,31 +28,31 @@ function GamePage() {
       <div className="div-2">
         DIV 2
 
-      <div>
-        This is the main game
-      </div>
+        <div>
+          This is the main game
+        </div>
 
-      <Link to="/">
+        <Link to="/">
+          <button>
+            BACK TO HOME
+          </button>
+        </Link>
+
+        {/* POPOVER NOT IMPLEMENTED */}
         <button>
-          BACK TO HOME
+          SETTINGS
         </button>
-      </Link>
 
-      {/* POPOVER NOT IMPLEMENTED */}
-      <button>
-        SETTINGS
-      </button>
-
-      {/* POPOVER NOT IMPLEMENTED */}
-      <button>
-        HOW TO PLAY
-      </button>
-
-      <Link to="/results">
+        {/* POPOVER NOT IMPLEMENTED */}
         <button>
-          RESULTS
+          HOW TO PLAY
         </button>
-      </Link>
+
+        <Link to="/results">
+          <button>
+            RESULTS
+          </button>
+        </Link>
       </div>
 
 
@@ -51,7 +60,7 @@ function GamePage() {
       <div className="div-3">
         DIV 3
       </div>
-      
+
     </div>
   )
 }
