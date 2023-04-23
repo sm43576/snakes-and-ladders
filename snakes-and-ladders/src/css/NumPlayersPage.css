@@ -1,0 +1,41 @@
+.background{
+
+    z-index: 1;
+
+}
+
+.player-container{
+
+    background-color: white;
+}
+
+
+
+.bubble-top{
+    position:absolute;
+    height: 25%;
+    width: 15%;
+    top:5%;
+    left:5%;
+    z-index: 2;
+}
+
+.bubble-bot{
+    position:absolute;
+    height: 22%;
+    width: 10%;
+    bottom:5%;
+    right:5%;
+    z-index: 2;
+}
+
+.bubble-c{
+    height: 22%;
+    width: 10%;
+    left:0%;
+    top:0%;
+    z-index: 3;
+}
+.bubble-p{
+    z-index: 3;
+}
