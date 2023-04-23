@@ -1,16 +1,24 @@
+body {
+    padding-bottom: 50px;
+}
 .game-page {
     width: 100vw;
     height: 100vh;
-    background-color: #7D87B8;
+    background-color: #A5ACCD;
     display: flex;
+    padding-bottom: 50px;
 }
 
 .div-1 {
-    width: 30%
+    width: 30%;
+    /* height: fit-content; */
+    margin: 50px;
+
 }
 
 .div-2 {
     width: 60%;
+;
     padding: 50px;
     overflow: auto;
 }
@@ -60,9 +68,103 @@ table {
 }
 
 .div-3 {
-    width: 10%
+    width: 10%;
+    padding: 45px 25px 45px 0;
 }
 
 .dice-square {
+    width: 100%;
+    height: 50%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px 0 20px 0;
+}
+
+.roll-dice-msg {
+    color: #4B5683;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.div-players {
+    height: fit-content;
+    width: 100%;
+    margin: 35px 0 15px 0;
+}
+
+.current-player {
+    height: 150px;
+    width: 150px;
+    background-color: white;
+    border: 5px solid #4B5683;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.current-player-tag {
+    height: fit-content;
+    color: #4B5683;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #F7DA86;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.circle-80 {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 5px 10px 5px 10px;
+}
+
+.white-bgr {
     background-color: white;
 }
+
+.gold-dark-bgr {
+    background-color: #F7DA86;
+}
+
+.purple-light-bgr {
+    background-color: #7F89B4;
+}
+
+.home {
+    background-image: url("../images/home.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:60%;
+ }
+
+.settings {
+    background-image: url("../images/settings.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:60%;
+ }
+
+.tutorial {
+    background-image: url("../images/tutorial.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:60%;
+ }
+
+ .right {
+    display: flex;
+    /* align-items: right; */
+    justify-content: right;
+ }
+
+ .left {
+    display: flex;
+    /* align-items: left; */
+    justify-content: left;
+ }
+
+ .btn:hover {
+    filter:brightness(50%);
+    border: 3px solid #4B5683;
+ }
