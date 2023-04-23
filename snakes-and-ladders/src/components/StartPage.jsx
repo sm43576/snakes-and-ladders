@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 function StartPage() {
   return (
 
+    
   <body>
     <div className="body-container">
       <div className="title">
@@ -17,9 +18,15 @@ function StartPage() {
           </button>
         </Link>
 
+        <div className= "waves-container">
+      
+      </div>
     </div>
   </body>
+
+
   )
+
 }
 
 export default StartPage
