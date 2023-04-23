@@ -13,7 +13,6 @@ function AvatarPage() {
             <img className='bubble-corner-top' src={bubbleCornerTop} />
             <Link to="/players"><button className='back-btn'>{"Back"}</button></Link>
         </div>
-
         <div className='avatar-heading'>
           <h1 className='heading-title'>SELECT AVATAR</h1>
           <h2 className='heading-subtitle'>PLAYER 1</h2>
@@ -32,7 +31,7 @@ function AvatarPage() {
         <div className='avatar-footer'>
           <div className='container-btm-corner'>
                 <img className='bubble-corner-btm' src={bubbleCornerBtm} />
-                <Link to="/players"><button className='next-player-btn'>Next</button></Link>
+                <Link to="/avatar"><button className='next-player-btn'>Next</button></Link>
             </div>
 
           {/* <Link to="/avatar">

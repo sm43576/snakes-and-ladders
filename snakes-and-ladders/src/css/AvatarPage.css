@@ -37,17 +37,17 @@ html, body {
     position: absolute;
     height: 25%;
     width: 15%;
-    top:10%;
-    left:10%;
+    top:5%;
+    left:5%;
     z-index: 2;
 }
 .container-top-corner .back-btn{
     position: absolute;
     height: 65px;
-    width: 91px;
+    width: 93px;
     z-index: 3;
-    top: 14%;
-    left: 12.65%;
+    top: 9%;
+    left: 7.6%;
     font-size: 20px;
     border-radius: 50%;
     background: #7F89B4;
