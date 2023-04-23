@@ -3,15 +3,8 @@ html, body {
     height: 100%;
     background-color: #4B5683;
 }
-/* .avatar-heading {
-    height: 100vh;
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-} */
+
 .avatar-container{
-    /* align-items: center; */
     display: flex;
     flex-direction: column;
 
@@ -37,7 +30,6 @@ html, body {
     position: relative;
     float: left;
 
-
 }
 .container-top-corner .bubble-corner-top{
     margin-top: 20px;
@@ -55,7 +47,8 @@ html, body {
     font-size: 30px;
     border-radius: 50%;
     background: #7F89B4;
-    font-weight: 300px;
+    font-weight: 400px;
+    box-shadow: 1px 3px 10px #000000;
 }
 .back-btn:hover{
     background: #afb0d0;
@@ -78,12 +71,27 @@ html, body {
     height: 35px;
     background-color: #FFFFFF;
     text-align: center;
-    border-radius: 20px
+    border-radius: 20px;
+    color: #000000;
 
 }
 .avatar-content{
-    display: flex;
-    flex-direction: column;
+    padding: 20px;
+    display: grid;
     justify-content: center;
-    align-items: center;
+    grid-template-rows: repeat(4, 180px);
+    grid-template-columns: repeat(4, 180px);
+}
+.avatar-content .avatar-circles{
+    background-color: #FFFFFF;
+    display: flex;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    justify-content: center;
+}
+.avatar-content .avatar-images{
+    width: 60%;
+    height: 60%;
+    align-self: center;
 }
