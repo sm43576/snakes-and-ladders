@@ -18,25 +18,29 @@ html, body {
 }
 .avatar-heading {
     position: sticky;
-    top:0;
+    top:20px;
     left: 80%;
     width: max-content;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 300px 500px 300px ;
+    justify-content: flex-start;
+    column-gap: 30px;
+    row-gap: 5px;
+    grid-template-rows: 70px 70px 70px ;
+
 }
 .container-top-corner{
+    grid-column: 1;
+    grid-row-start: 1;
+    grid-row-end: 3;
     height: 226px;
     position: relative;
-    width: 50%;
     float: left;
-    margin-left: -200px;
-    justify-content: flex-start;
+
 
 }
 .container-top-corner .bubble-corner-top{
-    justify-content: left;
     margin-top: 20px;
-    margin-right: 300px;
     width: 210px;
     height: 226px;
 }
@@ -45,7 +49,7 @@ html, body {
     height: 87px;
     width: 87px;
     top: 30%;
-    left: 22%;
+    left: 40%;
     transform: translate(-45%, -15%);
     -ms-transform: translate(-45%,-10%);
     font-size: 30px;
@@ -53,18 +57,30 @@ html, body {
     background: #7F89B4;
     font-weight: 300px;
 }
-.heading-text{
-    display: flex;
-    flex-direction: column;
+.back-btn:hover{
+    background: #afb0d0;
 }
 .heading-title{
-    justify-content: center;
-    align-items: center;
+    grid-row: 1;
+    grid-column: 2;
     text-align: center;
     font-size: 50px;
     color: #F3DA91;
 }
+.heading-subtitle{
+    grid-row: 2;
+    grid-column: 2;
+    padding: 0%;
+}
+.nickname-input{
+    grid-row: 3;
+    grid-column: 2;
+    height: 35px;
+    background-color: #FFFFFF;
+    text-align: center;
+    border-radius: 20px
 
+}
 .avatar-content{
     display: flex;
     flex-direction: column;

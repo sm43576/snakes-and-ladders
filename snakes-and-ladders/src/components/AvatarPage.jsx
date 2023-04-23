@@ -11,15 +11,13 @@ function AvatarPage() {
               <img className='bubble-corner-top' src={bubblecornerTop} />
               <button className='back-btn'>{"<"}</button>
           </div>
-          <div className='heading-text'>
-            <h1 className='heading-title'>
-              SELECT AVATAR
-            </h1>
-            <h2 className='heading-subtitle'>
-              PLAYER 1
-            </h2>
-            <input type='text' placeholder='Enter a nickname...' className='nickname-input'/>
-          </div>
+          <h1 className='heading-title'>
+            SELECT AVATAR
+          </h1>
+          <h2 className='heading-subtitle'>
+            PLAYER 1
+          </h2>
+          <input className='nickname-input' type='text' placeholder='Enter a nickname...' />
         </div>
 
         <div className='avatar-content'>
