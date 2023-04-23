@@ -1,9 +1,9 @@
 
 .html, body{
-    height: 50%;
+    height: 100%;
     width: 100%;   
     background-color: #4B5683;
-    z-index: -1;
+    z-index: 1;
 
 }
 
@@ -17,22 +17,26 @@
 .title{
     align-self: center;
     color: #fff;
-    font-size: 40px;
-    margin-top:20%
+    font-size: 60px;
+    margin-top:15%
 }
 
 .button-start{
     position:fixed;
     top:65%;
-    left:45%;
+    left:43.6%;
     border-radius: 15px;   /* ^radius = rounder button */
     font-size: 30px;
+    z-index: 3;
 }  
 
 .waves-container{
     
-    background-image: "../src/assets/start_waves.png";
-    background-size: cover;
-    background-position: center;
-    z-index: 2  ;
+    position:absolute;
+    height: 60%;
+    width: 100%;
+    left:0;
+    bottom:0;
+    z-index: 2;
+
 }

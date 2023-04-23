@@ -7,9 +7,9 @@ function StartPage() {
     
   <body>
     <div className="body-container">
-      <div className="title">
-        Snakes and Ladders
-      </div>
+        <div className="title">
+          Snakes and Ladders
+        </div>
     
         <Link to="/players">
           <button className="button-start" 
@@ -17,11 +17,9 @@ function StartPage() {
             PLAY
           </button>
         </Link>
-
-        <div className= "waves-container">
-      
-      </div>
     </div>
+    
+    <img className= "waves-container" src="../src/assets/start_waves.png"></img>
   </body>
 
 
