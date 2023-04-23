@@ -7,6 +7,8 @@ html, body {
 .avatar-container{
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 100%;
 
 }
 .avatar-heading {
@@ -22,29 +24,31 @@ html, body {
     grid-template-rows: 70px 70px 70px ;
 
 }
-.container-top-corner{
+/* .container-top-corner{
     grid-column: 1;
     grid-row-start: 1;
     grid-row-end: 3;
-    height: 226px;
     position: relative;
     float: left;
 
 }
-.container-top-corner .bubble-corner-top{
-    margin-top: 20px;
-    width: 210px;
-    height: 226px;
+.container-top-corner  */
+.bubble-corner-top{
+    position: absolute;
+    height: 25%;
+    width: 15%;
+    top:10%;
+    left:10%;
+    z-index: 2;
 }
 .container-top-corner .back-btn{
     position: absolute;
-    height: 87px;
-    width: 87px;
-    top: 30%;
-    left: 40%;
-    transform: translate(-45%, -15%);
-    -ms-transform: translate(-45%,-10%);
-    font-size: 30px;
+    height: 65px;
+    width: 91px;
+    z-index: 3;
+    top: 14%;
+    left: 12.65%;
+    font-size: 20px;
     border-radius: 50%;
     background: #7F89B4;
     font-weight: 400px;
@@ -76,10 +80,10 @@ html, body {
 
 }
 .avatar-content{
-    padding: 20px;
+    padding-top: 20px;
     display: grid;
     justify-content: center;
-    grid-template-rows: repeat(4, 180px);
+    grid-template-rows: repeat(2, 180px);
     grid-template-columns: repeat(4, 180px);
 }
 .avatar-content .avatar-circles{
@@ -94,4 +98,18 @@ html, body {
     width: 60%;
     height: 60%;
     align-self: center;
+}
+
+/* .container-btm-corner{
+    height: 226px;
+    position: relative;
+    float:right ;
+} */
+ .bubble-corner-btm{
+    position:absolute;
+    height: 22%;
+    width: 10%;
+    bottom:5%;
+    right:5%;
+    z-index: 2;
 }

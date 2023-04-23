@@ -1,20 +1,20 @@
 import '../css/AvatarPage.css'
 import { Link } from "react-router-dom"
-import bubblecornerTop from "../assets/bubble_top_left.png";
+import bubbleCornerTop from "../assets/bubble_top_left.png";
+import bubbleCornerBtm from "../assets/bubble_btm_right.png";
 
 const avatarImageFiles = ["avatar_pufferfish.png", "avatar_dolphin.png", "avatar_otter.png", "avatar_squid.png",
                           "avatar_seal.png", "avatar_octopus.png", "avatar_shark.png", "avatar_tropic_fish.png"];
 
 function AvatarPage() {
   return (
-    <body>
       <div className='avatar-container'>
+        <div className='container-top-corner'>
+            <img className='bubble-corner-top' src={bubbleCornerTop} />
+            <Link to="/players"><button className='back-btn'>{"Back"}</button></Link>
+        </div>
 
         <div className='avatar-heading'>
-          <div className='container-top-corner'>
-              <img className='bubble-corner-top' src={bubblecornerTop} />
-              <Link to="/players"><button className='back-btn'>{"<"}</button></Link>
-          </div>
           <h1 className='heading-title'>SELECT AVATAR</h1>
           <h2 className='heading-subtitle'>PLAYER 1</h2>
           <input className='nickname-input' type='text' placeholder='Enter a nickname...' />
@@ -30,7 +30,12 @@ function AvatarPage() {
         </div>
 
         <div className='avatar-footer'>
-          <Link to="/avatar">
+          <div className='container-btm-corner'>
+                <img className='bubble-corner-btm' src={bubbleCornerBtm} />
+                <Link to="/players"><button className='next-player-btn'>Next</button></Link>
+            </div>
+
+          {/* <Link to="/avatar">
               <button>
                 SELECT NEXT AVATAR
               </button>
@@ -40,10 +45,9 @@ function AvatarPage() {
               <button>
                 PLAY GAME
               </button>
-            </Link>
+            </Link> */}
         </div>
       </div>
-    </body>
   )
 }
 
