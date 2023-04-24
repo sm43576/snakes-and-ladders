@@ -1,6 +1,7 @@
 body {
     padding-bottom: 50px;
 }
+
 .game-page {
     width: 100vw;
     height: 100vh;
@@ -18,7 +19,6 @@ body {
 
 .div-2 {
     width: 60%;
-;
     padding: 50px;
     overflow: auto;
 }
@@ -31,9 +31,9 @@ table {
     padding: 8px;
     border-spacing: 0;
     border-collapse: separate;
-  }
-  
-  td {
+}
+
+td {
     width: calc(100% / 10);
     padding: 0;
     margin: 0;
@@ -41,30 +41,25 @@ table {
     text-align: center;
     vertical-align: middle;
     padding-bottom: calc(100% / 10);
-  }
-  
-  table td {
+}
+
+table td {
     border: 1px solid white;
     height: 100%;
     position: relative;
     box-sizing: border-box;
-  }
-  
-  table td::before {
+}
+
+table td::before {
     content: "";
     display: block;
-  }
-  
-  .renderBoard {
+}
+
+.renderBoard {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-
-.div-2 {
-    width: 60%;
-    padding: 70px;
+    
 }
 
 .div-3 {
