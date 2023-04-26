@@ -1,0 +1,28 @@
+.game-page {
+    width: 100vw;
+    height: 100vh;
+    background-color: #4B5683;
+    background-image: url("../images2/ocean-background.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    display: flex;
+}
+
+h1 {
+    color: #FFFFFF;
+    font-size: 100px;
+    text-align: center;
+}
+
+.rectangle {
+    height: 460px;
+    width: 240px;
+    border-radius: 20px;
+    background-color: #4B5683;
+    /* margin: 0 auto; */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* right: 0; */
+  }
