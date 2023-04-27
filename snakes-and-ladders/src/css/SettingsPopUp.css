@@ -9,6 +9,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    font-size: 20px;
 }
 
 .popup-inner {
@@ -27,12 +29,31 @@
     left: 16px;
 }
 
-h1 {
+.settings-popup h1 {
     color: #F3DA91;
-    font-size: 80px;
+    font-size: 50px;
 }
 
-h2 {
+.settings-popup h2 {
     color: white;
     font-size: 30px;
+}
+
+.settings-popup p {
+    color: #F3DA91;
+    font-weight: 600;
+}
+
+.settings-popup button {
+    background-color: #7F89B4;
+    color: white;
+    border-radius: 80px;
+}
+
+.div-adjustments {
+    display: inline-block;
+}
+
+.div-exitbuttons {
+    display: inline-block;
 }
