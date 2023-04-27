@@ -1,0 +1,38 @@
+.settings-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #7D87B8;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-inner {
+    background-color: #4B5683;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    max-height: 550px;
+    border-radius: 20px;
+}
+
+.popup-inner .close-btn {
+    position: absolute; 
+    top: 16px;
+    left: 16px;
+}
+
+h1 {
+    color: #F3DA91;
+    font-size: 80px;
+}
+
+h2 {
+    color: white;
+    font-size: 30px;
+}
