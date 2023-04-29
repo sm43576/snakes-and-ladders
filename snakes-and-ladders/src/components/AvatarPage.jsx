@@ -1,12 +1,23 @@
 import '../css/AvatarPage.css'
 import { Link } from "react-router-dom"
+import { useState } from "react";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
+
 
 const avatarImageFiles = ["avatar_pufferfish.png", "avatar_dolphin.png", "avatar_otter.png", "avatar_squid.png",
                           "avatar_seal.png", "avatar_octopus.png", "avatar_shark.png", "avatar_tropic_fish.png"];
 
+
 function AvatarPage() {
+  const [chosenAvatar, setChosenAvatar] = useState("");
+  
+  // When player selects an avatar to use prob need to save it in a database or something
+  function handleAvatarBtnClick( avatarFileName) {
+    setChosenAvatar(avatarFileName);
+    // TODO LINK TO BACKEND DATABASE OR PASS IT THROUGH TO NEXT PAGE
+  }
+
   return (
       <div className='avatar-container'>
         <div className='container-top-corner'>
@@ -22,8 +33,9 @@ function AvatarPage() {
         <div className='avatar-content'>
           {avatarImageFiles.map(file=>(
             <div className='avatar-circles'>
-              {/* TODO ADD BUTTONS */}
-              <img className='avatar-images' key={file} src={`../src/assets/selectable_avatars/${file}`}/>
+              <button className='avatar-img-btn' key={"button"+file} onClick={()=>handleAvatarBtnClick(file)}>
+                <img className='avatar-images' key={file} src={`../src/assets/selectable_avatars/${file}`}/>
+              </button>
             </div>
           ))}
         </div>

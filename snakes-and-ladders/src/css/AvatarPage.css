@@ -41,7 +41,7 @@ html, body {
     left:5%;
     z-index: 2;
 }
-.container-top-corner .back-btn{
+.back-btn{
     position: absolute;
     height: 65px;
     width: 93px;
@@ -87,19 +87,29 @@ html, body {
     grid-template-columns: repeat(4, 180px);
 }
 .avatar-content .avatar-circles{
-    background-color: #FFFFFF;
     display: flex;
+    justify-content: center;
+   
+}
+.avatar-circles .avatar-img-btn{
+    background-color: #FFFFFF;
+    border-radius: 50%;
     width: 150px;
     height: 150px;
-    border-radius: 50%;
-    justify-content: center;
+    border-width: 6px;
+    
 }
-.avatar-content .avatar-images{
-    width: 60%;
-    height: 60%;
+.avatar-img-btn .avatar-images{
+    width: 90%;
+    height: 70%;
     align-self: center;
 }
-
+.avatar-img-btn:hover{
+    border-color: #afb0d0;
+}
+.avatar-img-btn:focus{
+    border-color: #F7DA86;
+}
 /* .container-btm-corner{
     height: 226px;
     position: relative;
