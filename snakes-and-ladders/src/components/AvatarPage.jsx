@@ -9,35 +9,50 @@ const avatarImageFiles = ["avatar_pufferfish.png", "avatar_dolphin.png", "avatar
                           "avatar_seal.png", "avatar_octopus.png", "avatar_shark.png", "avatar_tropic_fish.png"];
 
 function AvatarPage() {
-  const currentPlayer= { // TODO: Temporary
+  const currentID = 0; // TODO: TEMPORARY somehow make this as a prop
+  const playersList= [{ // TODO: Temporary. need to generate list of players based on max number of players?
     name: 'Player 1', 
-    id: 1,
-    avatarFile: '',
-  }
-  const[players, setPlayer] = useState([currentPlayer]);
+    id: 0,
+    avatarFile: '',},
+    {
+      name: 'Player 2', 
+      id: 1,
+      avatarFile: '',}
+  ];
+
+  const[players, setPlayer] = useState(playersList); 
   const [gameBtnState, setGameBtnState] = useState(false);
   const[activeAvatar, setActiveAvatar] = useState("");
-  // setPlayer(currentPlayer); // TODO: set current player based on max number of players?
+
+  function handleNameChange(newName){
+    console.log(newName)
+    const tempPlayersArray = [...players];
+      tempPlayersArray[currentID]={
+        ...players[currentID],
+        name: newName.length > 0 ? newName : "Player " + currentID+1 
+      }
+      setPlayer(tempPlayersArray); // only updates next render tho so maybe database instead?
+      // TODO: LINK TO BACKEND DATABASE OR PASS IT THROUGH TO NEXT PAGE
+      console.log(players) //FIXME: remove this
+  }
   
   // When player selects an avatar to use prob need to save it in a database or something
   function handleAvatarBtnClick( avatarFileName) {
     setActiveAvatar(avatarFileName);
-    const index = players.findIndex(function(c){
-      return c.id== currentPlayer.id
-    });
     const tempPlayersArray = [...players];
-    tempPlayersArray[index]={
-      ...currentPlayer,
+    tempPlayersArray[currentID]={
+      ...players[currentID],
       avatarFile: avatarFileName
     }
     setPlayer(tempPlayersArray); // only updates next render tho so maybe database instead?
+    console.log(players) //FIXME: remove this
     // TODO: LINK TO BACKEND DATABASE OR PASS IT THROUGH TO NEXT PAGE
     canPlayersStartGame(true); // Checks if last player has chosen avatar in order to play game
   }
 
   // Enables "Start game" button if last player has chosen an avatar
   function canPlayersStartGame (hasChosen){
-    if(hasChosen && currentPlayer.id == 1){ // TODO: 1 is temporary intend to use maxPlayer context from numPlayers page
+    if(hasChosen && currentID == 1){ // TODO: 1 is temporary intend to use maxPlayer context from numPlayers page
       setGameBtnState(true);
     }else{
       setGameBtnState(false);
@@ -52,8 +67,8 @@ function AvatarPage() {
 
         {/* ------ Headings -----*/}
         <h1 className='heading-title'>SELECT AVATAR</h1>
-        <h2 className='heading-subtitle'>PLAYER 1</h2>
-        <input className='nickname-input' type='text' placeholder='Enter a nickname...' />
+        <h2 className='heading-subtitle'>{players[currentID].name.toUpperCase()}</h2>
+        <input className='nickname-input' type='text' placeholder='Enter a nickname...' onChange={(e)=> handleNameChange(e.target.value)}/>
 
       {/* ------ Avatar Selection -----*/}
       <div className='avatar-content'>
@@ -68,8 +83,8 @@ function AvatarPage() {
       
       {/* ------ Next button & star game button -----*/}
       <img className='bubble-corner-btm' src={bubbleCornerBtm} />
-      <Link to="/avatar"> {/*TODO: redirect with ID numbers i.e. "/avatar/1", "/avatar/2" etc */}
-        <button className='next-btn' disabled={currentPlayer.id == 1}>{'>'}</button> {/*TODO: 1 is temporary, intend to use maxPlayers from previous page. Only disables when the last player is selecting*/}
+      <Link to="/avatar"> {/*TODO: redirect with ID numbers i.e. "/avatar/1", "/avatar/2" etc and somehow add ID number as prop as well as max players*/} 
+        <button className='next-btn' disabled={currentID == 2}>{'>'}</button> {/*TODO: 2 is temporary, intend to use maxPlayers from previous page. Only disables when the last player is selecting*/}
       </Link>
       <Link to="/game">
         <button className='start-game-btn' disabled={!gameBtnState}>{'PLAY GAME'}</button>
