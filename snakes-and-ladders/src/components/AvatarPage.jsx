@@ -1,5 +1,5 @@
 import '../css/AvatarPage.css'
-import { Link } from "react-router-dom"
+import { Link, useParams,NavLink } from "react-router-dom"
 import { useState } from "react";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
@@ -9,7 +9,13 @@ const avatarImageFiles = ["avatar_pufferfish.png", "avatar_dolphin.png", "avatar
                           "avatar_seal.png", "avatar_octopus.png", "avatar_shark.png", "avatar_tropic_fish.png"];
 
 function AvatarPage() {
-  const currentID = 0; // TODO: TEMPORARY somehow make this as a prop
+  let { currentID, maxPlayers } = useParams();
+  currentID = parseInt(currentID);
+  console.log(currentID)
+  console.log(maxPlayers)
+  const nextID = currentID+1;
+  const previousID = currentID -1;
+  // const currentID = 0; // TODO: TEMPORARY somehow make this as a prop
   const playersList= [{ // TODO: Temporary. need to generate list of players based on max number of players?
     name: 'Player 1', 
     id: 0,
@@ -52,7 +58,7 @@ function AvatarPage() {
 
   // Enables "Start game" button if last player has chosen an avatar
   function canPlayersStartGame (hasChosen){
-    if(hasChosen && currentID == 1){ // TODO: 1 is temporary intend to use maxPlayer context from numPlayers page
+    if(hasChosen && currentID+1 == maxPlayers){ 
       setGameBtnState(true);
     }else{
       setGameBtnState(false);
@@ -63,7 +69,7 @@ function AvatarPage() {
     <div className='avatar-container'>
         {/* ------ Back Button -----*/}
         <img className='bubble-corner-top' src={bubbleCornerTop} />
-        <Link to="/players"><button className='back-btn'>{'<'}</button></Link>
+        <Link to={currentID == 0 ? "/players" : "/avatar/"+previousID.toString()+"/"+ maxPlayers.toString()}><button className='back-btn'>{'<'}</button></Link>
 
         {/* ------ Headings -----*/}
         <h1 className='heading-title'>SELECT AVATAR</h1>
@@ -75,7 +81,7 @@ function AvatarPage() {
         {avatarImageFiles.map(file=>(
           <div className='avatar-circles'>
             <button className= {activeAvatar == file ? 'selected-avatar-img-btn':'default-avatar-img-btn'} key={"button"+file} onClick={()=>handleAvatarBtnClick(file)}>
-              <img className='avatar-images' key={file} src={`../src/assets/selectable_avatars/${file}`}/>
+              <img className='avatar-images' key={file} src={`/src/assets/selectable_avatars/${file}`}/>
             </button>
           </div>
         ))}
@@ -83,9 +89,9 @@ function AvatarPage() {
       
       {/* ------ Next button & star game button -----*/}
       <img className='bubble-corner-btm' src={bubbleCornerBtm} />
-      <Link to="/avatar"> {/*TODO: redirect with ID numbers i.e. "/avatar/1", "/avatar/2" etc and somehow add ID number as prop as well as max players*/} 
-        <button className='next-btn' disabled={currentID == 2}>{'>'}</button> {/*TODO: 2 is temporary, intend to use maxPlayers from previous page. Only disables when the last player is selecting*/}
-      </Link>
+      <NavLink to={"/avatar/"+nextID.toString()+"/"+ maxPlayers.toString()}>
+        <button className='next-btn' disabled={currentID+1 == maxPlayers}>{'>'}</button>
+      </NavLink>
       <Link to="/game">
         <button className='start-game-btn' disabled={!gameBtnState}>{'PLAY GAME'}</button>
       </Link>

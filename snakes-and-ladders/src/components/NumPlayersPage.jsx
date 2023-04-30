@@ -1,7 +1,8 @@
 import "../css/NumPlayersPage.css"
-import { Link } from "react-router-dom"
+import { NavLink, Link } from "react-router-dom"
 
 function NumPlayersPage() {
+  const maxPlayers = 1; // TODO: change this yourself lmao  ~Rachel
   return (
     <div className="player-container">
       
@@ -17,11 +18,11 @@ function NumPlayersPage() {
           <img className="bubble-c" src="../src/assets/player-bubble.png"></img>
         </div>
 
-        <Link to="/avatar">
+        <NavLink to={"/avatar/0/"+ maxPlayers}> {/* TODO: replace 2 with max number of players. LEAVE 0 ALONE since that indicates first player ~Rachel */}
           <button className='avatar-btn'>
              {'>'}
           </button>
-        </Link>
+        </NavLink>
 
         <Link to="/" >
           <button className='home-btn'>
