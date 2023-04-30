@@ -110,22 +110,27 @@ html, body {
     justify-content: center;
    
 }
-.avatar-circles .avatar-img-btn{
+.avatar-circles .default-avatar-img-btn{
     background-color: #FFFFFF;
     border-radius: 50%;
     width: 150px;
     height: 150px;
-    border-width: 6px;
+    border-width: 8px;
     
 }
-.avatar-img-btn .avatar-images{
+.avatar-circles .selected-avatar-img-btn{
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border-width: 8px;
+    border-color: #F7DA86;
+}
+.avatar-images{
     width: 90%;
     height: 70%;
     align-self: center;
 }
-.avatar-img-btn:hover{
-    border-color: #afb0d0;
-}
-.avatar-img-btn:focus{
+.default-avatar-img-btn:hover{
     border-color: #F7DA86;
 }
