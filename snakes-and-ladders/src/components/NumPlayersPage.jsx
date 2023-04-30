@@ -18,10 +18,29 @@ function NumPlayersPage() {
         </div>
 
         <Link to="/avatar">
-          <button>
-            GO TO SELECT AVATAR
+          <button className='avatar-btn'>
+             {'>'}
           </button>
         </Link>
+
+        <Link to="/" >
+          <button className='home-btn'>
+             {'<'}
+          </button>
+        </Link>
+
+        <p className="players-text">  PLAYERS</p>
+        <button className="pIncrease-btn">{'>'}</button>
+        <button className="pDecrease-btn">{'<'}</button>
+
+        <p className="com-text">COM PLAYERS</p>
+        <button className="cIncrease-btn">{'>'}</button>
+        <button className="cDecrease-btn">{'<'}</button>
+
+        <p className="player-count">2</p>
+        <p className="com-count">3</p>
+
+
       </div>
     </div>
   )
