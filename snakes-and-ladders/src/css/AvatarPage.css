@@ -49,6 +49,21 @@ html, body {
     border-radius: 50%;
     padding: 0%;
 }
+.next-btn:disabled{
+    cursor:not-allowed;
+}
+.start-game-btn{
+    justify-content: center;
+    background-color: #7F89B4;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+.start-game-btn:disabled{
+    background-color: #bdbbbb;
+    color:#696565;
+    cursor: not-allowed;
+}
 
 /* ------------ AVATAR PAGE CONTENT ---------- */
 .avatar-container{
