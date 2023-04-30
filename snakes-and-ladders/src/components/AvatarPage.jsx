@@ -15,50 +15,36 @@ function AvatarPage() {
   // When player selects an avatar to use prob need to save it in a database or something
   function handleAvatarBtnClick( avatarFileName) {
     setChosenAvatar(avatarFileName);
+    console.log(chosenAvatar);
     // TODO LINK TO BACKEND DATABASE OR PASS IT THROUGH TO NEXT PAGE
   }
 
   return (
-      <div className='avatar-container'>
-        <div className='container-top-corner'>
-            <img className='bubble-corner-top' src={bubbleCornerTop} />
-            <Link to="/players"><button className='back-btn'>{"Back"}</button></Link>
-        </div>
-        <div className='avatar-heading'>
-          <h1 className='heading-title'>SELECT AVATAR</h1>
-          <h2 className='heading-subtitle'>PLAYER 1</h2>
-          <input className='nickname-input' type='text' placeholder='Enter a nickname...' />
-        </div>
+    <div className='avatar-container'>
+        <img className='bubble-corner-top' src={bubbleCornerTop} />
+        <Link to="/players"><button className='back-btn'>{'<'}</button></Link>
+        <h1 className='heading-title'>SELECT AVATAR</h1>
+        <h2 className='heading-subtitle'>PLAYER 1</h2>
+        <input className='nickname-input' type='text' placeholder='Enter a nickname...' />
 
-        <div className='avatar-content'>
-          {avatarImageFiles.map(file=>(
-            <div className='avatar-circles'>
-              <button className='avatar-img-btn' key={"button"+file} onClick={()=>handleAvatarBtnClick(file)}>
-                <img className='avatar-images' key={file} src={`../src/assets/selectable_avatars/${file}`}/>
-              </button>
-            </div>
-          ))}
-        </div>
-
-        <div className='avatar-footer'>
-          <div className='container-btm-corner'>
-                <img className='bubble-corner-btm' src={bubbleCornerBtm} />
-                <Link to="/avatar"><button className='next-player-btn'>Next</button></Link>
-            </div>
-
-          {/* <Link to="/avatar">
-              <button>
-                SELECT NEXT AVATAR
-              </button>
-            </Link>
-
-            <Link to="/game">
-              <button>
-                PLAY GAME
-              </button>
-            </Link> */}
-        </div>
+      <div className='avatar-content'>
+        {avatarImageFiles.map(file=>(
+          <div className='avatar-circles'>
+            <button className='avatar-img-btn' key={"button"+file} onClick={()=>handleAvatarBtnClick(file)}>
+              <img className='avatar-images' key={file} src={`../src/assets/selectable_avatars/${file}`}/>
+            </button>
+          </div>
+        ))}
       </div>
+
+      <img className='bubble-corner-btm' src={bubbleCornerBtm} />
+      <Link to="/avatar">
+        <button className='next-btn'>{'>'}</button>
+      </Link>
+      <Link to="/game">
+        <buton className='start-game-btn'>{'PLAY GAME'}</buton>
+      </Link>
+    </div>
   )
 }
 

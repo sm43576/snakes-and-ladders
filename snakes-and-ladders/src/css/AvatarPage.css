@@ -1,38 +1,10 @@
+/* Not sure if this is how im supposed to change the background colour */
 html, body {
     width: 100%;
     height: 100%;
     background-color: #4B5683;
 }
-
-.avatar-container{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-
-}
-.avatar-heading {
-    position: sticky;
-    top:20px;
-    left: 80%;
-    width: max-content;
-    display: grid;
-    grid-template-columns: 300px 500px 300px ;
-    justify-content: flex-start;
-    column-gap: 30px;
-    row-gap: 5px;
-    grid-template-rows: 70px 70px 70px ;
-
-}
-/* .container-top-corner{
-    grid-column: 1;
-    grid-row-start: 1;
-    grid-row-end: 3;
-    position: relative;
-    float: left;
-
-}
-.container-top-corner  */
+/* ------------ CORNER BUBBLES ---------- */
 .bubble-corner-top{
     position: absolute;
     height: 25%;
@@ -41,44 +13,76 @@ html, body {
     left:5%;
     z-index: 2;
 }
+
 .back-btn{
     position: absolute;
-    height: 65px;
-    width: 93px;
-    z-index: 3;
-    top: 9%;
-    left: 7.6%;
-    font-size: 20px;
+    z-index: 4;
+    top:7%;
+    left: 6.5%;
+    font-size: 50px;
+    height: 12%;
+    width: 8%;
+    background-color: transparent;
     border-radius: 50%;
-    background: #7F89B4;
-    font-weight: 400px;
-    box-shadow: 1px 3px 10px #000000;
+    padding: 0%;
 }
 .back-btn:hover{
     background: #afb0d0;
 }
+.bubble-corner-btm{
+    position:absolute;
+    height: 22%;
+    width: 10%;
+    bottom:5%;
+    right:5%;
+    z-index: 2;
+}
+.next-btn{
+    position: absolute;
+    z-index: 4;
+    bottom:6%;
+    right: 5%;
+    font-size: 50px;
+    height: 12%;
+    width: 8%;
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 0%;
+}
+
+/* ------------ AVATAR PAGE CONTENT ---------- */
+.avatar-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- HEADINGS ---- */
 .heading-title{
-    grid-row: 1;
-    grid-column: 2;
     text-align: center;
     font-size: 50px;
     color: #F3DA91;
+    padding: 0%;
+    margin-top: 5%;
+    margin-bottom: 0%;
 }
 .heading-subtitle{
-    grid-row: 2;
-    grid-column: 2;
     padding: 0%;
+    margin: 2%;
 }
 .nickname-input{
-    grid-row: 3;
-    grid-column: 2;
     height: 35px;
+    width: 80%;
     background-color: #FFFFFF;
     text-align: center;
     border-radius: 20px;
     color: #000000;
-
 }
+
+/* --- AVATAR SELECTION ---- */
 .avatar-content{
     padding-top: 20px;
     display: grid;
@@ -109,17 +113,4 @@ html, body {
 }
 .avatar-img-btn:focus{
     border-color: #F7DA86;
-}
-/* .container-btm-corner{
-    height: 226px;
-    position: relative;
-    float:right ;
-} */
- .bubble-corner-btm{
-    position:absolute;
-    height: 22%;
-    width: 10%;
-    bottom:5%;
-    right:5%;
-    z-index: 2;
 }
