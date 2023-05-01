@@ -23,11 +23,12 @@
 }
 
 .button-start{
-    position:fixed;
-    top:65%;
-    left:43.6%;
+    position:relative;
+    align-self:center;
     border-radius: 15px;   /* ^radius = rounder button */
     font-size: 30px;
+    top: 50%;
+    transform: translateY(400%);
     z-index: 3;
 }  
 
