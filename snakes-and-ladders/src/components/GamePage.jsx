@@ -1,12 +1,18 @@
 import "../css/GamePage.css"
 import { Link } from "react-router-dom"
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+
+import RollDice from "./RollDice";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
 // import homeIcon from "../images/home.png"
 
 
 function GamePage() {
   document.body.style.backgroundColor = "#A5ACCD";
+
+  library.add(fas);
 
   const renderBoard = () => { // eventually would need to pass through snakes & ladder placements, and player placements
     const table = document.createElement('table');
@@ -63,7 +69,8 @@ function GamePage() {
       <div className="div-1">
 
         <div className="dice-square">
-          <p className="roll-dice-msg">Click to Roll!</p>
+          {/* <p className="roll-dice-msg">Click to Roll!</p> */}
+          <RollDice/>
         </div>
 
         <div className="div-players">
@@ -94,13 +101,11 @@ function GamePage() {
           </Link>
         </div>
 
-        {/* POPOVER NOT IMPLEMENTED */}
         <div className="right">
 
           <button className="circle-80 purple-light-bgr settings btn"/>
         </div>
 
-        {/* POPOVER NOT IMPLEMENTED */}
         <div className="left">
 
           <button className="circle-80 white-bgr tutorial btn"/>
@@ -110,8 +115,6 @@ function GamePage() {
             R
           </button>
         </Link>
-
-
       </div>
 
     </div>
