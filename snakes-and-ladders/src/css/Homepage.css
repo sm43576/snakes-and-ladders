@@ -4,6 +4,7 @@
     width: 100%;   
     display: flex;
     flex-direction: column;
+    background-color: #4B5683;
 }
 
 .title{
@@ -11,7 +12,7 @@
     align-self: center;
     color: #fff;
     font-size: 60px;
-    margin-top:15%
+    margin-top:10%
 }
 
 .button-start{
@@ -20,7 +21,7 @@
     border-radius: 15px;   /* ^radius = rounder button */
     font-size: 30px;
     top: 50%;
-    transform: translateY(400%);
+    transform: translateY(350%);
     z-index: 3;
 }  
 

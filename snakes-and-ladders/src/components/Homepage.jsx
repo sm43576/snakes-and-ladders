@@ -5,7 +5,6 @@ function StartPage() {
   return (
 
     
-  <body>
     <div className="body-container">
         <div className="title">
           Snakes and Ladders
@@ -17,11 +16,11 @@ function StartPage() {
             PLAY
           </button>
         </Link>
-    </div>
+    
     
     <img className= "waves-container" src="../src/assets/start_waves.png"></img>
-  </body>
 
+    </div>
 
   )
 
