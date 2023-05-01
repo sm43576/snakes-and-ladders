@@ -2,6 +2,7 @@ import { Component } from 'react'
 import '../css/RollDice.css'
 import Die from './Die'
 
+
 class RollDice extends Component {
 
   // Face numbers passes as default props

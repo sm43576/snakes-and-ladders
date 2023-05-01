@@ -68,20 +68,21 @@ function GamePage() {
 
       <div className="div-1">
 
-        <div className="dice-square">
-          {/* <p className="roll-dice-msg">Click to Roll!</p> */}
+        <div className="container white-bgr">
           <RollDice/>
         </div>
 
-        <div className="div-players">
-          <p className="current-player-tag">Current Player:</p>
-          <div className="current-player">
+        <div className="container">
+          <div className="div-players">
+            <p className="current-player-tag">Current Player:</p>
+            <div className="current-player">
+            </div>
           </div>
-        </div>
 
-        <div className="circle-80 white-bgr" />
-        <div className="circle-80 white-bgr" />
-        <div className="circle-80 white-bgr" />
+          <div className="next-players"/>
+          <div className="next-players"/>
+          <div className="next-players"/>
+        </div>
 
       </div>
 
@@ -95,23 +96,23 @@ function GamePage() {
 
       <div className="div-3">
 
-        <div className="left">
+        <div className="justify-left">
           <Link to="/">
-            <button className="circle-80 gold-dark-bgr home btn"/>
+            {/* <button className="circle-80 gold-dark-bgr home btn"/> */}
+            <button className="gold-dark-bgr home btn"/>
           </Link>
         </div>
 
-        <div className="right">
-
-          <button className="circle-80 purple-light-bgr settings btn"/>
+        <div className="justify-right">
+          <button className="purple-light-bgr settings btn"/>
         </div>
 
-        <div className="left">
-
-          <button className="circle-80 white-bgr tutorial btn"/>
+        <div className="justify-left">
+          <button className="white-bgr tutorial btn"/>
         </div>
+
         <Link to="/results">
-          <button className="circle-80 btn">
+          <button className="btn">
             R
           </button>
         </Link>
