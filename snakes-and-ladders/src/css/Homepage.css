@@ -15,6 +15,7 @@
 }
 
 .title{
+    position:relative;
     align-self: center;
     color: #fff;
     font-size: 60px;
