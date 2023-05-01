@@ -1,7 +1,8 @@
 import "../css/GamePage.css"
 import { Link } from "react-router-dom"
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import TutorialPopUp from "./TutorialPopUp";
+import SettingsPopUp from "./SettingsPopUp";
 
 import RollDice from "./RollDice";
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -17,6 +18,7 @@ function GamePage() {
   library.add(fas);
 
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(false);
+  const [settingsButtonPopup, setSettingsButtonPopup] = useState(false);
 
   const renderBoard = () => { // eventually would need to pass through snakes & ladder placements, and player placements
     const table = document.createElement('table');
@@ -108,7 +110,12 @@ function GamePage() {
         </div>
 
         <div className="justify-right">
-          <button className="purple-light-bgr settings btn"/>
+          <button className="purple-light-bgr settings btn" onClick={() => setSettingsButtonPopup(true)}/>
+            <SettingsPopUp
+              trigger={settingsButtonPopup}
+              setTrigger={setSettingsButtonPopup}
+            ></SettingsPopUp>
+
         </div>
 
         <div className="justify-left">
@@ -126,7 +133,6 @@ function GamePage() {
           </button>
         </Link>
       </div>
-
     </div>
   );
 }
