@@ -1,5 +1,5 @@
 body {
-    padding-bottom: 50px;
+    /* padding-bottom: 50px; */
 }
 
 .game-page {
@@ -7,7 +7,7 @@ body {
     height: 100vh;
     background-color: #A5ACCD;
     display: flex;
-    padding-bottom: 50px;
+    /* padding-bottom: 50px; */
 }
 
 .div-1 {
@@ -18,14 +18,16 @@ body {
 }
 
 .div-2 {
-    width: 63%;
+    width: 65%;
     height: fit-content;
-    padding: 50px;
+    margin: 20px;
     overflow: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .div-3 {
-    width: 12%;
+    width: 10%;
     height: fit-content;
     padding: 45px 25px 45px 0;
 }
@@ -113,8 +115,10 @@ table td::before {
 
 /* DIV 3 */
 .div-3 button {
-    height: 80px;
-    width: 80px;
+    min-height: 80px;
+    max-height: 80px;
+    min-width: 80px;
+    max-width: 80px;
     border-radius: 50%;
     display: inline-block;
     margin: 5px 10px 5px 10px;
