@@ -42,9 +42,9 @@
     background-color: #4B5683;
     position: absolute;
     bottom: 0;
-    left: 50%;
+    /* left: 50%;
     margin-right: -50%;
-    transform: translate(-50%)
+    transform: translate(-50%) */
 }
 
 .rectangle2 {
@@ -54,9 +54,9 @@
     background-color: #4B5683;
     position: absolute;
     bottom: 0;
-    left: 28%;
+    /* left: 28%;
     margin-right: -50%;
-    transform: translate(-28%)
+    transform: translate(-28%) */
 }
 
 .rectangle3 {
@@ -66,9 +66,9 @@
     background-color: #4B5683;
     position: absolute;
     bottom: 0;
-    left: 72%;
+    /* left: 72%;
     margin-right: -50%;
-    transform: translate(-72%)
+    transform: translate(-72%) */
 }
 
 .home-button {
@@ -90,4 +90,70 @@
     margin-right: -50%;
     transform: translate(-100%);
     padding: 50px;
+}
+
+.avatar1 {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: #F9EDC8;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%)
+}
+
+.avatar2 {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: #F9EDC8;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%)
+}
+
+.avatar3 {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: #F9EDC8;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%)
+}
+
+.first {
+    height: 660px;
+    width: 240px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    /* margin-right: -50%; */
+    transform: translate(-50%)
+}
+
+.second {
+    height: 580px;
+    width: 240px;
+    position: absolute;
+    bottom: 0;
+    left: 28%;
+    /* margin-right: -50%; */
+    transform: translate(-28%)
+}
+
+.third {
+    height: 500px;
+    width: 240px;
+    position: absolute;
+    bottom: 0;
+    left: 72%;
+    /* margin-right: -50%; */
+    transform: translate(-72%)
 }
