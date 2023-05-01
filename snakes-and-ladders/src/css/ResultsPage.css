@@ -157,3 +157,15 @@
     /* margin-right: -50%; */
     transform: translate(-72%)
 }
+
+.first-text {
+    font-size: 50px;
+    color: #F7DA86;
+    font-weight: bold;
+}
+
+.second-third-text {
+    font-size: 50px;
+    color: white;
+    font-weight: bold;
+}
