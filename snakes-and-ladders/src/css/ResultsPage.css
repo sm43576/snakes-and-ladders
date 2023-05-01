@@ -6,23 +6,88 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: bottom;
-    display: flex;
+    /* display: flex; */
 }
 
-h1 {
+.div1 {
+    width: 100vw;
+    height: 20%;
+    /* height: fit-content; */
+    /* margin: 50px; */
+    /* background-color: red; */
+    /* opacity: 20%; */
+    position:relative;
+}
+
+.div2 {
+    width: 100vw;
+    height: 80%;
+    /* background-color: orange; */
+    /* opacity: 20%; */
+    position:relative;
+}
+
+.heading {
     color: #FFFFFF;
     font-size: 100px;
     text-align: center;
+    margin: 0%;
+    padding-top: 50px;
 }
 
-.rectangle {
+.rectangle1 {
     height: 460px;
     width: 240px;
-    border-radius: 20px;
+    border-radius: 20px 20px 0px 0px;
     background-color: #4B5683;
-    /* margin: 0 auto; */
     position: absolute;
     bottom: 0;
-    left: 0;
-    /* right: 0; */
-  }
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%)
+}
+
+.rectangle2 {
+    height: 380px;
+    width: 240px;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #4B5683;
+    position: absolute;
+    bottom: 0;
+    left: 28%;
+    margin-right: -50%;
+    transform: translate(-28%)
+}
+
+.rectangle3 {
+    height: 300px;
+    width: 240px;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #4B5683;
+    position: absolute;
+    bottom: 0;
+    left: 72%;
+    margin-right: -50%;
+    transform: translate(-72%)
+}
+
+.home-button {
+    height: 87px;
+    width: 87px;
+    border-radius: 50%;
+    color: white;
+    background-color: #7F89B4;
+    background-image: url("../images2/backbutton.png");
+    background-repeat: no-repeat;
+    background-size:auto;
+    background-position: center;
+}
+
+.button-position {
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    margin-right: -50%;
+    transform: translate(-100%);
+    padding: 50px;
+}

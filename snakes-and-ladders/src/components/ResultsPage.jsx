@@ -5,15 +5,23 @@ function ResultsPage() {
 
   return (
     <div className="game-page">
-      <div>
-        <Link to="/">
-          <button>
-            BACK TO HOME
-          </button>
-        </Link>
+      <div class="div1">
+        
+        <h1 class="heading">Results</h1>
       </div>
-      <h1>Results</h1>
-      <div class="rectangle"></div>
+
+      <div class="div2">
+        <div class="rectangle1"></div>
+        <div class="rectangle2"></div>
+        <div class="rectangle3"></div>
+        <div class="button-position">
+          <Link to="/">
+            <button class="home-button">
+            </button>
+          </Link>
+        </div>
+      </div>
+      
 
 
     </div>    
