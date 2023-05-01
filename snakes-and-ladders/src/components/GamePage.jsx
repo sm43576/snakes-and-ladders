@@ -1,10 +1,12 @@
 import "../css/GamePage.css"
 import { Link } from "react-router-dom"
 import { useEffect } from 'react';
+import TutorialPopUp from "./TutorialPopUp";
 
 import RollDice from "./RollDice";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+
 
 // import homeIcon from "../images/home.png"
 
@@ -13,6 +15,8 @@ function GamePage() {
   document.body.style.backgroundColor = "#A5ACCD";
 
   library.add(fas);
+
+  const [tutorialButtonPopup, setTutorialButtonPopup] = useState(false);
 
   const renderBoard = () => { // eventually would need to pass through snakes & ladder placements, and player placements
     const table = document.createElement('table');
@@ -108,7 +112,12 @@ function GamePage() {
         </div>
 
         <div className="justify-left">
-          <button className="white-bgr tutorial btn"/>
+          <button className="white-bgr tutorial btn" onClick={() => setTutorialButtonPopup(true)}/>
+            <TutorialPopUp
+              trigger={tutorialButtonPopup}
+              setTrigger={setTutorialButtonPopup}
+            />
+            
         </div>
 
         <Link to="/results">
@@ -119,7 +128,7 @@ function GamePage() {
       </div>
 
     </div>
-  )
+  );
 }
 
-export default GamePage
+export default GamePage;
