@@ -38,9 +38,9 @@
     border-radius: 20px;
     padding: 5px;
 }
-
-button:focus {
+/* FIXME: this prevents avatar selection buttons from showing the  yellow border when selected */
+/* button:focus {
     outline: none;
     border: none;
   }
-  
+   */
