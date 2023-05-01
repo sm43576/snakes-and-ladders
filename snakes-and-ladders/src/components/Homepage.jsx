@@ -1,7 +1,8 @@
 import "../css/Homepage.css"
 import { Link } from "react-router-dom"
 
-function StartPage() {
+function Homepage() {
+  document.body.style.backgroundColor = "#4B5683";
   return (
 
     
@@ -26,4 +27,4 @@ function StartPage() {
 
 }
 
-export default StartPage
+export default Homepage
