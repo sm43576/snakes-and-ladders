@@ -1,23 +1,26 @@
 import "../css/NumPlayersPage.css"
 import { NavLink, Link } from "react-router-dom"
 import { useState } from 'react';
+import { AppContext } from './AppContextProvider';
+import { useContext } from 'react';
 
 function NumPlayersPage() {
-
-  const [maxPlayers,changePlayer] = useState(0);
-  const [maxCommies,changeCom] = useState(0);
+  const { currentID,setCurrentID, maxPlayers, setMaxPlayers, maxCommies,changeCom } = useContext(AppContext);
+  // TODO: remove if we think using app context is a better idea
+  // const [maxPlayers,changePlayer] = useState(0);
+  // const [maxCommies,changeCom] = useState(0);
 
   function handlePlayerCount(string){
-    if (string == '>')
-      changePlayer(maxPlayers+1);
+    if (string == '>' && maxPlayers!=6)
+      setMaxPlayers(maxPlayers+1);
 
     else if((string =='<') &&(maxPlayers!=0))
-      changePlayer(maxPlayers-1);
+      setMaxPlayers(maxPlayers-1);
     console.log(maxPlayers);
   }
 
   function handleComCount(string){
-    if (string == '>')
+    if (string == '>' && maxCommies!=5)
       changeCom(maxCommies+1);
 
     else if((string =='<') &&(maxCommies!=0))
@@ -50,7 +53,8 @@ function NumPlayersPage() {
             </button>
           </Link>
 
-        <NavLink to={"/avatar/0/"+ maxPlayers}>  <button className='avatar-btn'>
+        <NavLink to={"/avatar/"+ currentID+"/"+ maxPlayers}>  
+          <button className='avatar-btn' onClick={()=>{setCurrentID(0)}}>
              {'>'}
           </button>
         </NavLink>
