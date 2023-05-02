@@ -64,42 +64,42 @@
 .bubble-p{
     position:relative;
     z-index: 3;
-    width: 400px;
+    width: 470px;
     height: auto;
 
-    transform:translate(-70%,70%)
+    transform:translate(-60%,-100%)
 
 }
 .pIncrease-btn{
-    position: absolute;
+    position: relative;
     z-index: 5;
-    top:45%;
-    left: 35%;
     font-size: 50px;
     height: 30%;
     width: 8%;
     border-radius: 50%;
     padding: 0%;
     background-color: transparent;
+
+    transform:translate(50%,150%)
 }
 .pDecrease-btn{
-    position: absolute;
+    position: relative;
     z-index: 5;
-    top:45%;
-    left: 12.5%;
     font-size: 50px;
     height: 30%;
     width: 8%;
     border-radius: 50%;
     padding: 0%;
     background-color: transparent;
+    transform:translate(-350%,150%)
 }
 .player-count{
-    position:absolute;
-    left:25%;     /*    12.5,35 */
+    position:relative;
+    left:25%;     
     top:40%;
     font-size: 60pt;
-    z-index: 6;
+    z-index: 4;
+    transform: translate(-45%,-180%);
 }
 
 
@@ -107,41 +107,42 @@
 .bubble-c{
     position:relative;
     z-index: 3;
-    width: 400px;
+    width: 470px;
     height: auto;
     
-    transform:translate(80%,-70%)
+    transform:translate(70%,-230%)
 }
 .cIncrease-btn{
-    position: absolute;
+    position: relative;
     z-index: 5;
-    top:20%;
-    left: 85%;
+
     font-size: 50px;
     height: 30%;
     width: 8%;
     border-radius: 50%;
     padding: 0%;
     background-color: transparent;
+    transform:translate(360%,100%)
 }
 .cDecrease-btn{
-    position: absolute;
+    position: relative;
     z-index: 5;
-    top:20%;
-    left: 62.5%;
+
     font-size: 50px;
     height: 30%;
     width: 8%;
     border-radius: 50%;
     padding: 0%;
     background-color: transparent;
+    transform:translate(-20%,100%)
 }
 
 .com-count{
-    position:absolute;
+    position:relative;
     right:20%;     /*    12.5,35 */
     top:15%;
     font-size: 60pt;
-    z-index: 6;
+    z-index: 4;
+    transform :translate(42%,-275%)
 }
 
