@@ -1,6 +1,6 @@
 import '../css/AvatarPage.css'
 import { Link, useParams,NavLink } from "react-router-dom"
-import { useState } from "react";
+import { useState, useRef } from "react";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
 
@@ -15,7 +15,6 @@ function AvatarPage() {
   console.log(maxPlayers)
   const nextID = currentID+1;
   const previousID = currentID -1;
-  // const currentID = 0; // TODO: TEMPORARY somehow make this as a prop
   const playersList= [{ // TODO: Temporary. need to generate list of players based on max number of players?
     name: 'Player 1', 
     id: 0,
@@ -27,8 +26,10 @@ function AvatarPage() {
   ];
 
   const[players, setPlayer] = useState(playersList); 
-  const [gameBtnState, setGameBtnState] = useState(false);
-  const[activeAvatar, setActiveAvatar] = useState("");
+
+  const [gameBtnState, setGameBtnState] = useState(false); // To control enablement/disablement of start game button
+  const[activeAvatar, setActiveAvatar] = useState(""); // To control visual indicator for avatar selection
+  const refNameInput = useRef(null);
 
   function handleNameChange(newName){
     console.log(newName)
@@ -65,18 +66,25 @@ function AvatarPage() {
     }
   }
 
+  function clearAvatarSelectionAndNameInput(){
+    refNameInput.current.value = '';
+    if(activeAvatar.length>0){
+      setActiveAvatar("")
+    }
+  }
+
   return (
     <div className='avatar-container'>
         {/* ------ Back Button -----*/}
         <img className='bubble-corner-top' src={bubbleCornerTop} />
         <Link to={currentID == 0 ? "/players" : "/avatar/"+previousID.toString()+"/"+ maxPlayers.toString()}>
-          <button className='back-btn' onClick={()=>setActiveAvatar("")}>{'<'}</button> {/**reset current avatar selection visual indicator when going back  */}
+          <button className='back-btn' onClick={()=>clearAvatarSelectionAndNameInput()}>{'<'}</button> {/**reset current avatar selection visual indicator when going back  */}
           </Link>
 
         {/* ------ Headings -----*/}
         <h1 className='heading-title'>SELECT AVATAR</h1>
         <h2 className='heading-subtitle'>{players[currentID].name.toUpperCase()}</h2>
-        <input className='nickname-input' type='text' placeholder='Enter a nickname...' onChange={(e)=> handleNameChange(e.target.value)}/>
+        <input className='nickname-input' type='text' ref={refNameInput} placeholder='Enter a nickname...' onChange={(e)=> handleNameChange(e.target.value)}/>
 
       {/* ------ Avatar Selection -----*/}
       <div className='avatar-content'>
@@ -92,7 +100,7 @@ function AvatarPage() {
       {/* ------ Next button & star game button -----*/}
       <img className='bubble-corner-btm' src={bubbleCornerBtm} />
       <NavLink to={"/avatar/"+nextID.toString()+"/"+ maxPlayers.toString()}>
-        <button className='next-btn' disabled={currentID+1 >= maxPlayers} onClick={()=>setActiveAvatar("")}>{'>'}</button> {/**reset current avatar selection visual indicator when going forward  */}
+        <button className='next-btn' disabled={currentID+1 >= maxPlayers} onClick={()=>clearAvatarSelectionAndNameInput()}>{'>'}</button> {/**reset current avatar selection visual indicator when going forward  */}
       </NavLink>
       <Link to="/game">
         <button className='start-game-btn' disabled={!gameBtnState}>{'PLAY GAME'}</button>
