@@ -2,7 +2,7 @@
 /* ------------ CORNER BUBBLES ---------- */
 .bubble-corner-top{
     position: absolute;
-    height: 25%;
+    height: 26%;
     width: 15%;
     top:5%;
     left:5%;
@@ -89,7 +89,7 @@
 }
 .nickname-input{
     height: 35px;
-    width: 80%;
+    width: 60%;
     background-color: #FFFFFF;
     text-align: center;
     border-radius: 20px;

@@ -69,7 +69,9 @@ function AvatarPage() {
     <div className='avatar-container'>
         {/* ------ Back Button -----*/}
         <img className='bubble-corner-top' src={bubbleCornerTop} />
-        <Link to={currentID == 0 ? "/players" : "/avatar/"+previousID.toString()+"/"+ maxPlayers.toString()}><button className='back-btn'>{'<'}</button></Link>
+        <Link to={currentID == 0 ? "/players" : "/avatar/"+previousID.toString()+"/"+ maxPlayers.toString()}>
+          <button className='back-btn' onClick={()=>setActiveAvatar("")}>{'<'}</button> {/**reset current avatar selection visual indicator when going back  */}
+          </Link>
 
         {/* ------ Headings -----*/}
         <h1 className='heading-title'>SELECT AVATAR</h1>
@@ -90,7 +92,7 @@ function AvatarPage() {
       {/* ------ Next button & star game button -----*/}
       <img className='bubble-corner-btm' src={bubbleCornerBtm} />
       <NavLink to={"/avatar/"+nextID.toString()+"/"+ maxPlayers.toString()}>
-        <button className='next-btn' disabled={currentID+1 == maxPlayers}>{'>'}</button>
+        <button className='next-btn' disabled={currentID+1 >= maxPlayers} onClick={()=>setActiveAvatar("")}>{'>'}</button> {/**reset current avatar selection visual indicator when going forward  */}
       </NavLink>
       <Link to="/game">
         <button className='start-game-btn' disabled={!gameBtnState}>{'PLAY GAME'}</button>
