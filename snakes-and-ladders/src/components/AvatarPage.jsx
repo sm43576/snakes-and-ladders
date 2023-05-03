@@ -11,22 +11,8 @@ const avatarImageFiles = ["avatar_pufferfish.png", "avatar_dolphin.png", "avatar
 
 function AvatarPage() {
   const { currentID,setCurrentID, maxPlayers, players, setPlayers } = useContext(AppContext);
-  // let { currentID, maxPlayers } = useParams();
-  // currentID = parseInt(currentID);
-  // console.log(currentID)
-  // console.log(maxPlayers)
   const nextID = currentID+1;
   const previousID = currentID -1;
-  // const playersList= [{ // TODO: Temporary. need to generate list of players based on max number of players?
-  //   name: 'Player 1', 
-  //   id: 0,
-  //   avatarFile: '',},
-  //   {
-  //     name: 'Player 2', 
-  //     id: 1,
-  //     avatarFile: '',}
-  // ];
-  // const[players, setPlayer] = useState(playersList); 
 
   const [gameBtnState, setGameBtnState] = useState(false); // To control enablement/disablement of start game button
   const[activeAvatar, setActiveAvatar] = useState(""); // To control visual indicator for avatar selection
@@ -40,11 +26,8 @@ function AvatarPage() {
         name: newName.length > 0 ? newName : "Player " + currentID+1 
       }
       setPlayers(tempPlayersArray); // only updates next render tho so maybe database instead?
-      // TODO: LINK TO BACKEND DATABASE OR PASS IT THROUGH TO NEXT PAGE
-      console.log(players) //FIXME: remove this
   }
   
-  // When player selects an avatar to use prob need to save it in a database or something
   function handleAvatarBtnClick( avatarFileName) {
     setActiveAvatar(avatarFileName);
     const tempPlayersArray = [...players];
@@ -53,8 +36,6 @@ function AvatarPage() {
       avatarFile: avatarFileName
     }
     setPlayers(tempPlayersArray); // only updates next render tho so maybe database instead?
-    console.log(players) //FIXME: remove this
-    // TODO: LINK TO BACKEND DATABASE OR PASS IT THROUGH TO NEXT PAGE
     canPlayersStartGame(true); // Checks if last player has chosen avatar in order to play game
   }
 
@@ -74,6 +55,16 @@ function AvatarPage() {
     }
   }
 
+  // To check if avatar has already been selected by a previous player and disable the button if it has
+  function checkAvatarAlreadySelected(file){
+    var hasAlreadySelected = false;
+    var result = players.filter(player => player.avatarFile === file);
+    if(result.length > 0){
+      hasAlreadySelected= true;
+    }
+    return hasAlreadySelected;
+  }
+
   return (
     <div className='avatar-container'>
         {/* ------ Back Button -----*/}
@@ -90,8 +81,9 @@ function AvatarPage() {
       {/* ------ Avatar Selection -----*/}
       <div className='avatar-content'>
         {avatarImageFiles.map(file=>(
-          <div className='avatar-circles'>
-            <button className= {activeAvatar == file ? 'selected-avatar-img-btn':'default-avatar-img-btn'} key={"button"+file} onClick={()=>handleAvatarBtnClick(file)}>
+          <div className='avatar-circles' key={"avatar-circle"+file}>
+            <button className= {activeAvatar == file ? 'selected-avatar-img-btn':'default-avatar-img-btn'} 
+              key={"button"+file} onClick={()=>handleAvatarBtnClick(file)} disabled={checkAvatarAlreadySelected(file)}>
               <img className='avatar-images' key={file} src={`/src/assets/selectable_avatars/${file}`}/>
             </button>
           </div>
