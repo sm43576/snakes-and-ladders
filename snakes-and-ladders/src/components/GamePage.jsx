@@ -9,7 +9,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 
 
-// import homeIcon from "../images/home.png"
+// import homeIcon from "../assets/home.png"
 
 
 function GamePage() {

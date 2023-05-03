@@ -4,34 +4,34 @@ import { Link } from "react-router-dom"
 function ResultsPage() {
 
   return (
-    <div className="game-page">
-      <div class="div1">
+    <div className="results-page">
+      <div className="div1">
         
-        <h1 class="heading">Results</h1>
+        <h1 className="heading">Results</h1>
       </div>
 
-      <div class="div2">
-        <div class="first">
-          <div class="rectangle1">
-            <p class="first-text">1st</p>
+      <div className="div2">
+        <div className="first">
+          <div className="rectangle1">
+            <p className="first-text">1st</p>
           </div>
-          <div class="avatar1"></div>
+          <div className="avatar1"></div>
         </div>
-        <div class="second">
-          <div class="rectangle2">
-            <p class="second-third-text">2nd</p>
+        <div className="second">
+          <div className="rectangle2">
+            <p className="second-third-text">2nd</p>
           </div>
-          <div class="avatar2"></div>
+          <div className="avatar2"></div>
         </div>
-        <div class="third">
-          <div class="rectangle3">
-            <p class="second-third-text">3rd</p>
+        <div className="third">
+          <div className="rectangle3">
+            <p className="second-third-text">3rd</p>
           </div>
-          <div class="avatar3"></div>
+          <div className="avatar3"></div>
         </div>
-        <div class="button-position">
+        <div className="button-position">
           <Link to="/">
-            <button class="home-button">
+            <button className="home-button">
             </button>
           </Link>
         </div>
