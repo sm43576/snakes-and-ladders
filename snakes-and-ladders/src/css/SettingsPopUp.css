@@ -21,6 +21,7 @@
     max-width: 1000px;
     max-height: 550px;
     border-radius: 20px;
+    padding: 0px;
 }
 
 .popup-inner .close-btn {
@@ -39,21 +40,50 @@
     font-size: 30px;
 }
 
-.settings-popup p {
-    color: #F3DA91;
+.settings-container {
+    display:flex;
+    align-content: center;
+    justify-content: center;
+    color:#F3DA91;
     font-weight: 600;
 }
 
-.settings-popup button {
+.vl {
+    border-left: 5px solid #F3DA91;
+}
+
+.settings-container button {
+    align-items: center;
     background-color: #7F89B4;
-    color: white;
+    border: 0;
     border-radius: 80px;
+    color: white;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    justify-content: center;
+    line-height: 20px;
+    min-height: 50px;
+    min-width: 160px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.settings-container button:hover {
+    filter: brightness(100%);
+    background-color: #F7DA86;
+    color: #4B5683;
 }
 
 .div-adjustments {
-    display: inline-block;
+    align-items: center;
+    width: 100%;
 }
 
 .div-exitbuttons {
-    display: inline-block;
+    align-items: center;
+    width: 40%;
+    padding: 30px;
 }
