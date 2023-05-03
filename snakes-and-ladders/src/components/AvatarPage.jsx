@@ -3,28 +3,30 @@ import { Link, useParams,NavLink } from "react-router-dom";
 import { useState, useRef, useContext } from "react";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
+import { AppContext } from './AppContextProvider';
+
 
 const avatarImageFiles = ["avatar_pufferfish.png", "avatar_dolphin.png", "avatar_otter.png", "avatar_squid.png",
                           "avatar_seal.png", "avatar_octopus.png", "avatar_shark.png", "avatar_tropic_fish.png"];
 
 function AvatarPage() {
-  let { currentID, maxPlayers } = useParams();
-  currentID = parseInt(currentID);
-  console.log(currentID)
-  console.log(maxPlayers)
+  const { currentID,setCurrentID, maxPlayers, players, setPlayers } = useContext(AppContext);
+  // let { currentID, maxPlayers } = useParams();
+  // currentID = parseInt(currentID);
+  // console.log(currentID)
+  // console.log(maxPlayers)
   const nextID = currentID+1;
   const previousID = currentID -1;
-  const playersList= [{ // TODO: Temporary. need to generate list of players based on max number of players?
-    name: 'Player 1', 
-    id: 0,
-    avatarFile: '',},
-    {
-      name: 'Player 2', 
-      id: 1,
-      avatarFile: '',}
-  ];
-
-  const[players, setPlayer] = useState(playersList); 
+  // const playersList= [{ // TODO: Temporary. need to generate list of players based on max number of players?
+  //   name: 'Player 1', 
+  //   id: 0,
+  //   avatarFile: '',},
+  //   {
+  //     name: 'Player 2', 
+  //     id: 1,
+  //     avatarFile: '',}
+  // ];
+  // const[players, setPlayer] = useState(playersList); 
 
   const [gameBtnState, setGameBtnState] = useState(false); // To control enablement/disablement of start game button
   const[activeAvatar, setActiveAvatar] = useState(""); // To control visual indicator for avatar selection
@@ -37,7 +39,7 @@ function AvatarPage() {
         ...players[currentID],
         name: newName.length > 0 ? newName : "Player " + currentID+1 
       }
-      setPlayer(tempPlayersArray); // only updates next render tho so maybe database instead?
+      setPlayers(tempPlayersArray); // only updates next render tho so maybe database instead?
       // TODO: LINK TO BACKEND DATABASE OR PASS IT THROUGH TO NEXT PAGE
       console.log(players) //FIXME: remove this
   }
@@ -50,7 +52,7 @@ function AvatarPage() {
       ...players[currentID],
       avatarFile: avatarFileName
     }
-    setPlayer(tempPlayersArray); // only updates next render tho so maybe database instead?
+    setPlayers(tempPlayersArray); // only updates next render tho so maybe database instead?
     console.log(players) //FIXME: remove this
     // TODO: LINK TO BACKEND DATABASE OR PASS IT THROUGH TO NEXT PAGE
     canPlayersStartGame(true); // Checks if last player has chosen avatar in order to play game
@@ -77,7 +79,7 @@ function AvatarPage() {
         {/* ------ Back Button -----*/}
         <img className='bubble-corner-top' src={bubbleCornerTop} />
         <Link to={currentID == 0 ? "/players" : "/avatar/"+previousID.toString()+"/"+ maxPlayers.toString()}>
-          <button className='back-btn' onClick={()=>clearAvatarSelectionAndNameInput()}>{'<'}</button> {/**reset current avatar selection visual indicator when going back  */}
+          <button className='back-btn' onClick={()=>{clearAvatarSelectionAndNameInput(); setCurrentID(currentID-1)}}>{'<'}</button> {/**reset current avatar selection visual indicator when going back  */}
           </Link>
 
         {/* ------ Headings -----*/}
@@ -99,7 +101,7 @@ function AvatarPage() {
       {/* ------ Next button & star game button -----*/}
       <img className='bubble-corner-btm' src={bubbleCornerBtm} />
       <NavLink to={"/avatar/"+nextID.toString()+"/"+ maxPlayers.toString()}>
-        <button className='next-btn' disabled={currentID+1 >= maxPlayers} onClick={()=>clearAvatarSelectionAndNameInput()}>{'>'}</button> {/**reset current avatar selection visual indicator when going forward  */}
+        <button className='next-btn' disabled={currentID+1 >= maxPlayers} onClick={()=>{clearAvatarSelectionAndNameInput(); setCurrentID(currentID+1)}}>{'>'}</button> {/**reset current avatar selection visual indicator when going forward  */}
       </NavLink>
       <Link to="/game">
         <button className='start-game-btn' disabled={!gameBtnState}>{'PLAY GAME'}</button>
