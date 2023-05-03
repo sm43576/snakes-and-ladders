@@ -1,4 +1,5 @@
 import "../css/TutorialPopUp.css";
+import BoardImage from "../assets/board.png";
 
 function TutorialPopUp(props) {
   return props.trigger ? (
@@ -10,7 +11,7 @@ function TutorialPopUp(props) {
         <h1>HOW TO PLAY</h1>
         <div className="tutorial-content">
           <div className="example-image">
-            <img src="../assets/board.png" />
+            <img src={BoardImage} width="360" height="360" />
           </div>
           <div className="instruction">
             <p>
