@@ -1,9 +1,8 @@
 import '../css/AvatarPage.css'
-import { Link, useParams,NavLink } from "react-router-dom"
-import { useState, useRef } from "react";
+import { Link, useParams,NavLink } from "react-router-dom";
+import { useState, useRef, useContext } from "react";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
-
 
 const avatarImageFiles = ["avatar_pufferfish.png", "avatar_dolphin.png", "avatar_otter.png", "avatar_squid.png",
                           "avatar_seal.png", "avatar_octopus.png", "avatar_shark.png", "avatar_tropic_fish.png"];
