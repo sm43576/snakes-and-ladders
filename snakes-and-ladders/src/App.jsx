@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Homepage from "./components/Homepage";
+import HomePage from "./components/Homepage";
 import NumPlayersPage from "./components/NumPlayersPage";
 import AvatarPage from "./components/AvatarPage";
 import AvatarLayout from "./components/AvatarLayout";
@@ -15,7 +15,7 @@ function App() {
       <BrowserRouter>
         {/* <HeaderBar /> s*/}
         <Routes>
-          <Route path="/" element={<Homepage/>}/>
+          <Route path="/" element={<HomePage/>}/>
           <Route path="/players" element={<NumPlayersPage/>}/>
           
           <Route path="/avatar" element={<AvatarLayout/>}>

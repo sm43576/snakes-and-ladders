@@ -1,23 +1,19 @@
 import "../css/HomePage.css"
 import { Link } from "react-router-dom"
 
-function Homepage() {
+function HomePage() {
   document.body.style.backgroundColor = "#4B5683";
   return (
-
-    
-    <div className="body-container">
-        <div className="title">
-          Snakes and Ladders
-        </div>
+    <div className="home-page">
+        <h1 className="title">
+          Seaweed and Bubbles
+        </h1>
     
         <Link to="/players">
-          <button className="button-start" 
-          style={{height: '75px', width : '150px'}}>
+          <button className="button-start">
             PLAY
           </button>
         </Link>
-    
     
     <img className= "waves-container" src="../src/assets/start_waves.png"></img>
 
@@ -27,4 +23,4 @@ function Homepage() {
 
 }
 
-export default Homepage
+export default HomePage

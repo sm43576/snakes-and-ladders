@@ -1,37 +1,40 @@
-
-.body-container{
+.home-page {
     height: 100vh;
-    width: 100%;   
+    width: 100%;
     display: flex;
     flex-direction: column;
     background-color: #4B5683;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.title{
-    position:relative;
+.title {
+    position: relative;
     align-self: center;
     color: #fff;
-    font-size: 60px;
-    margin-top:10%
+    font-size: 80px;
+    margin-top: 100px
 }
 
-.button-start{
-    position:relative;
-    align-self:center;
-    border-radius: 15px;   /* ^radius = rounder button */
+.button-start {
+    height: '75px';
+    width: '150px';
+    border-radius: 50px;
     font-size: 30px;
-    top: 50%;
-    transform: translateY(350%);
-    z-index: 3;
-}  
+    background-color: white;
+    border: 1px solid #4B5683;
+    color: #4B5683;
+}
 
-.waves-container{
-    
-    position:absolute;
+.button-start:hover {
+    background-color: #A5ACCD;
+    border: 1px solid #4B5683;
+    color: white;
+}
+
+.waves-container {
+    position: absolute;
     height: 60%;
     width: 100%;
-    left:0;
-    bottom:0;
-    z-index: 2;
-
+    left: 0;
+    bottom: 0;
 }
