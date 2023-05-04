@@ -2,6 +2,9 @@ import "../css/NumPlayersPage.css"
 import { NavLink, Link } from "react-router-dom"
 import { useContext } from 'react';
 import { AppContext } from './AppContextProvider';
+import bubbleCornerTop from "../assets/bubble_top_left.png";
+import bubbleCornerBtm from "../assets/bubble_btm_right.png";
+
 
 function NumPlayersPage() {
   const { currentID, setCurrentID, maxPlayers, setMaxPlayers, maxCommies, changeCom } = useContext(AppContext);
@@ -28,9 +31,14 @@ function NumPlayersPage() {
   }
 
   return (
-    <div className="player-container">
+    <div className="num-players-page">
 
-      <img className="bubble-top" src="../src/assets/bubble_top_left.png"></img>
+      <img className="bubble-top" src={bubbleCornerTop}/>
+      <Link to="/" >
+        <button className='home-btn'>
+          {'<'}
+        </button>
+      </Link>
 
       <div className="bubble-p">
         <div className="player-type">
@@ -62,14 +70,7 @@ function NumPlayersPage() {
         </div>
       </div>
 
-      <img className="bubble-bot" src="../src/assets/bubble_btm_right.png"></img>
-
-      <Link to="/" >
-        <button className='home-btn'>
-          {'<'}
-        </button>
-      </Link>
-
+      <img className="bubble-bot" src={bubbleCornerBtm}/>
       <NavLink to={"/avatar/" + currentID + "/" + maxPlayers}>
         <button className='avatar-btn' onClick={() => { setCurrentID(0) }}>
           {'>'}
