@@ -1,8 +1,7 @@
 import "../css/NumPlayersPage.css"
 import { NavLink, Link } from "react-router-dom"
-import { useState } from 'react';
-import { AppContext } from './AppContextProvider';
 import { useContext } from 'react';
+import { AppContext } from './AppContextProvider';
 
 function NumPlayersPage() {
   const { currentID, setCurrentID, maxPlayers, setMaxPlayers, maxCommies, changeCom } = useContext(AppContext);
@@ -28,40 +27,42 @@ function NumPlayersPage() {
     console.log(maxCommies);
   }
 
-
-
   return (
     <div className="player-container">
 
       <img className="bubble-top" src="../src/assets/bubble_top_left.png"></img>
 
       <div className="bubble-p">
-
         <div className="player-type">
           <p> PLAYERS </p>
         </div>
-
         <div className="bubble-flex">
-
-          <button className="pDecrease-btn" onClick={() => handlePlayerCount('<')}>
-            <img className="pDecrease-img" src="../src/assets/decrease.png" />
+          <button className="decrease-btn" onClick={() => handlePlayerCount('<')}>
+            <img className="decrease-img" src="../src/assets/decrease.png" />
           </button>
           <p className="player-count">{maxPlayers}</p>
-          <button className="pIncrease-btn" onClick={() => handlePlayerCount('>')}>
-            <img className="pIncrease-img" src="../src/assets/increase.png" />
+          <button className="increase-btn" onClick={() => handlePlayerCount('>')}>
+            <img className="increase-img" src="../src/assets/increase.png" />
           </button>
-
         </div>
+      </div>
 
+      <div className="bubble-c">
+        <div className="player-type">
+          <p> COM PLAYERS </p>
+        </div>
+        <div className="bubble-flex">
+          <button className="decrease-btn" onClick={() => handleComCount('<')}>
+            <img className="decrease-img" src="../src/assets/decrease.png" />
+          </button>
+          <p className="player-count">{maxCommies}</p>
+          <button className="increase-btn" onClick={() => handleComCount('>')}>
+            <img className="increase-img" src="../src/assets/increase.png" />
+          </button>
+        </div>
       </div>
 
       <img className="bubble-bot" src="../src/assets/bubble_btm_right.png"></img>
-
-
-      {/* <button className="cIncrease-btn" onClick={() => handleComCount('>')}>{'>'}</button>
-      <button className="cDecrease-btn" onClick={() => handleComCount('<')}>{'<'}</button>
-
-      <p className="com-count">{maxCommies}</p> */}
 
       <Link to="/" >
         <button className='home-btn'>
@@ -74,17 +75,8 @@ function NumPlayersPage() {
           {'>'}
         </button>
       </NavLink>
-
-
-      {/* <div className = "players"> */}
-      {/* <div> </div> */}
-      {/* <img className="bubble-p" src="../src/assets/player_bubble.png"></img> */}
-      {/* </div> */}
-      {/* <div className="computer-players">
-        <img className="bubble-c" src="../src/assets/com_bubble.png"></img>
-      </div> */}
     </div>
-  )
-
+  );
 }
-export default NumPlayersPage
+
+export default NumPlayersPage;
