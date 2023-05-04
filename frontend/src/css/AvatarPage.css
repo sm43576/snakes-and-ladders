@@ -1,0 +1,141 @@
+
+/* ------------ CORNER BUBBLES ---------- */
+.bubble-corner-top{
+    position: absolute;
+    height: 26%;
+    width: 15%;
+    top:5%;
+    left:5%;
+    z-index: 2;
+}
+
+.back-btn{
+    position: absolute;
+    z-index: 4;
+    top:7%;
+    left: 6.5%;
+    font-size: 50px;
+    height: 12%;
+    width: 8%;
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 0%;
+}
+.back-btn:hover{
+   border-color: transparent;
+}
+.bubble-corner-btm{
+    position:absolute;
+    height: 22%;
+    width: 10%;
+    bottom:5%;
+    right:5%;
+    z-index: 2;
+}
+.next-btn{
+    position: absolute;
+    z-index: 4;
+    bottom:6%;
+    right: 5%;
+    font-size: 50px;
+    height: 12%;
+    width: 8%;
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 0%;
+}
+.next-btn:hover{
+    border-color: transparent;
+}
+.next-btn:disabled{
+    cursor:not-allowed;
+}
+.start-game-btn{
+    justify-content: center;
+    background-color: #7F89B4;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+.start-game-btn:disabled{
+    background-color: #bdbbbb;
+    color:#696565;
+    cursor: not-allowed;
+}
+
+/* ------------ AVATAR PAGE CONTENT ---------- */
+.avatar-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #4B5683;
+}
+
+/* --- HEADINGS ---- */
+.heading-title{
+    text-align: center;
+    font-size: 50px;
+    color: #F3DA91;
+    padding: 0%;
+    margin-top: 5%;
+    margin-bottom: 0%;
+}
+.heading-subtitle{
+    padding: 0%;
+    margin: 2%;
+}
+.nickname-input{
+    height: 35px;
+    width: 60%;
+    background-color: #FFFFFF;
+    text-align: center;
+    border-radius: 20px;
+    color: #000000;
+}
+
+/* --- AVATAR SELECTION ---- */
+.avatar-content{
+    padding-top: 20px;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: repeat(2, 180px);
+    grid-template-columns: repeat(4, 180px);
+}
+.avatar-content .avatar-circles{
+    display: flex;
+    justify-content: center;
+   
+}
+.avatar-circles .default-avatar-img-btn{
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border-width: 8px;
+    border-color: #FFFFFF;
+    
+}
+.avatar-circles .selected-avatar-img-btn{
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border-width: 8px;
+    border-color: #F7DA86;
+}
+.default-avatar-img-btn:disabled{
+    background-color: #bdbbbb;
+    border-color: #bdbbbb;
+    cursor: not-allowed;
+}
+.avatar-images{
+    width: 90%;
+    height: 70%;
+    align-self: center;
+}
+.default-avatar-img-btn:hover{
+    border-color: #F7DA86;
+}
