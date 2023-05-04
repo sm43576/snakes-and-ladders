@@ -35,10 +35,24 @@ function NumPlayersPage() {
 
       <img className="bubble-top" src="../src/assets/bubble_top_left.png"></img>
 
-      <div className="players-bubble">
-        <button className="pIncrease-btn" onClick={() => handlePlayerCount('>')}>{'>'}</button>
-        <p className="player-count">{maxPlayers}</p>
-        <button className="pDecrease-btn" onClick={() => handlePlayerCount('<')}>{'<'}</button>
+      <div className="bubble-p">
+
+        <div className="player-type">
+          <p> PLAYERS </p>
+        </div>
+
+        <div className="bubble-flex">
+
+          <button className="pDecrease-btn" onClick={() => handlePlayerCount('<')}>
+            <img className="pDecrease-img" src="../src/assets/decrease.png" />
+          </button>
+          <p className="player-count">{maxPlayers}</p>
+          <button className="pIncrease-btn" onClick={() => handlePlayerCount('>')}>
+            <img className="pIncrease-img" src="../src/assets/increase.png" />
+          </button>
+
+        </div>
+
       </div>
 
       <img className="bubble-bot" src="../src/assets/bubble_btm_right.png"></img>

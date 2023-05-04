@@ -7,9 +7,13 @@
     background-color: #A5ACCD;
     justify-content: center;
     align-items: center;
-    z-index: 1;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.player-container p {
+    margin-block-start: 0;
+    margin-block-end: 0;    
+}
 
 .bubble-top{
     position:absolute;
@@ -17,7 +21,6 @@
     width: 210px;
     top: 50px;
     left: 50px;
-    z-index: 2;
 }
 
 .bubble-bot{
@@ -26,7 +29,6 @@
     width: 134px;
     bottom: 50px;
     right: 50px;
-    z-index: 2;
 }
 
 .home-btn {
@@ -39,7 +41,6 @@
     background-color: #7F89B4;
     border-radius: 50%;
     padding: 0;
-    z-index: 4;
 }
 
 .avatar-btn {
@@ -50,55 +51,71 @@
     right: 50px;
     font-size: 50px;
     background-color: #7F89B4;
-    /* background-color: transparent; */
     border-radius: 50%;
     padding: 0;
-    z-index: 4;
+}
 
+.bubble-flex {
+    display: flex;
+    align-items: center;
+}
+
+.player-type {
+    font-size: 30pt;
+    font-weight: bold;
+    margin: 50px 0 0 0;
 }
 
 /*///////////////////////////Player bubble////////////////////////////////*/
 .bubble-p{
-    position:relative;
-    z-index: 3;
-    width: 470px;
-    height: auto;
-
-    transform:translate(-60%,-100%);
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 150px;
+    bottom: 50px;
     background-color: #4B5683;
     border-radius: 50%;
-
 }
+
+
 .pIncrease-btn{
-    /* position: relative;
-    z-index: 5; */
-    font-size: 50px;
-    height: 80px;
-    width: 80px;
+    height: 150px;
+    width: 150px;
     border-radius: 50%;
-    padding: 0;
+    padding: 0 0 0 20px;
     background-color: transparent;
+}
 
-    /* transform:translate(50%,150%) */
+.pIncrease-img{
+    height: 100px;
+    width: 50px;
+    padding: 0;
+    background-color: #4B5683;
 }
+
 .pDecrease-btn{
-    position: relative;
-    z-index: 5;
-    font-size: 50px;
-    height: 30%;
-    width: 8%;
+    height: 150px;
+    width: 150px;
     border-radius: 50%;
-    padding: 0%;
+    padding: 0 20px 0 0;
     background-color: transparent;
-    /* transform:translate(-350%,150%) */
 }
+
+.pDecrease-img{
+    height: 100px;
+    width: 50px;
+    padding: 0;
+    background-color: #4B5683;
+}
+
 .player-count{
     position:relative;
-    left:25%;     
-    top:40%;
-    font-size: 60pt;
-    z-index: 4;
-    transform: translate(-45%,-180%);
+    /* left:25%;     
+    top:40%; */
+    font-size: 150pt;
+    padding: 0 50px 0 50px;
+    /* z-index: 4; */
+    /* transform: translate(-45%,-180%); */
 }
 
 
