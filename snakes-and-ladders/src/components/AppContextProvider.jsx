@@ -5,7 +5,7 @@ export const AppContext = React.createContext({});
 export function AppContextProvider({ children }) {
 
     const [currentID, setCurrentID] = useState(0);
-    const [maxPlayers,setMaxPlayers] = useState(0);
+    const [maxPlayers,setMaxPlayers] = useState(1);
     const [maxCommies,changeCom] = useState(0);
 
     const defaultPlayers= [

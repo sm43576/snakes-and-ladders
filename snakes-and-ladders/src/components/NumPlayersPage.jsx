@@ -16,7 +16,7 @@ function NumPlayersPage() {
     if (string == '>' && maxPlayers != 6)
       setMaxPlayers(maxPlayers + 1);
 
-    else if ((string == '<') && (maxPlayers != 0))
+    else if ((string == '<') && (maxPlayers != 1))
       setMaxPlayers(maxPlayers - 1);
     console.log(maxPlayers);
   }
@@ -72,7 +72,7 @@ function NumPlayersPage() {
 
       <img className="bubble-bot" src={bubbleCornerBtm}/>
       <NavLink to={"/avatar/" + currentID + "/" + maxPlayers}>
-        <button className='avatar-btn' onClick={() => { setCurrentID(0) }}>
+        <button className='avatar-btn' disabled={maxPlayers + maxCommies < 2} onClick={() => { setCurrentID(0) }}>
           {'>'}
         </button>
       </NavLink>
