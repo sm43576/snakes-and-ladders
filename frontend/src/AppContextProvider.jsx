@@ -10,10 +10,6 @@ export const AppContext = React.createContext({
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "";
 
 export function AppContextProvider({ children }) {
-  // Because we need this data pretty much everywhere in our app, it's a good idea
-  // to load it in here, rather than having to make new GET requests every time we change the page.
-  //   const { data: players } = useGet(`${API_BASE_URL}/api/players`, []);
-
   const [currentID, setCurrentID] = useState(0);
   const [maxPlayers, setMaxPlayers] = useState(0);
   const [maxCommies, changeCom] = useState(0);
@@ -27,33 +23,7 @@ export function AppContextProvider({ children }) {
     { name: "Player 6", id: 5, avatarFile: "" },
   ];
 
-  // const [players, setPlayers] = useState(defaultPlayers);
-
-  // Sets up the app to fetch the players from a REST API.
-  const {
-    data: players,
-    isLoading: playersLoading,
-    refresh: refreshPlayers,
-  } = useGet(`${API_BASE_URL}/player`, []);
-
-  async function addPlayer(name, placement, image) {
-    const playerToUpload = {
-      name,
-      placement,
-      image,
-    };
-
-    const playerResponse = await axios.post(
-      `${API_BASE_URL}/players`,
-      playerToUpload,
-      {
-        withCredentials: true,
-        credentials: "include",
-      }
-    );
-    refreshPlayers();
-    return playerResponse.data;
-  }
+  const [players, setPlayers] = useState(defaultPlayers);
 
   const context = {
     currentID,
@@ -63,9 +33,7 @@ export function AppContextProvider({ children }) {
     maxCommies,
     changeCom,
     players,
-    // setPlayers,
-    addPlayer,
-    playersLoading,
+    setPlayers,
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;

@@ -17,8 +17,8 @@ export async function main() {
   console.log();
 
   // Disconnect when complete
-  await mongoose.disconnect();
-  console.log("Disconnected from database!");
+  // await mongoose.disconnect();
+  // console.log("Disconnected from database!");
 }
 
 async function clearDatabase() {

@@ -4,6 +4,8 @@ import { useState, useRef, useContext } from "react";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
 import { AppContext } from "../AppContextProvider";
+import useGet from "../hooks/useGet";
+import axios from "axios";
 
 const avatarImageFiles = [
   "avatar_pufferfish.png",
@@ -16,6 +18,8 @@ const avatarImageFiles = [
   "avatar_tropic_fish.png",
 ];
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "";
+
 function AvatarPage() {
   const { currentID, setCurrentID, maxPlayers, players, setPlayers } =
     useContext(AppContext);
@@ -25,8 +29,6 @@ function AvatarPage() {
   const [gameBtnState, setGameBtnState] = useState(false); // To control enablement/disablement of start game button
   const [activeAvatar, setActiveAvatar] = useState(""); // To control visual indicator for avatar selection
   const refNameInput = useRef(null);
-
-  const { addPlayer } = useContext(AppContext);
 
   function handleNameChange(newName) {
     console.log(newName);
@@ -79,7 +81,29 @@ function AvatarPage() {
     const newPlayer = await addPlayer("hayoon", 100, "image");
     console.log(newPlayer);
 
-    navigate(`/players/${newPlayer._id}`, { replace: true });
+    navigate(`/player/${newPlayer._id}`, { replace: true });
+  }
+
+  // Sets up the app to fetch the players from a REST API.
+  const {
+    data: databasePlayers,
+    isLoading: playersLoading,
+    refresh: refreshPlayers,
+  } = useGet(`${API_BASE_URL}/player`, []);
+
+  async function addPlayer(name, placement, image) {
+    const playerToUpload = {
+      name,
+      placement,
+      image,
+    };
+
+    const playerResponse = await axios.post(
+      `${API_BASE_URL}/player`,
+      playerToUpload
+    );
+    refreshPlayers();
+    return playerResponse.data;
   }
 
   return (
