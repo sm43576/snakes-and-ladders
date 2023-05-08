@@ -43,7 +43,7 @@ function AvatarPage() {
   function canPlayersStartGame(hasChosen) {
     if (hasChosen && currentID + 1 == maxPlayers) {
       setGameBtnState(true);
-      setCurrentID(0);
+      // setCurrentID(0);
     } else {
       setGameBtnState(false);
     }

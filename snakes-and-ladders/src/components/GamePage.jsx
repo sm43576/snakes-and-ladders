@@ -31,6 +31,8 @@ function GamePage() {
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(false);
   const [settingsButtonPopup, setSettingsButtonPopup] = useState(false);
 
+  setCurrentID(0);
+  
   const renderBoard = () => { // eventually would need to pass through snakes & ladder placements, and player placements
     const table = document.createElement('table');
 
