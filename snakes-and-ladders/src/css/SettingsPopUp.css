@@ -15,7 +15,7 @@
 }
 
 .settings-popup h1 {
-    /* margin-block-start: 0; */
+    color: #F3DA91;
     margin-block-end: 0
 }
 
@@ -42,10 +42,9 @@
     color: #4B5683;
     font-size: 50px;
     padding: 0;
-    /* font-size: 50px; */
-    /* position: absolute; 
-    top: 20px;
-    left: 20px; */
+    position: absolute;
+    top: 25px;
+    left: 30px;
 }
 
 .settings-popup h1 {
