@@ -32,15 +32,6 @@ router.post("/", async (req, res) => {
 
 // Retrieve all players
 router.get("/", async (req, res) => {
-  // Uncomment the following code to introduce an artificial delay before the response
-  // is sent back to the client.
-  // setTimeout(() => {
-  //     res.json(retrieveArticleList());
-  // }, 2000);
-
-  // When introducing the artificial delay, also comment this line. It's an error to send
-  // two responses.
-  console.log("hello");
   res.json(await retrievePlayerList());
 });
 
