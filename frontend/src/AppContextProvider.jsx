@@ -1,44 +1,56 @@
-import React from 'react';
-import { useState } from 'react';
-export const AppContext = React.createContext({});
+import React from "react";
+import useGet from "./hooks/useGet";
+import axios from "axios";
+import { useState } from "react";
 
-export function AppContextProvider({ children }) {
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "";
 
-    const [currentID, setCurrentID] = useState(0);
-    const [maxPlayers,setMaxPlayers] = useState(1);
-    const [maxCommies,changeCom] = useState(0);
+const AppContext = React.createContext({
+  articles: [],
+});
 
-    const defaultPlayers= [
-        {name: 'Player 1', 
-        id: 0,
-        avatarFile: '',},
-        {name: 'Player 2', 
-        id: 1,
-        avatarFile: '',},
-        {name: 'Player 3', 
-        id: 2,
-        avatarFile: '',},
-        {name: 'Player 4', 
-        id: 3,
-        avatarFile: '',},
-        {name: 'Player 5', 
-        id: 4,
-        avatarFile: '',},
-        {name: 'Player 6', 
-        id: 5,
-        avatarFile: '',},
-      ];
-    
-      const[players, setPlayers] = useState(defaultPlayers); 
+function AppContextProvider({ children }) {
+  // Sets up the app to fetch the players from a REST API.
+  const {
+    data: players,
+    isLoading: playersLoading,
+    refresh: refreshPlayers,
+  } = useGet(`${API_BASE_URL}/player`, []);
 
+  async function addPlayer(name, placement, image) {
+    const playerToUpload = {
+      name,
+      placement,
+      image,
+    };
 
-    const context = {
-        currentID, setCurrentID, maxPlayers, setMaxPlayers, maxCommies, changeCom, players, setPlayers
-    }
+    const playerResponse = await axios.post(
+      `${API_BASE_URL}/player`,
+      playerToUpload
+    );
+    refreshPlayers();
+    return playerResponse.data;
+  }
 
-    return(
-        <AppContext.Provider value={context}>
-            {children}
-        </AppContext.Provider>
-    )
+  const [currentID, setCurrentID] = useState(0);
+  const [maxPlayers, setMaxPlayers] = useState(1);
+  const [maxCommies, changeCom] = useState(0);
+
+  // The context value that will be supplied to any descendants of this component.
+  const context = {
+    players,
+    playersLoading,
+    addPlayer,
+    currentID,
+    setCurrentID,
+    maxPlayers,
+    setMaxPlayers,
+    maxCommies,
+    changeCom,
+  };
+
+  // Wraps the given child components in a Provider for the above context.
+  return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
 }
+
+export { AppContext, AppContextProvider };

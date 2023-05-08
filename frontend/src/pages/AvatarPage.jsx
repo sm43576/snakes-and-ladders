@@ -1,11 +1,10 @@
-import '../css/AvatarPage.css'
+import "../css/AvatarPage.css";
 import { Link, NavLink } from "react-router-dom";
 import { useState, useRef, useContext } from "react";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
-import { AppContext } from '../AppContextProvider';
-import useGet from "../hooks/useGet";
-import axios from "axios";
+import { AppContext } from "../AppContextProvider";
+import { useNavigate } from "react-router-dom";
 
 const avatarImageFiles = [
   "avatar_pufferfish.png",
@@ -18,8 +17,6 @@ const avatarImageFiles = [
   "avatar_tropic_fish.png",
 ];
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "";
-
 function AvatarPage() {
   const { currentID, setCurrentID, maxPlayers, players, setPlayers } =
     useContext(AppContext);
@@ -29,6 +26,8 @@ function AvatarPage() {
   const [gameBtnState, setGameBtnState] = useState(false); // To control enablement/disablement of start game button
   const [activeAvatar, setActiveAvatar] = useState(""); // To control visual indicator for avatar selection
   const refNameInput = useRef(null);
+
+  const { addPlayer } = useContext(AppContext);
 
   function handleNameChange(newName) {
     console.log(newName);
@@ -84,62 +83,66 @@ function AvatarPage() {
     navigate(`/player/${newPlayer._id}`, { replace: true });
   }
 
-  // Sets up the app to fetch the players from a REST API.
-  const {
-    data: databasePlayers,
-    isLoading: playersLoading,
-    refresh: refreshPlayers,
-  } = useGet(`${API_BASE_URL}/player`, []);
-
-  async function addPlayer(name, placement, image) {
-    const playerToUpload = {
-      name,
-      placement,
-      image,
-    };
-
-    const playerResponse = await axios.post(
-      `${API_BASE_URL}/player`,
-      playerToUpload
-    );
-    refreshPlayers();
-    return playerResponse.data;
-  }
-
   return (
-    <div className='avatar-page'>
-
+    <div className="avatar-page">
       <img className="bubble-top" src={bubbleCornerTop} />
-      <Link to={currentID == 0 ? "/players" : "/avatar/" + previousID.toString() + "/" + maxPlayers.toString()}>
-        <button className='back-btn' onClick={() => { clearAvatarSelectionAndNameInput(); setCurrentID(currentID - 1) }}>
-          {'<'}
-        </button> {/**reset current avatar selection visual indicator when going back  */}
+      <Link
+        to={
+          currentID == 0
+            ? "/players"
+            : "/avatar/" + previousID.toString() + "/" + maxPlayers.toString()
+        }>
+        <button
+          className="back-btn"
+          onClick={() => {
+            clearAvatarSelectionAndNameInput();
+            setCurrentID(currentID - 1);
+          }}>
+          {"<"}
+        </button>{" "}
+        {/**reset current avatar selection visual indicator when going back  */}
       </Link>
 
       {/* ------ Headings -----*/}
-      <h1 className='heading-title'>
-        SELECT AVATAR
-      </h1>
-      <h2 className='heading-subtitle'>
+      <h1 className="heading-title">SELECT AVATAR</h1>
+      <h2 className="heading-subtitle">
         {players[currentID].name.toUpperCase()}
       </h2>
-      <input className='nickname-input' type='text' ref={refNameInput} placeholder='Enter a nickname...' onChange={(e) => handleNameChange(e.target.value)} />
+      <input
+        className="nickname-input"
+        type="text"
+        ref={refNameInput}
+        placeholder="Enter a nickname..."
+        onChange={(e) => handleNameChange(e.target.value)}
+      />
 
       {/* ------ Avatar Selection -----*/}
-      <div className='avatar-content'>
-        {avatarImageFiles.map(file => (
-          <div className='avatar-circles' key={"avatar-circle" + file}>
-            <button className={activeAvatar == file ? 'selected-avatar-img-btn' : 'default-avatar-img-btn'}
-              key={"button" + file} onClick={() => handleAvatarBtnClick(file)} disabled={checkAvatarAlreadySelected(file)}>
-              <img className='avatar-images' key={file} src={`/src/assets/selectable_avatars/${file}`} />
+      <div className="avatar-content">
+        {avatarImageFiles.map((file) => (
+          <div className="avatar-circles" key={"avatar-circle" + file}>
+            <button
+              className={
+                activeAvatar == file
+                  ? "selected-avatar-img-btn"
+                  : "default-avatar-img-btn"
+              }
+              key={"button" + file}
+              onClick={() => handleAvatarBtnClick(file)}
+              disabled={checkAvatarAlreadySelected(file)}>
+              <img
+                className="avatar-images"
+                key={file}
+                src={`/src/assets/selectable_avatars/${file}`}
+              />
             </button>
           </div>
         ))}
       </div>
 
       {/* ------ Next button & star game button -----*/}
-      <img className='bubble-bot' src={bubbleCornerBtm} />
-      <NavLink to={"/avatar/" + nextID.toString() + "/" + maxPlayers.toString()}>
+      <img className="bubble-bot" src={bubbleCornerBtm} />
+      <NavLink
+        to={"/avatar/" + nextID.toString() + "/" + maxPlayers.toString()}>
         <button
           className="next-btn"
           disabled={currentID + 1 >= maxPlayers}
@@ -148,15 +151,16 @@ function AvatarPage() {
             clearAvatarSelectionAndNameInput();
             setCurrentID(currentID + 1);
           }}>
-          {'>'}
+          {">"}
         </button>
       </NavLink>
       <Link to="/game">
-        <button className='start-game-btn' disabled={!gameBtnState}>{'PLAY GAME'}</button>
+        <button className="start-game-btn" disabled={!gameBtnState}>
+          {"PLAY GAME"}
+        </button>
       </Link>
-
     </div>
-  )
+  );
 }
 
-export default AvatarPage
+export default AvatarPage;
