@@ -1,30 +1,34 @@
-.reuslts-page {
+.results-page {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #4B5683;
+    /* background-color: #4B5683;
     background-image: url("../assets/start_waves.png");
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: bottom;
+    background-position: bottom; */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     /* display: flex; */
 }
 
-.div1 {
+/* .div1 {
     width: 100%;
     height: 20%;
-    /* height: fit-content; */
-    /* margin: 50px; */
-    /* background-color: red; */
-    /* opacity: 20%; */
+    height: fit-content;
+    margin: 50px;
+    background-color: red;
+    opacity: 20%;
     position:relative;
-}
+} */
 
 .div2 {
     width: 100%;
-    height: 80%;
+    /* height: 80%; */
     /* background-color: orange; */
     /* opacity: 20%; */
-    position:relative;
+    /* position:relative; */
 }
 
 .heading {
@@ -38,7 +42,7 @@
 .rectangle1 {
     height: 460px;
     width: 240px;
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 50px 50px 0px 0px;
     background-color: #4B5683;
     position: absolute;
     bottom: 0;
@@ -50,7 +54,7 @@
 .rectangle2 {
     height: 380px;
     width: 240px;
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 50px 50px 0px 0px;
     background-color: #4B5683;
     position: absolute;
     bottom: 0;
@@ -62,7 +66,7 @@
 .rectangle3 {
     height: 300px;
     width: 240px;
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 50px 50px 0px 0px;
     background-color: #4B5683;
     position: absolute;
     bottom: 0;
@@ -72,15 +76,16 @@
 }
 
 .home-button {
-    height: 87px;
-    width: 87px;
-    border-radius: 50%;
-    color: white;
+    position: absolute;
+    height: 115px;
+    width: 115px;
+    bottom: 50px;
+    right: 50px;
+    font-size: 50px;
     background-color: #7F89B4;
-    background-image: url("../assets/backbutton.png");
-    background-repeat: no-repeat;
-    background-size:auto;
-    background-position: center;
+    border-radius: 50%;
+    padding: 0;
+
 }
 
 .button-position {

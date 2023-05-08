@@ -1,148 +1,123 @@
-.player-container{
-
-
+.num-players-page {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #7D87B8;
+    background-color: #A5ACCD;
     justify-content: center;
     align-items: center;
-    background-image:  url("../assets/player-background.png");
-    z-index: 1;
-
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-
-.bubble-top{
-    position:absolute;
-    
-    height: 26%;
-    width: 15%;
-    top:5%;
-    left:5%;
-    z-index: 2;
+.num-players-page p {
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 
-.bubble-bot{
-    position:absolute;
-    height: 22%;
-    width: 10%;
-    bottom:5%;
-    right:5%;
-    z-index: 2;
-}
-
-.avatar-btn{
+.bubble-top {
     position: absolute;
-    z-index: 4;
-    bottom:6%;
-    right: 5%;
-    font-size: 50px;
-    height: 12%;
-    width: 8%;
-    background-color: transparent;
-    border-radius: 50%;
-    padding: 0%;
+    height: 226px;
+    width: 210px;
+    top: 50px;
+    left: 50px;
 }
 
-.home-btn{
+.bubble-bot {
     position: absolute;
-    z-index: 4;
-    top:7%;
-    left: 6.5%;
+    height: 179px;
+    width: 134px;
+    bottom: 50px;
+    right: 50px;
+}
+
+.home-btn {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    top: 80px;
+    left: 80px;
     font-size: 50px;
-    height: 12%;
-    width: 8%;
-    background-color: transparent;
+    background-color: #7F89B4;
     border-radius: 50%;
-    padding: 0%;
-
+    padding: 0;
 }
-/*///////////////////////////Player bubble////////////////////////////////*/
-.bubble-p{
-    position:relative;
-    z-index: 3;
-    width: 470px;
-    height: auto;
 
-    transform:translate(-60%,-100%)
-
+.avatar-btn {
+    position: absolute;
+    height: 115px;
+    width: 115px;
+    bottom: 50px;
+    right: 50px;
+    font-size: 50px;
+    background-color: #7F89B4;
+    border-radius: 50%;
+    padding: 0;
 }
-.pIncrease-btn{
+
+.bubble-p {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 150px;
+    bottom: 50px;
+    background-color: #4B5683;
+    border-radius: 50%;
+}
+
+.bubble-c {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: 50px;
+    right: 150px;
+    background-color: #4B5683;
+    border-radius: 50%;
+}
+
+.bubble-flex {
+    display: flex;
+    align-items: center;
+}
+
+.player-type {
+    font-size: 30pt;
+    font-weight: bold;
+    margin: 50px 0 0 0;
+}
+
+.increase-btn {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    padding: 0 0 0 20px;
+    background-color: transparent;
+}
+
+.increase-img {
+    height: 100px;
+    width: 50px;
+    padding: 0;
+    background-color: #4B5683;
+}
+
+.decrease-btn {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    padding: 0 20px 0 0;
+    background-color: transparent;
+}
+
+.decrease-img {
+    height: 100px;
+    width: 50px;
+    padding: 0;
+    background-color: #4B5683;
+}
+
+.player-count {
     position: relative;
-    z-index: 5;
-    font-size: 50px;
-    height: 30%;
-    width: 8%;
-    border-radius: 50%;
-    padding: 0%;
-    background-color: transparent;
-
-    transform:translate(50%,150%)
+    font-size: 150pt;
+    padding: 0 50px 0 50px;
 }
-.pDecrease-btn{
-    position: relative;
-    z-index: 5;
-    font-size: 50px;
-    height: 30%;
-    width: 8%;
-    border-radius: 50%;
-    padding: 0%;
-    background-color: transparent;
-    transform:translate(-350%,150%)
-}
-.player-count{
-    position:relative;
-    left:25%;     
-    top:40%;
-    font-size: 60pt;
-    z-index: 4;
-    transform: translate(-45%,-180%);
-}
-
-
-/*///////////////////////////Computer bubble////////////////////////////////*/
-.bubble-c{
-    position:relative;
-    z-index: 3;
-    width: 470px;
-    height: auto;
-    
-    transform:translate(70%,-230%)
-}
-.cIncrease-btn{
-    position: relative;
-    z-index: 5;
-
-    font-size: 50px;
-    height: 30%;
-    width: 8%;
-    border-radius: 50%;
-    padding: 0%;
-    background-color: transparent;
-    transform:translate(360%,100%)
-}
-.cDecrease-btn{
-    position: relative;
-    z-index: 5;
-
-    font-size: 50px;
-    height: 30%;
-    width: 8%;
-    border-radius: 50%;
-    padding: 0%;
-    background-color: transparent;
-    transform:translate(-20%,100%)
-}
-
-.com-count{
-    position:relative;
-    right:20%;     /*    12.5,35 */
-    top:15%;
-    font-size: 60pt;
-    z-index: 4;
-    transform :translate(42%,-275%)
-}
-
