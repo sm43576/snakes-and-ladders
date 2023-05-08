@@ -33,7 +33,7 @@ export function AppContextProvider({ children }) {
 
 
     const context = {
-        currentID, setCurrentID, maxPlayers,setMaxPlayers, maxCommies, changeCom, players, setPlayers
+        currentID, setCurrentID, maxPlayers, setMaxPlayers, maxCommies, changeCom, players, setPlayers
     }
 
     return(

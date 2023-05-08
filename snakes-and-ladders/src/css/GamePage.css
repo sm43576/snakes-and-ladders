@@ -13,10 +13,10 @@
 
 }
 
-.div-2 {
+.div-2 { 
     width: 55%;
     height: fit-content;
-    margin: 20px;
+    margin: 20px 0px 20px 20px;
     overflow: auto;
     display: flex;
     justify-content: center;
@@ -40,15 +40,9 @@
     height: fit-content;
     width: 100%;
     margin: 35px 0 15px 0;
-}
-
-.current-player {
-    height: 150px;
-    width: 150px;
-    background-color: white;
-    border: 5px solid #4B5683;
-    border-radius: 50%;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .current-player-tag {
@@ -60,13 +54,36 @@
     padding: 5px;
 }
 
-.next-players {
+.current-player {
+    height: 150px;
+    width: 150px;
+    background-color: white;
+    border: 5px solid #4B5683;
+    border-radius: 50%;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.current-player-image {
+    width: 80px;
+}
+
+.prev-player, .next-player {
     height: 80px;
     width: 80px;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 5px 10px 5px 10px;
     background-color: white;
+    border: 2px solid #4B5683;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 25px 5px 25px;
+}
+
+.prev-player-image, .next-player-image {
+    width: 40px;
 }
 
 /* DIV 2 */

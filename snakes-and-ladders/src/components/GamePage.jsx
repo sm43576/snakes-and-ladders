@@ -1,12 +1,13 @@
 import "../css/GamePage.css"
 import { Link } from "react-router-dom"
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import TutorialPopUp from "./TutorialPopUp";
 import SettingsPopUp from "./SettingsPopUp";
 
 import RollDice from "./RollDice";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import { AppContext } from './AppContextProvider';
 
 
 // import homeIcon from "../assets/home.png"
@@ -16,6 +17,16 @@ function GamePage() {
   document.body.style.backgroundColor = "#A5ACCD";
 
   library.add(fas);
+
+  const { currentID, setCurrentID, maxPlayers, maxCommies, players, setPlayers } = useContext(AppContext);
+
+  const [firstPlayerState, setFirstPlayerState] = useState(true); // To control enablement/disablement of start game button
+  const [previousID, setPreviousID] = useState(maxPlayers + maxCommies - 1); // To control enablement/disablement of start game button
+  const [nextID, setNextID] = useState(currentID + 1); // To control enablement/disablement of start game button
+
+  console.log(players[previousID].avatarFile);
+  console.log(players[currentID].avatarFile);
+  console.log(players[nextID].avatarFile);
 
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(false);
   const [settingsButtonPopup, setSettingsButtonPopup] = useState(false);
@@ -60,14 +71,20 @@ function GamePage() {
     return table;
   };
 
-
   useEffect(() => {
     const renderBoardDiv = document.querySelector('.renderBoard');
     if (renderBoardDiv.children.length === 0) {
       const table = renderBoard();
       renderBoardDiv.appendChild(table);
     }
+    // setCurrentID(0);
   }, []);
+
+  // function updatePrevNextPlayers() {
+  //   this.nextID = currentID + 1;
+  //   this.previousID = currentID - 1;
+
+  // }
 
   return (
     <div className="game-page">
@@ -75,24 +92,26 @@ function GamePage() {
       <div className="div-1">
 
         <div className="container white-bgr">
-          <RollDice/>
+          <RollDice />
         </div>
 
         <div className="container">
+          <p className="current-player-tag">Current Player: {players[currentID].name.toUpperCase()}</p>
           <div className="div-players">
-            <p className="current-player-tag">Current Player:</p>
+            <div className="prev-player">
+              <img className='prev-player-image' src={`/src/assets/selectable_avatars/${players[previousID].avatarFile}`} />
+            </div>
             <div className="current-player">
+              <img className='current-player-image' src={`/src/assets/selectable_avatars/${players[currentID].avatarFile}`} />
+            </div>
+            <div className="next-player">
+              <img className='next-player-image' src={`/src/assets/selectable_avatars/${players[nextID].avatarFile}`} />
             </div>
           </div>
-
-          <div className="next-players"/>
-          <div className="next-players"/>
-          <div className="next-players"/>
+          {/* <div className="next-players" />
+          <div className="next-players" /> */}
         </div>
-
       </div>
-
-
 
       <div className="div-2">
         <table className="renderBoard"></table>
@@ -104,27 +123,26 @@ function GamePage() {
 
         <div className="justify-left">
           <Link to="/">
-            {/* <button className="circle-80 gold-dark-bgr home btn"/> */}
-            <button className="gold-dark-bgr home btn"/>
+            <button className="gold-dark-bgr home btn" />
           </Link>
         </div>
 
         <div className="justify-right">
-          <button className="purple-light-bgr settings btn" onClick={() => setSettingsButtonPopup(true)}/>
-            <SettingsPopUp
-              trigger={settingsButtonPopup}
-              setTrigger={setSettingsButtonPopup}
-            ></SettingsPopUp>
+          <button className="purple-light-bgr settings btn" onClick={() => setSettingsButtonPopup(true)} />
+          <SettingsPopUp
+            trigger={settingsButtonPopup}
+            setTrigger={setSettingsButtonPopup}
+          ></SettingsPopUp>
 
         </div>
 
         <div className="justify-left">
-          <button className="white-bgr tutorial btn" onClick={() => setTutorialButtonPopup(true)}/>
-            <TutorialPopUp
-              trigger={tutorialButtonPopup}
-              setTrigger={setTutorialButtonPopup}
-            />
-            
+          <button className="white-bgr tutorial btn" onClick={() => setTutorialButtonPopup(true)} />
+          <TutorialPopUp
+            trigger={tutorialButtonPopup}
+            setTrigger={setTutorialButtonPopup}
+          />
+
         </div>
 
         <Link to="/results">

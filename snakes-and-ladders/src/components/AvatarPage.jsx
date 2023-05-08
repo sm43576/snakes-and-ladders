@@ -1,5 +1,5 @@
 import '../css/AvatarPage.css'
-import { Link, useParams, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState, useRef, useContext } from "react";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
@@ -43,6 +43,7 @@ function AvatarPage() {
   function canPlayersStartGame(hasChosen) {
     if (hasChosen && currentID + 1 == maxPlayers) {
       setGameBtnState(true);
+      setCurrentID(0);
     } else {
       setGameBtnState(false);
     }
