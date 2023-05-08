@@ -20,9 +20,9 @@ function GamePage() {
 
   const { currentID, setCurrentID, maxPlayers, maxCommies, players, setPlayers } = useContext(AppContext);
 
-  const [firstPlayerState, setFirstPlayerState] = useState(true); // To control enablement/disablement of start game button
+  setCurrentID(0);
   const [previousID, setPreviousID] = useState(maxPlayers + maxCommies - 1); // To control enablement/disablement of start game button
-  const [nextID, setNextID] = useState(currentID + 1); // To control enablement/disablement of start game button
+  const [nextID, setNextID] = useState(1); // To control enablement/disablement of start game button
 
   console.log(players[previousID].avatarFile);
   console.log(players[currentID].avatarFile);
@@ -31,7 +31,6 @@ function GamePage() {
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(false);
   const [settingsButtonPopup, setSettingsButtonPopup] = useState(false);
 
-  setCurrentID(0);
   
   const renderBoard = () => { // eventually would need to pass through snakes & ladder placements, and player placements
     const table = document.createElement('table');
