@@ -34,7 +34,7 @@ function AvatarPage() {
   const [activeAvatar, setActiveAvatar] = useState(""); // To control visual indicator for avatar selection
   const refNameInput = useRef(null);
 
-  let inputName = "";
+  let inputName = "Player " + (currentID + 1);
 
   function handleNameChange(newName) {
     newName.length > 0
@@ -71,20 +71,7 @@ function AvatarPage() {
 
   async function editAvatar(currentID, inputName, activeAvatar) {
     const id = players[currentID]["_id"];
-    // if (playersLoading) {
-    //   return null;
-    // } else {
-    //   for (let i = 0; i < maxPlayers; i++) {
-    //     if (players[i]["_id"] == id) {
-    //       console.log(id);
-    //     }
-    //   }
-    // }
-    console.log("currentID " + currentID);
-    console.log("id " + id);
-    console.log("inputName " + inputName);
-    console.log("activeAvatar " + activeAvatar);
-    editPlayer(id, inputName, activeAvatar);
+    editPlayer(id, inputName, 0, activeAvatar);
   }
 
   // To check if avatar has already been selected by a previous player and disable the button if it has
@@ -150,7 +137,7 @@ function AvatarPage() {
           </div>
         ))}
       </div>
-      ƒ{/* ------ Next button & star game button -----*/}
+      {/* ------ Next button & star game button -----*/}
       <img className="bubble-bot" src={bubbleCornerBtm} />
       <NavLink
         to={"/avatar/" + nextID.toString() + "/" + maxPlayers.toString()}>
