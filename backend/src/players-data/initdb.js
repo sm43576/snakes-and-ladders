@@ -13,8 +13,8 @@ export async function main() {
   await clearDatabase();
   console.log();
 
-  await addPlayers();
-  console.log();
+  // await addPlayers();
+  // console.log();
 
   // Disconnect when complete
   // await mongoose.disconnect();
@@ -39,8 +39,6 @@ const players = [
 ];
 
 async function addPlayers() {
-  console.log("addPlayers function");
-
   for (let player of players) {
     const dbPlayer = await createPlayer(player);
     console.log(

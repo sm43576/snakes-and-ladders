@@ -17,16 +17,33 @@ function AppContextProvider({ children }) {
     refresh: refreshPlayers,
   } = useGet(`${API_BASE_URL}/player`, []);
 
-  async function addPlayer(name, placement, image) {
+  async function addPlayer(name, placement, image, isHuman) {
     const playerToUpload = {
       name,
       placement,
       image,
+      isHuman,
     };
 
     const playerResponse = await axios.post(
       `${API_BASE_URL}/player`,
       playerToUpload
+    );
+    refreshPlayers();
+    return playerResponse.data;
+  }
+
+  async function editPlayer(id, inputName, avatar) {
+    const playerToEdit = {
+      name: inputName,
+      placement: 0,
+      image: avatar,
+      isHuman: true,
+    };
+
+    const playerResponse = await axios.put(
+      `${API_BASE_URL}/player/${id}`,
+      playerToEdit
     );
     refreshPlayers();
     return playerResponse.data;
@@ -41,6 +58,7 @@ function AppContextProvider({ children }) {
     players,
     playersLoading,
     addPlayer,
+    editPlayer,
     currentID,
     setCurrentID,
     maxPlayers,

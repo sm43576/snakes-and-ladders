@@ -4,7 +4,7 @@ import { useState, useRef, useContext } from "react";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
 import { AppContext } from "../AppContextProvider";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const avatarImageFiles = [
   "avatar_pufferfish.png",
@@ -18,8 +18,15 @@ const avatarImageFiles = [
 ];
 
 function AvatarPage() {
-  const { currentID, setCurrentID, maxPlayers, players, setPlayers } =
-    useContext(AppContext);
+  const {
+    currentID,
+    setCurrentID,
+    maxPlayers,
+    setPlayers,
+    players,
+    playersLoading,
+    editPlayer,
+  } = useContext(AppContext);
   const nextID = currentID + 1;
   const previousID = currentID - 1;
 
@@ -27,26 +34,22 @@ function AvatarPage() {
   const [activeAvatar, setActiveAvatar] = useState(""); // To control visual indicator for avatar selection
   const refNameInput = useRef(null);
 
-  const { addPlayer } = useContext(AppContext);
+  let inputName = "";
 
   function handleNameChange(newName) {
-    console.log(newName);
-    const tempPlayersArray = [...players];
-    tempPlayersArray[currentID] = {
-      ...players[currentID],
-      name: newName.length > 0 ? newName : "Player " + currentID + 1,
-    };
-    setPlayers(tempPlayersArray); // only updates next render tho so maybe database instead?
+    newName.length > 0
+      ? (inputName = newName)
+      : (inputName = "Player " + currentID + 1);
   }
 
   function handleAvatarBtnClick(avatarFileName) {
     setActiveAvatar(avatarFileName);
-    const tempPlayersArray = [...players];
-    tempPlayersArray[currentID] = {
-      ...players[currentID],
-      avatarFile: avatarFileName,
-    };
-    setPlayers(tempPlayersArray); // only updates next render tho so maybe database instead?
+    // const tempPlayersArray = [...players];
+    // tempPlayersArray[currentID] = {
+    //   ...players[currentID],
+    //   avatarFile: avatarFileName,
+    // };
+    // setPlayers(tempPlayersArray); // only updates next render tho so maybe database instead?
     canPlayersStartGame(true); // Checks if last player has chosen avatar in order to play game
   }
 
@@ -66,6 +69,24 @@ function AvatarPage() {
     }
   }
 
+  async function editAvatar(currentID, inputName, activeAvatar) {
+    const id = players[currentID]["_id"];
+    // if (playersLoading) {
+    //   return null;
+    // } else {
+    //   for (let i = 0; i < maxPlayers; i++) {
+    //     if (players[i]["_id"] == id) {
+    //       console.log(id);
+    //     }
+    //   }
+    // }
+    console.log("currentID " + currentID);
+    console.log("id " + id);
+    console.log("inputName " + inputName);
+    console.log("activeAvatar " + activeAvatar);
+    editPlayer(id, inputName, activeAvatar);
+  }
+
   // To check if avatar has already been selected by a previous player and disable the button if it has
   function checkAvatarAlreadySelected(file) {
     var hasAlreadySelected = false;
@@ -74,13 +95,6 @@ function AvatarPage() {
       hasAlreadySelected = true;
     }
     return hasAlreadySelected;
-  }
-
-  async function handleOK() {
-    const newPlayer = await addPlayer("hayoon", 100, "image");
-    console.log(newPlayer);
-
-    navigate(`/player/${newPlayer._id}`, { replace: true });
   }
 
   return (
@@ -102,11 +116,10 @@ function AvatarPage() {
         </button>{" "}
         {/**reset current avatar selection visual indicator when going back  */}
       </Link>
-
       {/* ------ Headings -----*/}
       <h1 className="heading-title">SELECT AVATAR</h1>
       <h2 className="heading-subtitle">
-        {players[currentID].name.toUpperCase()}
+        {/* {players[currentID].name.toUpperCase()} */}
       </h2>
       <input
         className="nickname-input"
@@ -115,7 +128,6 @@ function AvatarPage() {
         placeholder="Enter a nickname..."
         onChange={(e) => handleNameChange(e.target.value)}
       />
-
       {/* ------ Avatar Selection -----*/}
       <div className="avatar-content">
         {avatarImageFiles.map((file) => (
@@ -138,8 +150,7 @@ function AvatarPage() {
           </div>
         ))}
       </div>
-
-      {/* ------ Next button & star game button -----*/}
+      ƒ{/* ------ Next button & star game button -----*/}
       <img className="bubble-bot" src={bubbleCornerBtm} />
       <NavLink
         to={"/avatar/" + nextID.toString() + "/" + maxPlayers.toString()}>
@@ -147,7 +158,7 @@ function AvatarPage() {
           className="next-btn"
           disabled={currentID + 1 >= maxPlayers}
           onClick={() => {
-            handleOK();
+            editAvatar(currentID, inputName, activeAvatar);
             clearAvatarSelectionAndNameInput();
             setCurrentID(currentID + 1);
           }}>
@@ -155,7 +166,12 @@ function AvatarPage() {
         </button>
       </NavLink>
       <Link to="/game">
-        <button className="start-game-btn" disabled={!gameBtnState}>
+        <button
+          className="start-game-btn"
+          disabled={!gameBtnState}
+          onClick={() => {
+            editAvatar(currentID, inputName, activeAvatar);
+          }}>
           {"PLAY GAME"}
         </button>
       </Link>
