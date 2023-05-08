@@ -1,9 +1,9 @@
-import "../css/AvatarPage.css";
-import { Link, useParams, NavLink } from "react-router-dom";
+import '../css/AvatarPage.css'
+import { Link, NavLink } from "react-router-dom";
 import { useState, useRef, useContext } from "react";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
-import { AppContext } from "../AppContextProvider";
+import { AppContext } from '../AppContextProvider';
 import useGet from "../hooks/useGet";
 import axios from "axios";
 
@@ -107,66 +107,39 @@ function AvatarPage() {
   }
 
   return (
-    <div className="avatar-container">
-      {/* ------ Back Button -----*/}
-      <img className="bubble-corner-top" src={bubbleCornerTop} />
-      <Link
-        to={
-          currentID == 0
-            ? "/players"
-            : "/avatar/" + previousID.toString() + "/" + maxPlayers.toString()
-        }>
-        <button
-          className="back-btn"
-          onClick={() => {
-            clearAvatarSelectionAndNameInput();
-            setCurrentID(currentID - 1);
-          }}>
-          {"<"}
-        </button>{" "}
-        {/**reset current avatar selection visual indicator when going back  */}
+    <div className='avatar-page'>
+
+      <img className="bubble-top" src={bubbleCornerTop} />
+      <Link to={currentID == 0 ? "/players" : "/avatar/" + previousID.toString() + "/" + maxPlayers.toString()}>
+        <button className='back-btn' onClick={() => { clearAvatarSelectionAndNameInput(); setCurrentID(currentID - 1) }}>
+          {'<'}
+        </button> {/**reset current avatar selection visual indicator when going back  */}
       </Link>
 
       {/* ------ Headings -----*/}
-      <h1 className="heading-title">SELECT AVATAR</h1>
-      <h2 className="heading-subtitle">
+      <h1 className='heading-title'>
+        SELECT AVATAR
+      </h1>
+      <h2 className='heading-subtitle'>
         {players[currentID].name.toUpperCase()}
       </h2>
-      <input
-        className="nickname-input"
-        type="text"
-        ref={refNameInput}
-        placeholder="Enter a nickname..."
-        onChange={(e) => handleNameChange(e.target.value)}
-      />
+      <input className='nickname-input' type='text' ref={refNameInput} placeholder='Enter a nickname...' onChange={(e) => handleNameChange(e.target.value)} />
 
       {/* ------ Avatar Selection -----*/}
-      <div className="avatar-content">
-        {avatarImageFiles.map((file) => (
-          <div className="avatar-circles" key={"avatar-circle" + file}>
-            <button
-              className={
-                activeAvatar == file
-                  ? "selected-avatar-img-btn"
-                  : "default-avatar-img-btn"
-              }
-              key={"button" + file}
-              onClick={() => handleAvatarBtnClick(file)}
-              disabled={checkAvatarAlreadySelected(file)}>
-              <img
-                className="avatar-images"
-                key={file}
-                src={`/src/assets/selectable_avatars/${file}`}
-              />
+      <div className='avatar-content'>
+        {avatarImageFiles.map(file => (
+          <div className='avatar-circles' key={"avatar-circle" + file}>
+            <button className={activeAvatar == file ? 'selected-avatar-img-btn' : 'default-avatar-img-btn'}
+              key={"button" + file} onClick={() => handleAvatarBtnClick(file)} disabled={checkAvatarAlreadySelected(file)}>
+              <img className='avatar-images' key={file} src={`/src/assets/selectable_avatars/${file}`} />
             </button>
           </div>
         ))}
       </div>
 
       {/* ------ Next button & star game button -----*/}
-      <img className="bubble-corner-btm" src={bubbleCornerBtm} />
-      <NavLink
-        to={"/avatar/" + nextID.toString() + "/" + maxPlayers.toString()}>
+      <img className='bubble-bot' src={bubbleCornerBtm} />
+      <NavLink to={"/avatar/" + nextID.toString() + "/" + maxPlayers.toString()}>
         <button
           className="next-btn"
           disabled={currentID + 1 >= maxPlayers}
@@ -175,17 +148,15 @@ function AvatarPage() {
             clearAvatarSelectionAndNameInput();
             setCurrentID(currentID + 1);
           }}>
-          {">"}
-        </button>{" "}
-        {/**reset current avatar selection visual indicator when going forward  */}
+          {'>'}
+        </button>
       </NavLink>
       <Link to="/game">
-        <button className="start-game-btn" disabled={!gameBtnState}>
-          {"PLAY GAME"}
-        </button>
+        <button className='start-game-btn' disabled={!gameBtnState}>{'PLAY GAME'}</button>
       </Link>
+
     </div>
-  );
+  )
 }
 
-export default AvatarPage;
+export default AvatarPage

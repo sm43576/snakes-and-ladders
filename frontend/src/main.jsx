@@ -1,14 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import "./index.css";
-import { AppContextProvider } from "./AppContextProvider.jsx";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+import { AppContextProvider } from './AppContextProvider.jsx'
 // import StartPage from './components/StartPage.jsx'
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AppContextProvider>
-      <App />
+    <App/>
     </AppContextProvider>
-  </React.StrictMode>
-);
+  </React.StrictMode>,
+)
+
+

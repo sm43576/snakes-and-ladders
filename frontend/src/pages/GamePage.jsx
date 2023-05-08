@@ -4,11 +4,10 @@ import { useEffect, useState, useContext } from 'react';
 import TutorialPopUp from "./TutorialPopUp";
 import SettingsPopUp from "./SettingsPopUp";
 
-import RollDice from "./RollDice";
+import RollDice from "../components/RollDice";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
-import { AppContext } from './AppContextProvider';
-
+import { AppContext } from "../AppContextProvider";
 
 // import homeIcon from "../assets/home.png"
 

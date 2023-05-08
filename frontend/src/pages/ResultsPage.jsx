@@ -5,10 +5,7 @@ function ResultsPage() {
 
   return (
     <div className="results-page">
-      <div className="div1">
-        
-        <h1 className="heading">Results</h1>
-      </div>
+      <h1 className="heading">Results</h1>
 
       <div className="div2">
         <div className="first">
@@ -30,16 +27,17 @@ function ResultsPage() {
           <div className="avatar3"></div>
         </div>
         <div className="button-position">
-          <Link to="/">
-            <button className="home-button">
-            </button>
+
+          <Link to="/" >
+            <button className="home-button">{'>'}</button>
           </Link>
+
         </div>
       </div>
-      
 
 
-    </div>    
+
+    </div>
   )
 }
 
