@@ -3,7 +3,7 @@ import { Link, useParams, NavLink } from "react-router-dom";
 import { useState, useRef, useContext } from "react";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
-import { AppContext } from "./AppContextProvider";
+import { AppContext } from "../AppContextProvider";
 
 const avatarImageFiles = [
   "avatar_pufferfish.png",
@@ -25,6 +25,8 @@ function AvatarPage() {
   const [gameBtnState, setGameBtnState] = useState(false); // To control enablement/disablement of start game button
   const [activeAvatar, setActiveAvatar] = useState(""); // To control visual indicator for avatar selection
   const refNameInput = useRef(null);
+
+  const { addPlayer } = useContext(AppContext);
 
   function handleNameChange(newName) {
     console.log(newName);
@@ -71,6 +73,13 @@ function AvatarPage() {
       hasAlreadySelected = true;
     }
     return hasAlreadySelected;
+  }
+
+  async function handleOK() {
+    const newPlayer = await addPlayer("hayoon", 100, "image");
+    console.log(newPlayer);
+
+    navigate(`/players/${newPlayer._id}`, { replace: true });
   }
 
   return (
@@ -138,6 +147,7 @@ function AvatarPage() {
           className="next-btn"
           disabled={currentID + 1 >= maxPlayers}
           onClick={() => {
+            handleOK();
             clearAvatarSelectionAndNameInput();
             setCurrentID(currentID + 1);
           }}>
