@@ -22,9 +22,7 @@ function AvatarPage() {
     currentID,
     setCurrentID,
     maxPlayers,
-    setPlayers,
     players,
-    playersLoading,
     editPlayer,
   } = useContext(AppContext);
   const nextID = currentID + 1;
@@ -44,12 +42,6 @@ function AvatarPage() {
 
   function handleAvatarBtnClick(avatarFileName) {
     setActiveAvatar(avatarFileName);
-    // const tempPlayersArray = [...players];
-    // tempPlayersArray[currentID] = {
-    //   ...players[currentID],
-    //   avatarFile: avatarFileName,
-    // };
-    // setPlayers(tempPlayersArray); // only updates next render tho so maybe database instead?
     canPlayersStartGame(true); // Checks if last player has chosen avatar in order to play game
   }
 
@@ -76,11 +68,14 @@ function AvatarPage() {
 
   // To check if avatar has already been selected by a previous player and disable the button if it has
   function checkAvatarAlreadySelected(file) {
-    var hasAlreadySelected = false;
-    var result = players.filter((player) => player.avatarFile === file);
-    if (result.length > 0) {
-      hasAlreadySelected = true;
+    var hasAlreadySelected;
+
+    for (let i = 0; i < currentID; i++) {
+      if (players[i]["image"] == file) {
+        hasAlreadySelected = true;
+      }
     }
+
     return hasAlreadySelected;
   }
 
@@ -106,8 +101,8 @@ function AvatarPage() {
       {/* ------ Headings -----*/}
       <h1 className="heading-title">SELECT AVATAR</h1>
       <h2 className="heading-subtitle">
-        {/* {players[currentID].name.toUpperCase()} */}
-      </h2>
+        {inputName}
+        </h2>
       <input
         className="nickname-input"
         type="text"
