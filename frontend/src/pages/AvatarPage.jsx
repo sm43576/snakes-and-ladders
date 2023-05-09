@@ -77,7 +77,7 @@ function AvatarPage() {
   // To check if avatar has already been selected by a previous player and disable the button if it has
   function checkAvatarAlreadySelected(file) {
     var hasAlreadySelected = false;
-    var result = players.filter((player) => player.avatarFile === file);
+    var result = players.filter((player) => player.image === file);
     if (result.length > 0) {
       hasAlreadySelected = true;
     }
