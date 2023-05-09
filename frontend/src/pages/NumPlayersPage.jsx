@@ -63,7 +63,7 @@ function NumPlayersPage() {
           <p className="player-count">{maxPlayers}</p>
           <button
             className="increase-btn"
-            // aria-label="increase-btn1"
+            aria-label="increase-btn1"
             onClick={() => handlePlayerCount(">")}>
             <img className="increase-img" src="../src/assets/increase.png" />
           </button>
