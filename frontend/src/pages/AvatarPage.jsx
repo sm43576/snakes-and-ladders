@@ -127,11 +127,13 @@ function AvatarPage() {
               }
               key={"button" + file}
               onClick={() => handleAvatarBtnClick(file)}
-              disabled={checkAvatarAlreadySelected(file)}>
+              disabled={checkAvatarAlreadySelected(file)}
+              aria-label={file}>
               <img
                 className="avatar-images"
                 key={file}
                 src={`/src/assets/selectable_avatars/${file}`}
+                // alt={file}
               />
             </button>
           </div>
