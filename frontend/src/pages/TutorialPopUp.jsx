@@ -6,7 +6,7 @@ function TutorialPopUp(props) {
     <div className="tutorial-popup">
       <div className="popup-inner">
         <button className="close-btn" onClick={() => props.setTrigger(false)}>
-          {'<'}
+          X
         </button>
         <h1>HOW TO PLAY</h1>
         <div className="tutorial-content">
