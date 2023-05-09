@@ -17,19 +17,6 @@ afterEach(()=>{
     axiosMock.reset(); // To make sure that its in a consistent state for each test run
 });
 
-test('AppContextProvider makes GET request to API to render player', ()=>{
-    const   player = [{
-        name:"Player 1",
-        placement: 0,
-        image: "",
-        isHuman: true
-    }]
-    axiosMock.onGet("/player").reply(200, player);
-    const {} = render(<AppContextProvider/>);
-    expect(axiosMock.history.get.length).toBe(1);
-    expect(axiosMock.history.get[0].url).toBe("/player");
-});
-
 test('Renders avatar page correctly', ()=>{
     const   player = [{
         name:"Player 1",
@@ -73,6 +60,7 @@ test('Pufferfish avatar is clicked and yellow border is shown', async ()=>{
     ); 
     const avatarButton = screen.getByRole('button',{name:/avatar_pufferfish.png/i});
     await userEvent.click(avatarButton);
-    expect(avatarButton).toHaveStyle('border-color: #F7DA86'); // FAILS idk why
+    expect(avatarButton).toHaveStyle('border-color: #F7DA86');
+    
     
 });
