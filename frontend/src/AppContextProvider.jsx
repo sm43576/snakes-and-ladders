@@ -49,20 +49,6 @@ function AppContextProvider({ children }) {
     return playerResponse.data;
   }
 
-  async function getPlayerName(id) {
-    const playerResponse = await axios.get(`${API_BASE_URL}/player/${id}`);
-    // refreshPlayers();
-    // console.log(playerResponse.data["name"]);
-    return playerResponse.data["name"];
-  }
-
-  async function getPlayerAvatar(id) {
-    const playerResponse = await axios.get(`${API_BASE_URL}/player/${id}`);
-    // refreshPlayers();
-    // console.log(playerResponse.data["image"]);
-    return playerResponse.data["image"];
-  }
-
   const [currentID, setCurrentID] = useState(0);
   const [maxPlayers, setMaxPlayers] = useState(1);
   const [maxCommies, changeCom] = useState(0);

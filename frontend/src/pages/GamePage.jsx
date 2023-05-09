@@ -18,16 +18,13 @@ function GamePage() {
 
   const {
     currentID,
-    setCurrentID,
+    // setCurrentID,
     maxPlayers,
     maxCommies,
     players,
-    getPlayerName,
-    getPlayerAvatar,
-    editPlayer,
   } = useContext(AppContext);
 
-  setCurrentID(0);
+  // setCurrentID(0);
   const [previousID, setPreviousID] = useState(maxPlayers + maxCommies - 1); // To control enablement/disablement of start game button
   const [nextID, setNextID] = useState(1); // To control enablement/disablement of start game button
 
@@ -83,33 +80,8 @@ function GamePage() {
       const table = renderBoard();
       renderBoardDiv.appendChild(table);
     }
-    // setCurrentID(0);
   }, []);
 
-  // function updatePrevNextPlayers() {
-  //   this.nextID = currentID + 1;
-  //   this.previousID = currentID - 1;
-
-  // }
-
-  // const id = players[currentID]["_id"];
-
-  // function getCurrentPlayerName() {
-  //   getPlayerName(id);
-  // }
-
-  function getCurrentPlayerName(currentID) {
-    let currentPlayerName = "";
-
-    const id = players[currentID]["_id"];
-
-    currentPlayerName = getPlayerName(id);
-  }
-
-  // console.log("name" + getPlayerName(id));
-  // console.log("image" + getPlayerAvatar(id));
-  // getPlayerName(id);
-  // getPlayerAvatar(id);
 
   return (
     <div className="game-page">
@@ -120,7 +92,7 @@ function GamePage() {
 
         <div className="container">
           <p className="current-player-tag">
-            Current Player: {getCurrentPlayerName(currentID)}
+            Current Player: {players[currentID]["name"]}
           </p>
           <div className="div-players">
             <div className="prev-player">
@@ -130,16 +102,16 @@ function GamePage() {
               /> */}
             </div>
             <div className="current-player">
-              {/* <img
+              <img
                 className="current-player-image"
-                src={`/src/assets/selectable_avatars/${players[currentID].avatarFile}`}
-              /> */}
+                src={`/src/assets/selectable_avatars/${players[currentID]["image"]}`}
+              />
             </div>
             <div className="next-player">
-              {/* <img
+              <img
                 className="next-player-image"
-                src={`/src/assets/selectable_avatars/${players[nextID].avatarFile}`}
-              /> */}
+                src={`/src/assets/selectable_avatars/${players[nextID]["image"]}`}
+              />
             </div>
           </div>
         </div>
