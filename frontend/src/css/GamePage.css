@@ -7,14 +7,14 @@
 }
 
 .div-1 {
-    width: 35%;
+    width: 25%;
     height: fit-content;
     margin: 50px 50px 50px 0;
 
 }
 
 .div-2 { 
-    width: 55%;
+    width: 65%;
     height: fit-content;
     margin: 20px 0px 20px 20px;
     overflow: auto;
@@ -70,7 +70,7 @@
     width: 80px;
 }
 
-.prev-player, .next-player {
+.next-player {
     height: 80px;
     width: 80px;
     background-color: white;
@@ -79,10 +79,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 5px 25px 5px 25px;
+    margin: 0 0 0 25px;
 }
 
-.prev-player-image, .next-player-image {
+.next-player-image {
     width: 40px;
 }
 
