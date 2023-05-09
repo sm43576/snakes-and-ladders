@@ -59,8 +59,6 @@ function AppContextProvider({ children }) {
     playersLoading,
     addPlayer,
     editPlayer,
-    getPlayerName,
-    getPlayerAvatar,
     currentID,
     setCurrentID,
     maxPlayers,

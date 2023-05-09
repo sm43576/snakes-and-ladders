@@ -4,7 +4,6 @@ import { useState, useRef, useContext } from "react";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
 import { AppContext } from "../AppContextProvider";
-// import { useParams } from "react-router-dom";
 
 const avatarImageFiles = [
   "avatar_pufferfish.png",
@@ -32,15 +31,12 @@ function AvatarPage() {
   const [activeAvatar, setActiveAvatar] = useState(""); // To control visual indicator for avatar selection
   const refNameInput = useRef(null);
 
-  var inputName = "Player " + (currentID + 1);
+  let inputName = "Player " + (currentID + 1);
 
   function handleNameChange(newName) {
-    // var inputName="";
-
     newName.length > 0
       ? (inputName = newName)
       : (inputName = "Player " + currentID + 1);
-
   }
 
   function handleAvatarBtnClick(avatarFileName) {
@@ -103,8 +99,8 @@ function AvatarPage() {
       {/* ------ Headings -----*/}
       <h1 className="heading-title">SELECT AVATAR</h1>
       <h2 className="heading-subtitle">
-        Player {currentID + 1}
-        </h2>
+        {/* {players[currentID].name.toUpperCase()} */}
+      </h2>
       <input
         className="nickname-input"
         type="text"
@@ -155,7 +151,6 @@ function AvatarPage() {
           disabled={!gameBtnState}
           onClick={() => {
             editAvatar(currentID, inputName, activeAvatar);
-            clearAvatarSelectionAndNameInput();
             setCurrentID(0);
           }}>
           {"PLAY GAME"}

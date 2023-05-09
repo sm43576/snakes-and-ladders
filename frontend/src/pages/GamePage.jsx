@@ -18,17 +18,36 @@ function GamePage() {
 
   const {
     currentID,
-    // setCurrentID,
+    setCurrentID,
     maxPlayers,
     maxCommies,
     players,
   } = useContext(AppContext);
 
+  console.log("currentID " + currentID);
+  console.log("players length " + players.length);
+
+  // const [twoPlayers, setTwoPlayers] = useState(false); // To control enablement/disablement of start game button
   // setCurrentID(0);
+  // const [nextID, setNextID] = useState(currentID + 1); // To control enablement/disablement of start game button
+  // var [nextNextID, setNextNextID] = useState(currentID + 2); // To control enablement/disablement of start game button
+
+
   const [previousID, setPreviousID] = useState(maxPlayers + maxCommies - 1); // To control enablement/disablement of start game button
   const [nextID, setNextID] = useState(1); // To control enablement/disablement of start game button
 
-  // console.log(players[previousID].asrFile);
+
+  // if (players.length == 2) {
+  //   setNextNextID(currentID);
+
+  //   console.log("if nextNextID " + nextNextID);
+
+  // }
+
+  console.log("previousID " + previousID);
+  console.log("nextID " + nextID);
+  // console.log("nextNextID " + nextNextID);
+
 
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(false);
   const [settingsButtonPopup, setSettingsButtonPopup] = useState(false);
@@ -96,10 +115,10 @@ function GamePage() {
           </p>
           <div className="div-players">
             <div className="prev-player">
-              {/* <img
+              <img
                 className="prev-player-image"
-                src={`/src/assets/selectable_avatars/${players[previousID].avatarFile}`}
-              /> */}
+                src={`/src/assets/selectable_avatars/${players[previousID]["image"]}`}
+              />
             </div>
             <div className="current-player">
               <img
