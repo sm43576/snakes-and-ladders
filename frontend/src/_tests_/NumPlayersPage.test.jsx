@@ -28,15 +28,12 @@ test('renders MyComponent for /path', () => {
         maxPlayers:2,
         setMaxPlayers: vi.fn()
     };
-    const { getByText} = render(
-      <MemoryRouter initialEntries={['/players']}>
-        <AppContext.Provider value={initState}>
-        {/* <Routes> */}
-          {/* <Route path="/players" element={<NumPlayersPage/>} /> */}
-          <NumPlayersPage/>
-        {/* </Routes> */}
-        </AppContext.Provider>
-      </MemoryRouter>
+    render(
+        <MemoryRouter initialEntries={['/players']}>
+            <AppContext.Provider value={initState}>
+            <NumPlayersPage/>
+            </AppContext.Provider>
+        </MemoryRouter>
     );
 
     // "checks text"
