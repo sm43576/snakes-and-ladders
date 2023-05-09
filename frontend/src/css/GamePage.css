@@ -127,7 +127,7 @@ table td::before {
 }
 
 /* DIV 3 */
-.div-3 button {
+.pop-up-button {
     min-height: 80px;
     max-height: 80px;
     min-width: 80px;
@@ -140,7 +140,7 @@ table td::before {
     background-size: 60%;
 }
 
-.div-3 button:hover {
+.pop-up-button:hover {
     filter: brightness(50%);
     border: 3px solid #4B5683;
 }

@@ -117,13 +117,13 @@ function GamePage() {
       <div className="div-3">
         <div className="justify-left">
           <Link to="/">
-            <button className="gold-dark-bgr home btn" />
+            <button className=" pop-up-button gold-dark-bgr home btn" />
           </Link>
         </div>
 
         <div className="justify-right">
           <button
-            className="purple-light-bgr settings btn"
+            className="pop-up-button purple-light-bgr settings btn"
             onClick={() => setSettingsButtonPopup(true)}
           />
           <SettingsPopUp
@@ -133,7 +133,7 @@ function GamePage() {
 
         <div className="justify-left">
           <button
-            className="white-bgr tutorial btn"
+            className="pop-up-button white-bgr tutorial btn"
             onClick={() => setTutorialButtonPopup(true)}
           />
           <TutorialPopUp

@@ -38,7 +38,7 @@ function NumPlayersPage() {
       console.log(newPlayer);
     }
     for (let i = 0; i < maxCommies; i++) {
-      const newPlayer = await addPlayer(`COM ${i + 1}`, 0, "", false);
+      const newPlayer = await addPlayer(`COM ${i + 1}`, 0, "avatar_com.png", false);
       console.log(newPlayer);
     }
   }
