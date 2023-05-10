@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { AppContext } from "../AppContextProvider";
 
 function RollDice() {
-  const { currentID, setCurrentID, nextID, setNextID, players } =
+  const { currentID, setCurrentID, nextID, setNextID, players, movePlayer } =
     useContext(AppContext);
 
   // Face numbers passes as default props
@@ -15,8 +15,10 @@ function RollDice() {
   const [rolling, setRolling] = useState(false);
 
   function roll() {
-    setDie1(sides[Math.floor(Math.random() * sides.length)]);
-    setDie2(sides[Math.floor(Math.random() * sides.length)]);
+    const s1 = (Math.floor(Math.random() * sides.length));
+    const s2 = (Math.floor(Math.random() * sides.length));
+    setDie1(sides[s1]);
+    setDie2(sides[s2]);
     setRolling(true);
 
     // Start timer of one sec when rolling start
@@ -27,6 +29,8 @@ function RollDice() {
       // setNextID(nextID + 1);
       checkValidIDs(currentID + 1, nextID + 1);
     }, 1000);
+    
+    step(s1+1, s2+1);
   }
 
   function checkValidIDs(current, next) {
@@ -43,6 +47,13 @@ function RollDice() {
   }
 
   const handleBtn = rolling ? "RollDice-rolling" : "";
+
+  function step(step1, step2) {
+    var step = step1 + step2
+    const id = players[currentID]["_id"];
+    const para = players[currentID]["placement"] + step;
+    movePlayer(id, para);
+  }
 
   return (
     <div className="RollDice">
