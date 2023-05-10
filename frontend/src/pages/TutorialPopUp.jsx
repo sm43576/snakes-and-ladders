@@ -31,7 +31,7 @@ function TutorialPopUp(props) {
       <div>
         <img className="bubble-top-left" src={bubbleCornerTop} />
         <button className="back-btn" onClick={() => props.setTrigger(false)}>
-          {'<'}
+          {'X'}
         </button>
       </div>
 

@@ -24,7 +24,7 @@ function GamePage() {
     players,
   } = useContext(AppContext);
 
-  const [tutorialButtonPopup, setTutorialButtonPopup] = useState(false);
+  const [tutorialButtonPopup, setTutorialButtonPopup] = useState(true);
   const [settingsButtonPopup, setSettingsButtonPopup] = useState(false);
   const [backToHomeButtonPopUp, setBackToHomeButtonPopUp] = useState(false);
 
