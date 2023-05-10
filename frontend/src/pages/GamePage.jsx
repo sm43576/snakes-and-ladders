@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import TutorialPopUp from "./TutorialPopUp";
 import SettingsPopUp from "./SettingsPopUp";
+import BackToHomePopUp from "./BackToHomePopUp";
 
 import RollDice from "../components/RollDice";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -18,26 +19,59 @@ function GamePage() {
 
   library.add(fas);
 
-  const {
-    currentID,
-    setCurrentID,
-    maxPlayers,
-    maxCommies,
-    players,
-    getPlayerName,
-    getPlayerAvatar,
-    editPlayer,
-  } = useContext(AppContext);
+  const { currentID, players } = useContext(AppContext);
 
-  setCurrentID(0);
-  const [previousID, setPreviousID] = useState(maxPlayers + maxCommies - 1); // To control enablement/disablement of start game button
+  console.log("currentID " + currentID);
+  console.log("players length " + players.length);
+
   const [nextID, setNextID] = useState(1); // To control enablement/disablement of start game button
-
-  // console.log(players[previousID].asrFile);
 
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(false);
   const [settingsButtonPopup, setSettingsButtonPopup] = useState(false);
+  const [backToHomeButtonPopUp, setBackToHomeButtonPopUp] = useState(false);
 
+  // const renderBoard = () => {
+  //   // eventually would need to pass through snakes & ladder placements, and player placements
+  //   const table = document.createElement("table");
+
+  //   let num = 100;
+
+  //   // add 10 rows and 10 columns to the table
+  //   for (let i = 0; i < 10; i++) {
+  //     const tr = document.createElement("tr");
+  //     let newRow = true;
+  //     if (i == 0) {
+  //       newRow = false;
+  //     }
+  //     for (let j = 0; j < 10; j++) {
+  //       const td = document.createElement("td");
+
+  //       if (i % 2 == 0) {
+  //         // even rows
+  //         if (newRow) {
+  //           num -= 11;
+  //           newRow = false;
+  //         }
+  //         td.textContent = num;
+  //         num--;
+  //       } else {
+  //         if (newRow) {
+  //           num -= 9;
+  //           newRow = false;
+  //         }
+  //         td.textContent = num;
+  //         num++;
+  //       }
+  //       tr.appendChild(td);
+  //     }
+  //     table.appendChild(tr);
+
+  //     newRow = false;
+  //   }
+  //   return table;
+  // };
+
+  // Board without numbers
   const renderBoard = () => {
     const table = document.createElement("table");
     let num = 100;
@@ -87,33 +121,7 @@ function GamePage() {
       const table = renderBoard();
       renderBoardDiv.appendChild(table);
     }
-    // setCurrentID(0);
   }, []);
-
-  // function updatePrevNextPlayers() {
-  //   this.nextID = currentID + 1;
-  //   this.previousID = currentID - 1;
-
-  // }
-
-  // const id = players[currentID]["_id"];
-
-  // function getCurrentPlayerName() {
-  //   getPlayerName(id);
-  // }
-
-  function getCurrentPlayerName(currentID) {
-    let currentPlayerName = "";
-
-    const id = players[currentID]["_id"];
-
-    currentPlayerName = getPlayerName(id);
-  }
-
-  // console.log("name" + getPlayerName(id));
-  // console.log("image" + getPlayerAvatar(id));
-  // getPlayerName(id);
-  // getPlayerAvatar(id);
 
   return (
     <div className="game-page">
@@ -124,26 +132,20 @@ function GamePage() {
 
         <div className="container">
           <p className="current-player-tag">
-            Current Player: {getCurrentPlayerName(currentID)}
+            Current Player: {players[currentID]["name"]}
           </p>
           <div className="div-players">
-            <div className="prev-player">
-              {/* <img
-                className="prev-player-image"
-                src={`/src/assets/selectable_avatars/${players[previousID].avatarFile}`}
-              /> */}
-            </div>
             <div className="current-player">
-              {/* <img
+              <img
                 className="current-player-image"
-                src={`/src/assets/selectable_avatars/${players[currentID].avatarFile}`}
-              /> */}
+                src={`/src/assets/selectable_avatars/${players[currentID]["image"]}`}
+              />
             </div>
             <div className="next-player">
-              {/* <img
+              <img
                 className="next-player-image"
-                src={`/src/assets/selectable_avatars/${players[nextID].avatarFile}`}
-              /> */}
+                src={`/src/assets/selectable_avatars/${players[nextID]["image"]}`}
+              />
             </div>
           </div>
         </div>
@@ -163,24 +165,30 @@ function GamePage() {
 
       <div className="div-3">
         <div className="justify-left">
-          <Link to="/">
-            <button className="gold-dark-bgr home btn" />
-          </Link>
+          <button
+            className=" pop-up-button gold-dark-bgr home btn"
+            onClick={() => setBackToHomeButtonPopUp(true)}
+          />
+          <BackToHomePopUp
+            trigger={backToHomeButtonPopUp}
+            setTrigger={setBackToHomeButtonPopUp}
+          />
         </div>
 
         <div className="justify-right">
           <button
-            className="purple-light-bgr settings btn"
+            className="pop-up-button purple-light-bgr settings btn"
             onClick={() => setSettingsButtonPopup(true)}
           />
           <SettingsPopUp
             trigger={settingsButtonPopup}
-            setTrigger={setSettingsButtonPopup}></SettingsPopUp>
+            setTrigger={setSettingsButtonPopup}
+          />
         </div>
 
         <div className="justify-left">
           <button
-            className="white-bgr tutorial btn"
+            className="pop-up-button white-bgr tutorial btn"
             onClick={() => setTutorialButtonPopup(true)}
           />
           <TutorialPopUp

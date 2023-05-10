@@ -4,7 +4,6 @@ import { useState, useRef, useContext } from "react";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
 import { AppContext } from "../AppContextProvider";
-import { useParams } from "react-router-dom";
 
 const avatarImageFiles = [
   "avatar_pufferfish.png",
@@ -22,9 +21,7 @@ function AvatarPage() {
     currentID,
     setCurrentID,
     maxPlayers,
-    setPlayers,
     players,
-    playersLoading,
     editPlayer,
   } = useContext(AppContext);
   const nextID = currentID + 1;
@@ -44,12 +41,6 @@ function AvatarPage() {
 
   function handleAvatarBtnClick(avatarFileName) {
     setActiveAvatar(avatarFileName);
-    // const tempPlayersArray = [...players];
-    // tempPlayersArray[currentID] = {
-    //   ...players[currentID],
-    //   avatarFile: avatarFileName,
-    // };
-    // setPlayers(tempPlayersArray); // only updates next render tho so maybe database instead?
     canPlayersStartGame(true); // Checks if last player has chosen avatar in order to play game
   }
 
@@ -77,9 +68,11 @@ function AvatarPage() {
   // To check if avatar has already been selected by a previous player and disable the button if it has
   function checkAvatarAlreadySelected(file) {
     var hasAlreadySelected = false;
-    var result = players.filter((player) => player.avatarFile === file);
-    if (result.length > 0) {
-      hasAlreadySelected = true;
+
+    for (let i = 0; i < currentID; i++) {
+      if (players[i]["image"] == file) {
+        hasAlreadySelected = true;
+      }
     }
     return hasAlreadySelected;
   }
@@ -158,6 +151,7 @@ function AvatarPage() {
           disabled={!gameBtnState}
           onClick={() => {
             editAvatar(currentID, inputName, activeAvatar);
+            setCurrentID(0);
           }}>
           {"PLAY GAME"}
         </button>
