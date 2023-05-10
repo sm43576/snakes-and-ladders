@@ -94,7 +94,9 @@ function AvatarPage() {
           className="back-btn"
           onClick={() => {
             clearAvatarSelectionAndNameInput();
-            setCurrentID(currentID - 1);
+            if(currentID > 0){
+              setCurrentID(currentID - 1);
+            }
           }}>
           {"<"}
         </button>{" "}
