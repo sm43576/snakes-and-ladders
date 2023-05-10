@@ -40,10 +40,6 @@ function AvatarPage() {
       : (inputName = "Player " + (currentID + 1));
   }
 
-  console.log("players length == " + players.length)
-  console.log("players currentID == " + players[currentID])
-  console.log("players == " + players[currentID]["name"])
-
   function handleAvatarBtnClick(avatarFileName) {
     setActiveAvatar(avatarFileName);
     canPlayersStartGame(true); // Checks if last player has chosen avatar in order to play game
