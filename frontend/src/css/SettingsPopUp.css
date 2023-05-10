@@ -15,6 +15,12 @@
     font-size: 20px;
 }
 
+.header-container {
+    /* background-color: red; */
+    width: 100%;
+    height: fit-content;
+}
+
 .settings-popup h1 {
     color: #F3DA91;
     margin-block-end: 0
@@ -30,14 +36,14 @@
     position: relative;
     width: 100%;
     height: 100%;
-    max-width: 1000px;
-    max-height: 550px;
+    max-width: 1200px;
+    max-height: 650px;
     border-radius: 20px;
     padding: 0px;
     border: 3px solid white;
 }
 
-.popup-inner .close-btn {
+/* .popup-inner .close-btn {
     background-color: white;
     height: 60px;
     width: 60px;
@@ -48,11 +54,12 @@
     position: absolute;
     top: 25px;
     right: 30px;
-}
+} */
 
 .settings-popup h1 {
     color: #F3DA91;
     font-size: 50px;
+    margin-top: 100px;
 }
 
 .settings-popup h2 {
@@ -66,6 +73,7 @@
     justify-content: center;
     color:#F3DA91;
     font-weight: 600;
+    /* background-color: aquamarine; */
 }
 
 .vl {
@@ -105,20 +113,36 @@
     filter: brightness(100%);
     background-color: #F7DA86;
     color: #4B5683;
-    border: solid white 2px;
+    border: solid #F7DA86 1px;
 }
 
 .div-adjustments {
     align-items: center;
     width: 100%;
-    margin: 0 10% 0 10%;
+    margin: 0 30% 0 10%;
+    /* background-color: pink; */
+}
+
+.two-columns-grid {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    /* background-color: aliceblue; */
+}
+
+.two-columns-grid > * {
+    padding:0rem;
 }
 
 
 .div-exit-buttons {
-    align-items: center;
-    width: 40%;
+    align-items: end;
+    float: right;
+    width: fit-content;
     padding: 30px;
+    padding-right: 0;
+    /* background-color: purple; */
+    margin: 0 10% 0 5%;
 }
 
 .div-exit-buttons button {
@@ -138,41 +162,64 @@
     text-align: center;
     font-size: 20px;
     vertical-align: middle;
-    margin: 10px;
+    margin: 10px 0 10px 0;
 }
 
 .div-exit-buttons button:hover {
     filter: brightness(100%);
     background-color: #F7DA86;
     color: #4B5683;
-    border: solid white 2px;
+    border: solid #F7DA86 1px;
 }
 
-
-
-.div-exit-buttons button {
-    align-items: center;
+.back-btn {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    top: 80px;
+    left: 80px;
+    font-size: 50px;
     background-color: #7F89B4;
-    border: 0;
-    border-radius: 80px;
     color: white;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: inline-block;
-    justify-content: center;
-    line-height: 20px;
-    min-height: 50px;
-    min-width: 160px;
-    overflow: hidden;
-    text-align: center;
-    font-size: 20px;
-    vertical-align: middle;
-    margin: 10px;
+    border-radius: 50%;
+    padding: 0;
 }
 
-.div-exit-buttons button:hover {
-    filter: brightness(100%);
-    background-color: #F7DA86;
-    color: #4B5683;
-    border: solid white 2px;
+.placing-btn {
+    position: absolute;
+    height: 115px;
+    width: 115px;
+    bottom: 50px;
+    right: 50px;
+    font-size: 50px;
+    background-color: #7F89B4;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.bubble-top-left {
+    position: absolute;
+    height: 226px;
+    width: 210px;
+    top: 50px;
+    left: 50px;
+}
+
+.bubble-bot-right {
+    position: absolute;
+    height: 179px;
+    width: 134px;
+    bottom: 50px;
+    right: 50px;
+}
+
+.settings-color {
+    padding-left: 20px;
+    vertical-align: middle;
+    /* background-color: black; */
+}
+
+.settings-header {
+    /* background-color: pink; */
+    height: fit-content;
 }
