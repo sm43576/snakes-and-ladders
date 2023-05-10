@@ -49,7 +49,18 @@ function AppContextProvider({ children }) {
     return playerResponse.data;
   }
 
+
+  async function removePlayer(id) {
+    const playerResponse = await axios.delete(
+      `${API_BASE_URL}/player/${id}`,
+      // playerToEdit
+    );
+    refreshPlayers();
+    return playerResponse.data;
+  }
+
   const [currentID, setCurrentID] = useState(0);
+  const [nextID, setNextID] = useState(1);
   const [maxPlayers, setMaxPlayers] = useState(1);
   const [maxCommies, changeCom] = useState(0);
 
@@ -59,8 +70,11 @@ function AppContextProvider({ children }) {
     playersLoading,
     addPlayer,
     editPlayer,
+    removePlayer,
     currentID,
     setCurrentID,
+    nextID,
+    setNextID,
     maxPlayers,
     setMaxPlayers,
     maxCommies,

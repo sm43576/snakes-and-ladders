@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import TutorialPopUp from "./TutorialPopUp";
 // import SettingsPopUp from "./SettingsPopUp";
-import BackToHomePopUp from "../components/BackToHomePopUp";
+import BackToHomePopUp from "./BackToHomePopUp";
 import bgm from "../music/baby-shark-bgm.mp3";
 
 import RollDice from "../components/RollDice";
@@ -20,13 +20,9 @@ function GamePage() {
 
   const {
     currentID,
+    nextID,
     players,
   } = useContext(AppContext);
-
-  console.log("currentID " + currentID);
-  console.log("players length " + players.length);
-
-  const [nextID, setNextID] = useState(1); // To control enablement/disablement of start game button
 
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(false);
   const [settingsButtonPopup, setSettingsButtonPopup] = useState(false);

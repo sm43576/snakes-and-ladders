@@ -1,67 +1,75 @@
-import { Component } from 'react'
 import '../css/RollDice.css'
 import Die from './Die'
+import { useContext, useState } from 'react'
+import { AppContext } from '../AppContextProvider'
 
+function RollDice() {
 
-class RollDice extends Component {
+  const {
+    currentID,
+    setCurrentID,
+    nextID,
+    setNextID,
+    players
+  } = useContext(AppContext);
+
 
   // Face numbers passes as default props
-  static defaultProps = {
-    sides: ['one', 'two', 'three',
-      'four', 'five', 'six']
-  }
+  const sides = ['one', 'two', 'three',
+    'four', 'five', 'six']
 
-  constructor(props) {
-    super(props)
+  const [die1, setDie1] = useState('one');
+  const [die2, setDie2] = useState('two');
+  const [rolling, setRolling] = useState(false);
 
-    // States
-    this.state = {
-      die1: 'one',
-      die2: 'one',
-      rolling: false
-    }
-    this.roll = this.roll.bind(this)
-  }
-  roll() {
-    const { sides } = this.props;
-    this.setState({
-
-      // Changing state upon click
-      die1: sides[(Math.floor(Math.random() * sides.length))],
-      die2: sides[(Math.floor(Math.random() * sides.length))],
-      rolling: true
-    })
+  function roll() {
+    setDie1(sides[(Math.floor(Math.random() * sides.length))]);
+    setDie2(sides[(Math.floor(Math.random() * sides.length))]);
+    setRolling(true);
 
     // Start timer of one sec when rolling start
+    // Set rolling to false again when time over
     setTimeout(() => {
+      setRolling(false);
+      // setCurrentID(currentID + 1);
+      // setNextID(nextID + 1);
+      checkValidIDs(currentID + 1, nextID + 1);
 
-      // Set rolling to false again when time over
-      this.setState({ rolling: false })
     }, 1000)
   }
 
-  render() {
-    const handleBtn = this.state.rolling ?
-      'RollDice-rolling' : ''
-    const { die1, die2, rolling } = this.state
-    return (
-      <div className='RollDice'>
-
-        <button className={handleBtn}
-          disabled={this.state.rolling}
-          onClick={this.roll}>
-          {this.state.rolling ? 'Rolling' : 'Click to Roll!'}
-        </button>
-
-
-        <div className='RollDice-container'>
-          <Die face={die1} rolling={rolling} />
-          <Die face={die2} rolling={rolling} />
-        </div>
-
-      </div>
-    )
+  function checkValidIDs(current, next) {
+    if (current >= players.length) {
+      setCurrentID(0);
+      setNextID(1);
+    } else if (next >= players.length) {
+      setCurrentID(current);
+      setNextID(0);
+    } else {
+      setCurrentID(current);
+      setNextID(next);
+    }
   }
+
+
+  const handleBtn = rolling ?
+    'RollDice-rolling' : ''
+
+  return (
+    <div className='RollDice'>
+      <button className={handleBtn}
+        // disabled={this.state.rolling}
+        onClick={() => { roll() }}>
+        {rolling ? 'Rolling' : 'Click to Roll!'}
+      </button>
+
+      <div className='RollDice-container'>
+        <Die face={die1} rolling={rolling} />
+        <Die face={die2} rolling={rolling} />
+      </div>
+
+    </div>
+  )
 }
 
 export default RollDice
