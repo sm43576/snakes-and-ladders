@@ -44,14 +44,14 @@ function NumPlayersPage() {
 
   return (
     <div className="num-players-page">
-      {/* Back Button */}
+      {/* ------ Back Button ------ */}
       <img className="bubble-top" src={bubbleCornerTop} />
       <Link to="/">
         <button className="back-btn">{"<"}</button>
       </Link>
 
       <div className="bubbles-div">
-        {/* Players Bubble */}
+        {/* ------ Players Bubble ------ */}
         <div className="bubble-p">
           <div className="player-type">
             <p> PLAYERS </p>
@@ -71,7 +71,7 @@ function NumPlayersPage() {
             </button>
           </div>
         </div>
-        {/* Com Players Bubble */}
+        {/* ------ Com Players Bubble ------ */}
         <div className="bubble-c">
           <div className="player-type">
             <p> COM PLAYERS </p>
@@ -88,7 +88,7 @@ function NumPlayersPage() {
         </div>
       </div>
 
-      {/* Next Button */}
+      {/* ------ Next Button ------ */}
       <img className="bubble-bot" src={bubbleCornerBtm} />
       <NavLink to={"/avatar/" + currentID + "/" + maxPlayers}>
         <button

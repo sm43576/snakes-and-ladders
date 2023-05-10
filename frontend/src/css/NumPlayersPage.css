@@ -16,6 +16,7 @@
     margin-block-end: 0;
 }
 
+/* ------------ BACK/NEXT BUTTONS ---------- */
 .bubble-top {
     position: absolute;
     height: 230px;
@@ -60,6 +61,11 @@
     z-index: 2;
 }
 
+.next-btn:disabled {
+    cursor: not-allowed;
+}
+
+/* ------------ NUM PLAYERS BUBBLES ---------- */
 .bubbles-div {
     display: flex;
     z-index: 1;
@@ -131,6 +137,7 @@
     padding: 0 50px 0 50px;
 }
 
+/* ------------ SMALLER SCREEN ---------- */
 @media screen and (max-width: 1000px) {
 
     .bubble-top {
