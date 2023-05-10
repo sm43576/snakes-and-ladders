@@ -46,12 +46,19 @@
     border-radius: 50%;
     padding: 0;
     z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../assets/back_button.png");
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center;
 }
 
 .next-btn {
     position: absolute;
-    height: 115px;
-    width: 115px;
+    height: 100px;
+    width: 100px;
     bottom: 50px;
     right: 50px;
     font-size: 50px;
@@ -59,10 +66,25 @@
     border-radius: 50%;
     padding: 0;
     z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../assets/next_button.png");
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center;
 }
 
 .next-btn:disabled {
     cursor: not-allowed;
+    /* opacity: 25%; */
+    background-image: url("../assets/next_button_disabled.png");
+}
+
+.next-btn-disabled-img {
+    width: 50px;
+    opacity: 25%;
+    cursor: pointer;
 }
 
 /* ------------ NUM PLAYERS BUBBLES ---------- */

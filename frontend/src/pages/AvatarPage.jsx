@@ -1,9 +1,12 @@
 import "../css/AvatarPage.css";
 import { Link, NavLink } from "react-router-dom";
 import { useState, useRef, useContext } from "react";
+import { AppContext } from "../AppContextProvider";
+
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
-import { AppContext } from "../AppContextProvider";
+import backButton from "../assets/back_button.png";
+import nextButton from "../assets/next_button.png";
 
 const avatarImageFiles = [
   "avatar_pufferfish.png",
@@ -99,8 +102,7 @@ function AvatarPage() {
               setCurrentID(currentID - 1);
             }
           }}>
-          {"<"}
-        </button>{" "}
+        </button>
         {/**reset current avatar selection visual indicator when going back  */}
       </Link>
 
@@ -156,7 +158,6 @@ function AvatarPage() {
             setCurrentID(currentID + 1);
             setNextBtnState(false); // reset for next page
           }}>
-          {">"}
         </button>
       </NavLink>
       <Link to="/game">
