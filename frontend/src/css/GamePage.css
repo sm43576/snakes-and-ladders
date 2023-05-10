@@ -112,10 +112,12 @@ td {
 }
 
 table td {
-  border: 1px solid white;
+  /* border: 1px solid white; */
   height: 100%;
   position: relative;
   box-sizing: border-box;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 table td::before {
