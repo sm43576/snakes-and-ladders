@@ -51,15 +51,7 @@ function GamePage() {
         </div>
       </div>
 
-      <div
-        className="div-2"
-        style={{
-          backgroundImage: `url(${board})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "contain",
-          maxHeight: "100%",
-          maxWidth: "100%",
-        }}>
+      <div className="div-2">
         <GameBoard />
       </div>
 
