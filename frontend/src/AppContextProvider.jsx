@@ -71,6 +71,19 @@ function AppContextProvider({ children }) {
     return playerResponse.data;
   }
 
+  async function movePlayer(id, newPlacement) {
+    const playerToMove = {
+      placement: newPlacement,
+    };
+
+    const playerResponse = await axios.put(
+      `${API_BASE_URL}/player/${id}`,
+      playerToMove
+    );
+    refreshPlayers();
+    return playerResponse.data;
+  }
+
   const [currentID, setCurrentID] = useState(0);
   const [nextID, setNextID] = useState(1);
   const [maxPlayers, setMaxPlayers] = useState(1);
@@ -83,6 +96,7 @@ function AppContextProvider({ children }) {
     addPlayer,
     editPlayer,
     removePlayer,
+    movePlayer,
     currentID,
     setCurrentID,
     nextID,
