@@ -1,18 +1,15 @@
 import "../css/SettingsPopUp.css";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
-import settingsColor from "../assets/settings_color.png";
+import settingsColour from "../assets/settings_colour.png";
 
 function SettingsPopUp(props) {
   return props.trigger ? (
     <div className="settings-popup">
       <div className="popup-inner">
-        {/* <button className="close-btn" onClick={() => props.setTrigger(false)}>
-          {'<'}
-        </button> */}
         <div className="header-container">
           <div className="settings-header">
-          <h1>SETTINGS<img className="settings-color" src={settingsColor} /></h1>
+          <h1>SETTINGS<img className="settings-colour" src={settingsColour} /></h1>
           </div>
           <h2>PAUSED</h2>
         </div>
