@@ -1,7 +1,30 @@
 import "../css/BackToHomePopUp.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "../AppContextProvider";
 
 function BackToHomePopUp(props) {
+
+  const {
+    players,
+    // currentID,
+    // setCurrentID,
+    removePlayer,
+  } = useContext(AppContext);
+
+
+  async function clearDatabse() {
+    // setCurrentID(0);
+
+    var currentID = 0
+    for (let i = 0; i < players.length; i++) {
+      const id = players[currentID]["_id"];
+      removePlayer(id);  
+      currentID++;
+    }
+  }
+
+
     return props.trigger ? (
         <div className="backtohome-popup">
             <div className="popup-inner">
@@ -12,7 +35,7 @@ function BackToHomePopUp(props) {
                     </div>
 
                     <Link to="/">
-                        <button className="backtohome-button" onClick={() => props.setTrigger(false)}>
+                        <button className="backtohome-button" onClick={() => clearDatabse()}>
                             Yes, quit game
                         </button>
                     </Link>
