@@ -3,7 +3,7 @@ import { AppContext } from "../AppContextProvider";
 import "../css/GameBoard.css";
 
 function GameBoard() {
-  const { currentID, nextID, players, checkValidIDs } = useContext(AppContext);
+  const { currentID, nextID, players, checkValidIDs, editPlayer } = useContext(AppContext);
 
   useEffect(() => {
     const renderBoard = () => {
@@ -11,6 +11,11 @@ function GameBoard() {
       console.log(players[currentID]["name"]);
       console.log(players[currentID]["placement"]);
       console.log(players[currentID]["image"]);
+
+      const id = players[currentID]["_id"];
+      const inputName = players[currentID]["name"];
+      const activeAvatar = players[currentID]["image"];
+      editPlayer(id, inputName, playerPlacement, activeAvatar);
 
       const table = document.createElement("table");
       let num = 100;
