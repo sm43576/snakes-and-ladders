@@ -24,6 +24,7 @@ function AvatarPage() {
     players,
     editPlayer,
   } = useContext(AppContext);
+
   const nextID = currentID + 1;
   const previousID = currentID - 1;
 
@@ -36,7 +37,7 @@ function AvatarPage() {
   function handleNameChange(newName) {
     newName.length > 0
       ? (inputName = newName)
-      : (inputName = "Player " + currentID + 1);
+      : (inputName = "Player " + (currentID + 1));
   }
 
   function handleAvatarBtnClick(avatarFileName) {
@@ -67,7 +68,8 @@ function AvatarPage() {
 
   // To check if avatar has already been selected by a previous player and disable the button if it has
   function checkAvatarAlreadySelected(file) {
-    var hasAlreadySelected = false;
+    let hasAlreadySelected = false;
+
     for (let i = 0; i < currentID; i++) {
       if (players[i]["image"] == file) {
         hasAlreadySelected = true;
@@ -97,7 +99,7 @@ function AvatarPage() {
       {/* ------ Headings -----*/}
       <h1 className="heading-title">SELECT AVATAR</h1>
       <h2 className="heading-subtitle">
-        {/* {players[currentID].name.toUpperCase()} */}
+        {inputName}
       </h2>
       <input
         className="nickname-input"
@@ -124,7 +126,7 @@ function AvatarPage() {
                 className="avatar-images"
                 key={file}
                 src={`/src/assets/selectable_avatars/${file}`}
-                // alt={file}
+              // alt={file}
               />
             </button>
           </div>
