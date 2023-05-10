@@ -63,6 +63,11 @@ function AppContextProvider({ children }) {
     return playerResponse.data["image"];
   }
 
+  async function getPlayerPlacement(id) {
+    const playerResponse = await axios.get(`${API_BASE_URL}/player/${id}`);
+    return playerResponse.data["placement"];
+  }
+
   const [currentID, setCurrentID] = useState(0);
   const [maxPlayers, setMaxPlayers] = useState(1);
   const [maxCommies, changeCom] = useState(0);
@@ -75,6 +80,7 @@ function AppContextProvider({ children }) {
     editPlayer,
     getPlayerName,
     getPlayerAvatar,
+    getPlayerPlacement,
     currentID,
     setCurrentID,
     maxPlayers,

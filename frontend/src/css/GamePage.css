@@ -1,185 +1,185 @@
 .game-page {
-    width: 100%;
-    height: 100vh;
-    background-color: #A5ACCD;
-    display: flex;
-    /* padding-bottom: 50px; */
+  width: 100%;
+  height: 100vh;
+  background-color: #a5accd;
+  display: flex;
+  /* padding-bottom: 50px; */
 }
 
 .div-1 {
-    width: 35%;
-    height: fit-content;
-    margin: 50px 50px 50px 0;
-
+  width: 35%;
+  height: fit-content;
+  margin: 50px 50px 50px 0;
 }
 
-.div-2 { 
-    width: 55%;
-    height: fit-content;
-    margin: 20px 0px 20px 20px;
-    overflow: auto;
-    display: flex;
-    justify-content: center;
+.div-2 {
+  width: 55%;
+  height: fit-content;
+  margin: 20px 0px 20px 20px;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .div-3 {
-    width: 10%;
-    height: fit-content;
-    padding: 45px 0 45px 50px;
+  width: 10%;
+  height: fit-content;
+  padding: 45px 0 45px 50px;
 }
 
 /* DIV 1 */
 .container {
-    width: 100%;
-    height: fit-content;
-    border-radius: 20px;
-    padding: 15px 15px 10px 15px;
+  width: 100%;
+  height: fit-content;
+  border-radius: 20px;
+  padding: 15px 15px 10px 15px;
 }
 
 .div-players {
-    height: fit-content;
-    width: 100%;
-    margin: 35px 0 15px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: fit-content;
+  width: 100%;
+  margin: 35px 0 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .current-player-tag {
-    height: fit-content;
-    color: #4B5683;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: #F7DA86;
-    border-radius: 20px;
-    padding: 5px;
+  height: fit-content;
+  color: #4b5683;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-color: #f7da86;
+  border-radius: 20px;
+  padding: 5px;
 }
 
 .current-player {
-    height: 150px;
-    width: 150px;
-    background-color: white;
-    border: 5px solid #4B5683;
-    border-radius: 50%;
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 150px;
+  width: 150px;
+  background-color: white;
+  border: 5px solid #4b5683;
+  border-radius: 50%;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .current-player-image {
-    width: 80px;
+  width: 80px;
 }
 
-.prev-player, .next-player {
-    height: 80px;
-    width: 80px;
-    background-color: white;
-    border: 2px solid #4B5683;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px 25px 5px 25px;
+.prev-player,
+.next-player {
+  height: 80px;
+  width: 80px;
+  background-color: white;
+  border: 2px solid #4b5683;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 25px 5px 25px;
 }
 
-.prev-player-image, .next-player-image {
-    width: 40px;
+.prev-player-image,
+.next-player-image {
+  width: 40px;
 }
 
 /* DIV 2 */
 table {
-    table-layout: fixed;
-    width: 100%;
-    background-color: #4B5683;
-    border-radius: 15px;
-    padding: 8px;
-    border-spacing: 0;
-    border-collapse: separate;
+  table-layout: fixed;
+  width: 100%;
+  border-radius: 15px;
+  padding: 8px;
+  border-spacing: 0;
+  border-collapse: separate;
 }
 
 td {
-    width: calc(100% / 10);
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    text-align: center;
-    vertical-align: middle;
-    padding-bottom: calc(100% / 10);
+  width: calc(100% / 10);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: middle;
+  padding-bottom: calc(100% / 10);
 }
 
 table td {
-    border: 1px solid white;
-    height: 100%;
-    position: relative;
-    box-sizing: border-box;
+  border: 1px solid white;
+  height: 100%;
+  position: relative;
+  box-sizing: border-box;
 }
 
 table td::before {
-    content: "";
-    display: block;
+  content: "";
+  display: block;
 }
 
 .renderBoard {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* DIV 3 */
 .div-3 button {
-    min-height: 80px;
-    max-height: 80px;
-    min-width: 80px;
-    max-width: 80px;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 5px 0 5px 0;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 60%;
+  min-height: 80px;
+  max-height: 80px;
+  min-width: 80px;
+  max-width: 80px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 5px 0 5px 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 60%;
 }
 
 .div-3 button:hover {
-    filter: brightness(50%);
-    border: 3px solid #4B5683;
+  filter: brightness(50%);
+  border: 3px solid #4b5683;
 }
 
 .div-3 button:focus {
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
 }
 
 .home {
-    background-image: url("../assets/home.png");
+  background-image: url("../assets/home.png");
 }
 
 .settings {
-    background-image: url("../assets/settings.png");
+  background-image: url("../assets/settings.png");
 }
 
 .tutorial {
-    background-image: url("../assets/tutorial.png");
+  background-image: url("../assets/tutorial.png");
 }
 
 .white-bgr {
-    background-color: white;
+  background-color: white;
 }
 
 .gold-dark-bgr {
-    background-color: #F7DA86;
+  background-color: #f7da86;
 }
 
 .purple-light-bgr {
-    background-color: #7F89B4;
+  background-color: #7f89b4;
 }
 
 .justify-right {
-    display: flex;
-    justify-content: right;
+  display: flex;
+  justify-content: right;
 }
 
 .justify-left {
-    display: flex;
-    justify-content: left;
+  display: flex;
+  justify-content: left;
 }

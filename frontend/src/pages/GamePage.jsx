@@ -9,6 +9,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { AppContext } from "../AppContextProvider";
 
+import board from "../assets/game-board.png";
+
 // import homeIcon from "../assets/home.png"
 
 function GamePage() {
@@ -37,43 +39,45 @@ function GamePage() {
   const [settingsButtonPopup, setSettingsButtonPopup] = useState(false);
 
   const renderBoard = () => {
-    // eventually would need to pass through snakes & ladder placements, and player placements
     const table = document.createElement("table");
-
     let num = 100;
 
-    // add 10 rows and 10 columns to the table
     for (let i = 0; i < 10; i++) {
       const tr = document.createElement("tr");
       let newRow = true;
+
       if (i == 0) {
         newRow = false;
       }
+
       for (let j = 0; j < 10; j++) {
         const td = document.createElement("td");
 
         if (i % 2 == 0) {
-          // even rows
           if (newRow) {
             num -= 11;
             newRow = false;
           }
-          td.textContent = num;
+          td.style.backgroundImage =
+            "url('/src/assets/selectable_avatars/avatar_dolphin.png')";
           num--;
         } else {
           if (newRow) {
             num -= 9;
             newRow = false;
           }
-          td.textContent = num;
+          td.style.backgroundImage =
+            "url('/src/assets/selectable_avatars/avatar_dolphin.png')";
           num++;
         }
+
         tr.appendChild(td);
       }
-      table.appendChild(tr);
 
+      table.appendChild(tr);
       newRow = false;
     }
+
     return table;
   };
 
@@ -145,7 +149,15 @@ function GamePage() {
         </div>
       </div>
 
-      <div className="div-2">
+      <div
+        className="div-2"
+        style={{
+          backgroundImage: `url(${board})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain",
+          maxHeight: "100%",
+          maxWidth: "100%",
+        }}>
         <table className="renderBoard"></table>
       </div>
 
