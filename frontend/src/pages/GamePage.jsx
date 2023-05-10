@@ -10,8 +10,6 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { AppContext } from "../AppContextProvider";
 
-import board from "../assets/game-board.png";
-
 function GamePage() {
   document.body.style.backgroundColor = "#A5ACCD";
 
@@ -44,7 +42,7 @@ function GamePage() {
             <div className="next-player">
               <img
                 className="next-player-image"
-                // src={`/src/assets/selectable_avatars/${players[nextID]["image"]}`}
+                src={`/src/assets/selectable_avatars/${players[nextID]["image"]}`}
               />
             </div>
           </div>

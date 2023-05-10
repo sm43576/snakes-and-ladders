@@ -17,6 +17,19 @@ function AppContextProvider({ children }) {
     refresh: refreshPlayers,
   } = useGet(`${API_BASE_URL}/player`, []);
 
+  async function checkValidIDs(current, next) {
+    if (current >= players.length) {
+      setCurrentID(0);
+      setNextID(1);
+    } else if (next >= players.length) {
+      setCurrentID(current);
+      setNextID(0);
+    } else {
+      setCurrentID(current);
+      setNextID(next);
+    }
+  }
+
   async function addPlayer(name, placement, image, isHuman) {
     const playerToUpload = {
       name,
@@ -78,6 +91,7 @@ function AppContextProvider({ children }) {
     setMaxPlayers,
     maxCommies,
     changeCom,
+    checkValidIDs,
   };
 
   // Wraps the given child components in a Provider for the above context.
