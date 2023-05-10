@@ -21,7 +21,6 @@ function TutorialPopUp(props) {
           <div className="instruction">
             <p>
               Reach the end of the<br/>board launching the Dice. <br/><br/>
-              Rolling a 6 will give<br/>the player an extra dice! <br/><br/>
               Ladder: You go up! <br/> Snake: You go down! <br/>
             </p>
           </div>
@@ -32,7 +31,7 @@ function TutorialPopUp(props) {
       <div>
         <img className="bubble-top-left" src={bubbleCornerTop} />
         <button className="back-btn" onClick={() => props.setTrigger(false)}>
-          {'<'}
+          {'X'}
         </button>
       </div>
 

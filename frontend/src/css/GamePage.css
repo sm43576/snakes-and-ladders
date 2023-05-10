@@ -183,3 +183,12 @@ table td::before {
     display: flex;
     justify-content: left;
 }
+
+.sound {
+    background-image: url("../assets/sound_on.png");
+}
+
+.sound:active,
+.active {
+    background-image: url("../assets/sound_off.png");
+}
