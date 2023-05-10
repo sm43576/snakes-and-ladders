@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import TutorialPopUp from "./TutorialPopUp";
 import SettingsPopUp from "./SettingsPopUp";
+import BackToHomePopUp from "../components/BackToHomePopUp";
 
 import RollDice from "../components/RollDice";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -18,9 +19,6 @@ function GamePage() {
 
   const {
     currentID,
-    setCurrentID,
-    maxPlayers,
-    maxCommies,
     players,
   } = useContext(AppContext);
 
@@ -31,44 +29,61 @@ function GamePage() {
 
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(false);
   const [settingsButtonPopup, setSettingsButtonPopup] = useState(false);
+  const [backToHomeButtonPopUp, setBackToHomeButtonPopUp] = useState(false);
 
+  // const renderBoard = () => {
+  //   // eventually would need to pass through snakes & ladder placements, and player placements
+  //   const table = document.createElement("table");
+
+  //   let num = 100;
+
+  //   // add 10 rows and 10 columns to the table
+  //   for (let i = 0; i < 10; i++) {
+  //     const tr = document.createElement("tr");
+  //     let newRow = true;
+  //     if (i == 0) {
+  //       newRow = false;
+  //     }
+  //     for (let j = 0; j < 10; j++) {
+  //       const td = document.createElement("td");
+
+  //       if (i % 2 == 0) {
+  //         // even rows
+  //         if (newRow) {
+  //           num -= 11;
+  //           newRow = false;
+  //         }
+  //         td.textContent = num;
+  //         num--;
+  //       } else {
+  //         if (newRow) {
+  //           num -= 9;
+  //           newRow = false;
+  //         }
+  //         td.textContent = num;
+  //         num++;
+  //       }
+  //       tr.appendChild(td);
+  //     }
+  //     table.appendChild(tr);
+
+  //     newRow = false;
+  //   }
+  //   return table;
+  // };
+
+  // Board without numbers
   const renderBoard = () => {
     // eventually would need to pass through snakes & ladder placements, and player placements
     const table = document.createElement("table");
-
-    let num = 100;
-
     // add 10 rows and 10 columns to the table
     for (let i = 0; i < 10; i++) {
       const tr = document.createElement("tr");
-      let newRow = true;
-      if (i == 0) {
-        newRow = false;
-      }
       for (let j = 0; j < 10; j++) {
         const td = document.createElement("td");
-
-        if (i % 2 == 0) {
-          // even rows
-          if (newRow) {
-            num -= 11;
-            newRow = false;
-          }
-          td.textContent = num;
-          num--;
-        } else {
-          if (newRow) {
-            num -= 9;
-            newRow = false;
-          }
-          td.textContent = num;
-          num++;
-        }
         tr.appendChild(td);
       }
       table.appendChild(tr);
-
-      newRow = false;
     }
     return table;
   };
@@ -111,14 +126,17 @@ function GamePage() {
       </div>
 
       <div className="div-2">
-        <table className="renderBoard"></table>
+        <table className="renderBoard" />
       </div>
 
       <div className="div-3">
         <div className="justify-left">
-          <Link to="/">
-            <button className=" pop-up-button gold-dark-bgr home btn" />
-          </Link>
+          <button className=" pop-up-button gold-dark-bgr home btn"
+            onClick={() => setBackToHomeButtonPopUp(true)}
+          />
+          <BackToHomePopUp
+            trigger={backToHomeButtonPopUp}
+            setTrigger={setBackToHomeButtonPopUp} />
         </div>
 
         <div className="justify-right">
@@ -128,7 +146,7 @@ function GamePage() {
           />
           <SettingsPopUp
             trigger={settingsButtonPopup}
-            setTrigger={setSettingsButtonPopup}></SettingsPopUp>
+            setTrigger={setSettingsButtonPopup} />
         </div>
 
         <div className="justify-left">
