@@ -30,6 +30,7 @@ function AvatarPage() {
 
   const [gameBtnState, setGameBtnState] = useState(false); // To control enablement/disablement of start game button
   const [activeAvatar, setActiveAvatar] = useState(""); // To control visual indicator for avatar selection
+  const [nextPlayerBtnState, setNextBtnState] = useState(false);
   const refNameInput = useRef(null);
 
   let inputName = "Player " + (currentID + 1);
@@ -42,6 +43,9 @@ function AvatarPage() {
 
   function handleAvatarBtnClick(avatarFileName) {
     setActiveAvatar(avatarFileName);
+    if(currentID + 1 <= maxPlayers){ // only enable the next button if the current ID is not the max number of players and an avatar is selected
+      setNextBtnState(true);
+    }
     canPlayersStartGame(true); // Checks if last player has chosen avatar in order to play game
   }
 
@@ -138,11 +142,12 @@ function AvatarPage() {
         to={"/avatar/" + nextID.toString() + "/" + maxPlayers.toString()}>
         <button
           className="next-btn"
-          disabled={currentID + 1 >= maxPlayers}
+          disabled={!nextPlayerBtnState} 
           onClick={() => {
             editAvatar(currentID, inputName, activeAvatar);
             clearAvatarSelectionAndNameInput();
             setCurrentID(currentID + 1);
+            setNextBtnState(false); // reset for next page
           }}>
           {">"}
         </button>
