@@ -23,6 +23,16 @@ function GamePage() {
   const [settingsButtonPopup, setSettingsButtonPopup] = useState(false);
   const [backToHomeButtonPopUp, setBackToHomeButtonPopUp] = useState(false);
 
+  const button = document.querySelector(".sound");
+  const audioMute = () => {
+    console.log("button clicked");
+    document.getElementById("player").muted =
+      !document.getElementById("player").muted;
+    // button.addEventListener('click', () => {
+    button.classList.toggle("active");
+    // });
+  };
+
   return (
     <div className="game-page">
       <div className="div-1">
