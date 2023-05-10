@@ -58,16 +58,6 @@ function AppContextProvider({ children }) {
     return playerResponse.data;
   }
 
-  async function getPlayerPlacement(id) {
-    const playerResponse = await axios.get(`${API_BASE_URL}/player/${id}`);
-    return playerResponse.data["name"];
-  }
-
-  async function getPlayerAvatar(id) {
-    const playerResponse = await axios.get(`${API_BASE_URL}/player/${id}`);
-    return playerResponse.data["image"];
-  }
-
   const [currentID, setCurrentID] = useState(0);
   const [nextID, setNextID] = useState(1);
   const [maxPlayers, setMaxPlayers] = useState(1);
@@ -79,8 +69,6 @@ function AppContextProvider({ children }) {
     playersLoading,
     addPlayer,
     editPlayer,
-    getPlayerPlacement,
-    getPlayerAvatar,
     removePlayer,
     currentID,
     setCurrentID,

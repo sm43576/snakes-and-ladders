@@ -118,12 +118,6 @@ table td::before {
   display: block;
 }
 
-.renderBoard {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 /* DIV 3 */
 .pop-up-button {
   min-height: 80px;
