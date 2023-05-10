@@ -6,17 +6,21 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+    background-image: url( "../assets/waves_background.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center top;
     background-color: #4B5683;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.title {
+.home-page h1 {
     position: relative;
     align-self: center;
-    color: #fff;
+    color: white;
     font-size: 80px;
-    margin-top: 100px;
-    z-index: 2;
+    margin-block-start: 80px;
+    margin-block-end: 50px;
 }
 
 .button-start {
@@ -28,20 +32,10 @@
     background-color: white;
     border: 1px solid #4B5683;
     color: #4B5683;
-    z-index: 2;
 }
 
 .button-start:hover {
     background-color: #A5ACCD;
     border: 1px solid #4B5683;
     color: white;
-}
-
-.waves-container {
-    position: absolute;
-    height: 60%;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    z-index: 1;
 }

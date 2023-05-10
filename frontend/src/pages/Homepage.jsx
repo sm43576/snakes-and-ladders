@@ -11,7 +11,7 @@ function HomePage() {
   } = useContext(AppContext);
 
   // Removes all existing players from the database
-  async function clearDatabse() {
+  async function clearDatabase() {
     for (let i = 0; i < players.length; i++) {
       const id = players[i]["_id"];
       removePlayer(id);
@@ -21,17 +21,13 @@ function HomePage() {
   return (
     <div className="home-page">
       <h1 className="title">Snakes and Ladders</h1>
-
       <Link to="/players">
-
-        <button 
+        <button
           className="button-start"
           aria-label="button-start"
-          onClick={() => clearDatabse()}
-           >PLAY</button>
+          onClick={() => clearDatabase()}
+        >PLAY</button>
       </Link>
-
-      <img className="waves-container" src="../src/assets/start_waves.png" />
     </div>
   );
 }
