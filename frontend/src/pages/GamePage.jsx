@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import TutorialPopUp from "./TutorialPopUp";
 import SettingsPopUp from "./SettingsPopUp";
-import BackToHomePopUp from "../components/BackToHomePopUp";
+import BackToHomePopUp from "./BackToHomePopUp";
 
 import RollDice from "../components/RollDice";
 import { library } from "@fortawesome/fontawesome-svg-core";
