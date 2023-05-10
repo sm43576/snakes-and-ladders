@@ -68,7 +68,6 @@
     width: 115px;
     bottom: 50px;
     right: 120px;
-    font-size: 50px;
     background-color: #7F89B4;
     border-radius: 50%;
     padding: 0;
@@ -103,7 +102,7 @@
     position: relative;
     width: 300px;
     height: calc(55vh - 80px);
-    max-width: 400px;
+    max-width: 40vw;
     padding: 35px 30px 30px 30px;
     font-weight: 600;
     color: #4B5683;
@@ -117,4 +116,72 @@
 .board-image {
     height: 55vh;
     padding-right: 20px;
+}
+
+@media screen and (max-width: 1000px)  {
+    
+    .popup-inner {
+        width: calc(100% - 350px);
+        height: calc(100vh - 105px);
+    }
+
+    .tutorial-popup h1 {
+        color: #F3DA91;
+        font-size: 20px;
+        margin-block-start: 0;
+        margin-block-end: 10px;
+    }
+
+    .tutorial-content {
+        display: flex;
+        padding-right: 140px;
+        padding-left: 140px;
+        align-items: center;
+        vertical-align: middle;
+    }
+
+    .how-to-play {
+        width: 20px;
+        padding: 0 0 5px 10px;
+        vertical-align: middle;
+    }
+
+    .bubble-top-left {
+        height: 113px;
+        width: 105px;
+        top: 25px;
+        left: 120px;
+    }
+
+    .bubble-bot-right {
+        height: 90px;
+        width: 67px;
+        bottom: 25px;
+        right: 150px;
+    }
+
+    .placing-btn {
+        height: 50px;
+        width: 50px;
+        bottom: 25px;
+        right: 150px;
+    }
+
+    .close-btn {
+        height: 50px;
+        width: 50px;
+        top: 40px;
+        left: 150px;
+    }
+
+    .instruction {
+        width: 100px;
+        max-width: 40vw;
+        font-size: 10px;
+    }
+
+    .board-image {
+        height: 55vh;
+        padding-right: 10px;
+    }
 }
