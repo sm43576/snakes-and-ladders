@@ -130,7 +130,7 @@ function AvatarPage() {
           </div>
         ))}
       </div>
-      {/* ------ Next button & star game button -----*/}
+      {/* ------ Next button & start game button -----*/}
       <img className="bubble-bot" src={bubbleCornerBtm} />
       <NavLink
         to={"/avatar/" + nextID.toString() + "/" + maxPlayers.toString()}>
