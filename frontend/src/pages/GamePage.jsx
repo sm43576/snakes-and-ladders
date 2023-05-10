@@ -19,7 +19,8 @@ function GamePage() {
 
   library.add(fas);
 
-  const { currentID, players } = useContext(AppContext);
+  const { currentID, players, getPlayerPlacement, getPlayerAvatar } =
+    useContext(AppContext);
 
   console.log("currentID " + currentID);
   console.log("players length " + players.length);
@@ -30,49 +31,10 @@ function GamePage() {
   const [settingsButtonPopup, setSettingsButtonPopup] = useState(false);
   const [backToHomeButtonPopUp, setBackToHomeButtonPopUp] = useState(false);
 
-  // const renderBoard = () => {
-  //   // eventually would need to pass through snakes & ladder placements, and player placements
-  //   const table = document.createElement("table");
+  const renderBoard = (currentPlayerId, dice) => {
+    const playerAvatar = getPlayerAvatar(currentPlayerId);
+    const playerPlacement = getPlayerPlacement(currentPlayerId);
 
-  //   let num = 100;
-
-  //   // add 10 rows and 10 columns to the table
-  //   for (let i = 0; i < 10; i++) {
-  //     const tr = document.createElement("tr");
-  //     let newRow = true;
-  //     if (i == 0) {
-  //       newRow = false;
-  //     }
-  //     for (let j = 0; j < 10; j++) {
-  //       const td = document.createElement("td");
-
-  //       if (i % 2 == 0) {
-  //         // even rows
-  //         if (newRow) {
-  //           num -= 11;
-  //           newRow = false;
-  //         }
-  //         td.textContent = num;
-  //         num--;
-  //       } else {
-  //         if (newRow) {
-  //           num -= 9;
-  //           newRow = false;
-  //         }
-  //         td.textContent = num;
-  //         num++;
-  //       }
-  //       tr.appendChild(td);
-  //     }
-  //     table.appendChild(tr);
-
-  //     newRow = false;
-  //   }
-  //   return table;
-  // };
-
-  // Board without numbers
-  const renderBoard = () => {
     const table = document.createElement("table");
     let num = 100;
 
@@ -92,16 +54,20 @@ function GamePage() {
             num -= 11;
             newRow = false;
           }
-          td.style.backgroundImage =
-            "url('/src/assets/selectable_avatars/avatar_dolphin.png')";
+          if (playerPlacement + dice == num) {
+            td.style.backgroundImage =
+              "url('/src/assets/selectable_avatars/avatar_dolphin.png')";
+          }
           num--;
         } else {
           if (newRow) {
             num -= 9;
             newRow = false;
           }
-          td.style.backgroundImage =
-            "url('/src/assets/selectable_avatars/avatar_dolphin.png')";
+          if (playerPlacement + dice == num) {
+            td.style.backgroundImage =
+              "url('/src/assets/selectable_avatars/avatar_dolphin.png')";
+          }
           num++;
         }
 
