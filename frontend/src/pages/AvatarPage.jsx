@@ -24,11 +24,13 @@ function AvatarPage() {
     players,
     editPlayer,
   } = useContext(AppContext);
+
   const nextID = currentID + 1;
   const previousID = currentID - 1;
 
   const [gameBtnState, setGameBtnState] = useState(false); // To control enablement/disablement of start game button
   const [activeAvatar, setActiveAvatar] = useState(""); // To control visual indicator for avatar selection
+  const [nextPlayerBtnState, setNextBtnState] = useState(false);
   const refNameInput = useRef(null);
 
   let inputName = "Player " + (currentID + 1);
@@ -36,11 +38,14 @@ function AvatarPage() {
   function handleNameChange(newName) {
     newName.length > 0
       ? (inputName = newName)
-      : (inputName = "Player " + currentID + 1);
+      : (inputName = "Player " + (currentID + 1));
   }
 
   function handleAvatarBtnClick(avatarFileName) {
     setActiveAvatar(avatarFileName);
+    if(currentID + 1 < maxPlayers){ // only enable the next button if the current ID is not the max number of players and an avatar is selected
+      setNextBtnState(true);
+    }
     canPlayersStartGame(true); // Checks if last player has chosen avatar in order to play game
   }
 
@@ -59,7 +64,8 @@ function AvatarPage() {
       setActiveAvatar("");
     }
   }
-
+  
+  // Modifies player's name and avatar in database
   async function editAvatar(currentID, inputName, activeAvatar) {
     const id = players[currentID]["_id"];
     editPlayer(id, inputName, 0, activeAvatar);
@@ -67,7 +73,7 @@ function AvatarPage() {
 
   // To check if avatar has already been selected by a previous player and disable the button if it has
   function checkAvatarAlreadySelected(file) {
-    var hasAlreadySelected = false;
+    let hasAlreadySelected = false;
 
     for (let i = 0; i < currentID; i++) {
       if (players[i]["image"] == file) {
@@ -75,8 +81,7 @@ function AvatarPage() {
       }
     }
     return hasAlreadySelected;
-  }
-
+}
   return (
     <div className="avatar-page">
       <img className="bubble-top" src={bubbleCornerTop} />
@@ -90,57 +95,65 @@ function AvatarPage() {
           className="back-btn"
           onClick={() => {
             clearAvatarSelectionAndNameInput();
-            setCurrentID(currentID - 1);
+            if(currentID > 0){
+              setCurrentID(currentID - 1);
+            }
           }}>
           {"<"}
         </button>{" "}
         {/**reset current avatar selection visual indicator when going back  */}
       </Link>
-      {/* ------ Headings -----*/}
-      <h1 className="heading-title">SELECT AVATAR</h1>
-      <h2 className="heading-subtitle">
-        {/* {players[currentID].name.toUpperCase()} */}
-      </h2>
-      <input
-        className="nickname-input"
-        type="text"
-        ref={refNameInput}
-        placeholder="Enter a nickname..."
-        onChange={(e) => handleNameChange(e.target.value)}
-      />
-      {/* ------ Avatar Selection -----*/}
-      <div className="avatar-content">
-        {avatarImageFiles.map((file) => (
-          <div className="avatar-circles" key={"avatar-circle" + file}>
-            <button
-              className={
-                activeAvatar == file
-                  ? "selected-avatar-img-btn"
-                  : "default-avatar-img-btn"
-              }
-              key={"button" + file}
-              onClick={() => handleAvatarBtnClick(file)}
-              disabled={checkAvatarAlreadySelected(file)}>
-              <img
-                className="avatar-images"
-                key={file}
-                src={`/src/assets/selectable_avatars/${file}`}
-              />
-            </button>
-          </div>
-        ))}
-      </div>
+
+      <div className="avatar-container">
+        {/* ------ Headings -----*/}
+        <h1 className="heading-title">SELECT AVATAR</h1>
+        <h2 className="heading-subtitle">
+          {inputName}
+        </h2>
+        <input
+          className="nickname-input"
+          type="text"
+          ref={refNameInput}
+          placeholder="Enter a nickname..."
+          onChange={(e) => handleNameChange(e.target.value)}
+        />
+        {/* ------ Avatar Selection -----*/}
+        <div className="avatar-content">
+          {avatarImageFiles.map((file) => (
+            <div className="avatar-circles" key={"avatar-circle" + file}>
+              <button
+                className={
+                  activeAvatar == file
+                    ? "selected-avatar-img-btn"
+                    : "default-avatar-img-btn"
+                }
+                key={"button" + file}
+                onClick={() => handleAvatarBtnClick(file)}
+                disabled={checkAvatarAlreadySelected(file)}
+                aria-label={file}>
+                <img
+                  className="avatar-images"
+                  key={file}
+                  src={`/src/assets/selectable_avatars/${file}`}
+                // alt={file}
+                />
+              </button>
+            </div>
+          ))}
+        </div>
+      
       {/* ------ Next button & start game button -----*/}
       <img className="bubble-bot" src={bubbleCornerBtm} />
       <NavLink
         to={"/avatar/" + nextID.toString() + "/" + maxPlayers.toString()}>
         <button
           className="next-btn"
-          disabled={currentID + 1 >= maxPlayers}
+          disabled={!nextPlayerBtnState} 
           onClick={() => {
             editAvatar(currentID, inputName, activeAvatar);
             clearAvatarSelectionAndNameInput();
             setCurrentID(currentID + 1);
+            setNextBtnState(false); // reset for next page
           }}>
           {">"}
         </button>
@@ -156,6 +169,7 @@ function AvatarPage() {
           {"PLAY GAME"}
         </button>
       </Link>
+      </div>
     </div>
   );
 }

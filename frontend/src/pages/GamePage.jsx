@@ -2,9 +2,11 @@ import "../css/GamePage.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import TutorialPopUp from "./TutorialPopUp";
-import SettingsPopUp from "./SettingsPopUp";
+// import SettingsPopUp from "./SettingsPopUp";
 import BackToHomePopUp from "./BackToHomePopUp";
 import GameBoard from "../components/GameBoard";
+import bgm from "../music/baby-shark-bgm.mp3";
+
 import RollDice from "../components/RollDice";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -66,14 +68,20 @@ function GamePage() {
         </div>
 
         <div className="justify-right">
-          <button
+          <audio id="player" src={bgm} autoPlay loop></audio>
+          <div>
+            <button
+              id="sound-button"
+              className="pop-up-button purple-light-bgr sound btn"
+              onClick={audioMute}></button>
+          </div>
+          {/* <button
             className="pop-up-button purple-light-bgr settings btn"
             onClick={() => setSettingsButtonPopup(true)}
           />
           <SettingsPopUp
             trigger={settingsButtonPopup}
-            setTrigger={setSettingsButtonPopup}
-          />
+            setTrigger={setSettingsButtonPopup} /> */}
         </div>
 
         <div className="justify-left">

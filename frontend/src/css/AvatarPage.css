@@ -5,70 +5,10 @@
     width: 100%;
     height: 100vh;
     background-color: #4B5683;
+    display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.bubble-top {
-    position: absolute;
-    height: 226px;
-    width: 210px;
-    top: 50px;
-    left: 50px;
-}
-
-.bubble-bot {
-    position: absolute;
-    height: 179px;
-    width: 134px;
-    bottom: 50px;
-    right: 50px;
-}
-
-.back-btn {
-    position: absolute;
-    height: 100px;
-    width: 100px;
-    top: 80px;
-    left: 80px;
-    font-size: 50px;
-    background-color: #7F89B4;
-    border-radius: 50%;
-    padding: 0;
-}
-
-.back-btn:hover {
-    border-color: transparent;
-}
-
-.bubble-corner-btm {
-    position: absolute;
-    height: 22%;
-    width: 10%;
-    bottom: 5%;
-    right: 5%;
-    z-index: 2;
-}
-
-.next-btn {
-    position: absolute;
-    height: 115px;
-    width: 115px;
-    bottom: 50px;
-    right: 50px;
-    font-size: 50px;
-    background-color: #7F89B4;
-    border-radius: 50%;
-    padding: 0;
-}
-
-.next-btn:hover {
-    border-color: transparent;
-}
-
-.next-btn:disabled {
-    cursor: not-allowed;
 }
 
 .start-game-btn {
@@ -78,6 +18,7 @@
     border-radius: 50px;
     font-size: 20px;
     padding: 15px 25px 15px 25px;
+    margin-bottom: 20px;
 }
 
 .start-game-btn:disabled {
@@ -85,16 +26,17 @@
     color: #696565;
     cursor: not-allowed;
 }
+.bubbles-page {
+    display: flex;
+    z-index: 1;
+}
 
 /* ------------ AVATAR PAGE CONTENT ---------- */
 .avatar-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
     justify-content: center;
     align-items: center;
-    background-color: #4B5683;
 }
 
 /* --- HEADINGS ---- */
@@ -103,10 +45,7 @@
     font-size: 50px;
     color: #F3DA91;
     padding: 0;
-    /* margin-top: 5%;
-    margin-bottom: 0; */
     margin-block-end: 0;
-
 }
 
 .heading-subtitle {
@@ -170,4 +109,67 @@
 
 .default-avatar-img-btn:hover {
     border-color: #F7DA86;
+}
+
+/* ------------ SMALLER SCREEN ---------- */
+@media screen and (max-width: 1000px) {
+
+    .heading-title {
+        font-size: 30px;
+    }
+    
+    .heading-subtitle {
+        font-size: 20px;
+        margin-block-start: 6px;
+        margin-block-end: 12px;
+    }
+    
+    .nickname-input {
+        height: 21px;
+        font-size: 10px;
+    }
+
+    .start-game-btn {
+        font-size: 12px;
+        padding: 9px 15px 9px 15px;
+    }
+    
+    .start-game-btn:disabled {
+        background-color: #bdbbbb;
+        color: #696565;
+        cursor: not-allowed;
+    }
+    
+    .avatar-content {
+        margin: 0;
+        grid-template-rows: repeat(2, 100px);
+        grid-template-columns: repeat(4, 120px);
+    }
+    
+    .avatar-content .avatar-circles {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .avatar-circles .default-avatar-img-btn,
+    .avatar-circles .selected-avatar-img-btn {
+        width: 90px;
+        height: 90px;
+        border-width: 4px;
+    }
+    
+    .default-avatar-img-btn:disabled {
+        background-color: #bdbbbb;
+        border-color: #bdbbbb;
+        cursor: not-allowed;
+    }
+    
+    .avatar-images {
+        width: 48px;
+        align-self: center;
+    }
+    
+    .default-avatar-img-btn:hover {
+        border-color: #F7DA86;
+    }
 }
