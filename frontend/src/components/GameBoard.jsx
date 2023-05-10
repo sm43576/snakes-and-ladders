@@ -5,12 +5,23 @@ import "../css/GameBoard.css";
 function GameBoard() {
   const { currentID, players } = useContext(AppContext);
 
+  function matchPlayer(num, dice) {
+    for (let i = 0; i < players.length; i++) {
+      if (num == players[i]["placement"] + dice) {
+        return players[currentID]["image"];
+      } else {
+        return null;
+      }
+    }
+  }
+
   useEffect(() => {
     const renderBoard = () => {
-      const playerPlacement = players[currentID]["placement"] + 3;
       console.log(players[currentID]["name"]);
       console.log(players[currentID]["placement"]);
       console.log(players[currentID]["image"]);
+
+      const dice = 13;
 
       const table = document.createElement("table");
       let num = 100;
@@ -31,8 +42,12 @@ function GameBoard() {
               num -= 11;
               newRow = false;
             }
-            if (playerPlacement === num) {
-              td.style.backgroundImage = `url(/src/assets/selectable_avatars/${players[currentID]["image"]})`;
+            if (matchPlayer(num, dice) != null) {
+              td.style.backgroundImage = `url(/src/assets/selectable_avatars/${matchPlayer(
+                num,
+                dice
+              )})`;
+              console.log(matchPlayer(num, dice));
             }
             num--;
           } else {
@@ -40,8 +55,12 @@ function GameBoard() {
               num -= 9;
               newRow = false;
             }
-            if (playerPlacement === num) {
-              td.style.backgroundImage = `url(/src/assets/selectable_avatars/${players[currentID]["image"]})`;
+            if (matchPlayer(num, dice) != null) {
+              td.style.backgroundImage = `url(/src/assets/selectable_avatars/${matchPlayer(
+                num,
+                dice
+              )})`;
+              console.log(matchPlayer(num, dice));
             }
             num++;
           }
