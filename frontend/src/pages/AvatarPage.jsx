@@ -60,7 +60,8 @@ function AvatarPage() {
       setActiveAvatar("");
     }
   }
-
+  
+  // Modifies player's name and avatar in database
   async function editAvatar(currentID, inputName, activeAvatar) {
     const id = players[currentID]["_id"];
     editPlayer(id, inputName, 0, activeAvatar);
@@ -97,42 +98,45 @@ function AvatarPage() {
         </button>{" "}
         {/**reset current avatar selection visual indicator when going back  */}
       </Link>
-      {/* ------ Headings -----*/}
-      <h1 className="heading-title">SELECT AVATAR</h1>
-      <h2 className="heading-subtitle">
-        {inputName}
-      </h2>
-      <input
-        className="nickname-input"
-        type="text"
-        ref={refNameInput}
-        placeholder="Enter a nickname..."
-        onChange={(e) => handleNameChange(e.target.value)}
-      />
-      {/* ------ Avatar Selection -----*/}
-      <div className="avatar-content">
-        {avatarImageFiles.map((file) => (
-          <div className="avatar-circles" key={"avatar-circle" + file}>
-            <button
-              className={
-                activeAvatar == file
-                  ? "selected-avatar-img-btn"
-                  : "default-avatar-img-btn"
-              }
-              key={"button" + file}
-              onClick={() => handleAvatarBtnClick(file)}
-              disabled={checkAvatarAlreadySelected(file)}
-              aria-label={file}>
-              <img
-                className="avatar-images"
-                key={file}
-                src={`/src/assets/selectable_avatars/${file}`}
-              // alt={file}
-              />
-            </button>
-          </div>
-        ))}
-      </div>
+
+      <div className="avatar-container">
+        {/* ------ Headings -----*/}
+        <h1 className="heading-title">SELECT AVATAR</h1>
+        <h2 className="heading-subtitle">
+          {inputName}
+        </h2>
+        <input
+          className="nickname-input"
+          type="text"
+          ref={refNameInput}
+          placeholder="Enter a nickname..."
+          onChange={(e) => handleNameChange(e.target.value)}
+        />
+        {/* ------ Avatar Selection -----*/}
+        <div className="avatar-content">
+          {avatarImageFiles.map((file) => (
+            <div className="avatar-circles" key={"avatar-circle" + file}>
+              <button
+                className={
+                  activeAvatar == file
+                    ? "selected-avatar-img-btn"
+                    : "default-avatar-img-btn"
+                }
+                key={"button" + file}
+                onClick={() => handleAvatarBtnClick(file)}
+                disabled={checkAvatarAlreadySelected(file)}
+                aria-label={file}>
+                <img
+                  className="avatar-images"
+                  key={file}
+                  src={`/src/assets/selectable_avatars/${file}`}
+                // alt={file}
+                />
+              </button>
+            </div>
+          ))}
+        </div>
+      
       {/* ------ Next button & start game button -----*/}
       <img className="bubble-bot" src={bubbleCornerBtm} />
       <NavLink
@@ -159,6 +163,7 @@ function AvatarPage() {
           {"PLAY GAME"}
         </button>
       </Link>
+      </div>
     </div>
   );
 }
