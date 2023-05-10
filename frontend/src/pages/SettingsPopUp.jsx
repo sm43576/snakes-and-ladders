@@ -16,7 +16,6 @@ function SettingsPopUp(props) {
           </div>
           <h2>PAUSED</h2>
         </div>
-
         <div className="settings-container">
           <div className="div-adjustments">
             <div className="two-columns-grid">
