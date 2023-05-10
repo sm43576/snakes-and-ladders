@@ -19,13 +19,8 @@ function GamePage() {
 
   library.add(fas);
 
-  const { currentID, players, getPlayerPlacement, getPlayerAvatar } =
+  const { currentID, nextID, players, getPlayerPlacement, getPlayerAvatar } =
     useContext(AppContext);
-
-  console.log("currentID " + currentID);
-  console.log("players length " + players.length);
-
-  const [nextID, setNextID] = useState(1); // To control enablement/disablement of start game button
 
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(false);
   const [settingsButtonPopup, setSettingsButtonPopup] = useState(false);

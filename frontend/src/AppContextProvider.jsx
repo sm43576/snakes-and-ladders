@@ -69,6 +69,7 @@ function AppContextProvider({ children }) {
   }
 
   const [currentID, setCurrentID] = useState(0);
+  const [nextID, setNextID] = useState(1);
   const [maxPlayers, setMaxPlayers] = useState(1);
   const [maxCommies, changeCom] = useState(0);
 
@@ -83,6 +84,8 @@ function AppContextProvider({ children }) {
     removePlayer,
     currentID,
     setCurrentID,
+    nextID,
+    setNextID,
     maxPlayers,
     setMaxPlayers,
     maxCommies,
