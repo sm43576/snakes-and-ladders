@@ -10,7 +10,9 @@ function RollDice() {
     setCurrentID,
     nextID,
     setNextID,
+    players
   } = useContext(AppContext);
+
 
   // Face numbers passes as default props
   const sides = ['one', 'two', 'three',
@@ -24,15 +26,31 @@ function RollDice() {
     setDie1(sides[(Math.floor(Math.random() * sides.length))]);
     setDie2(sides[(Math.floor(Math.random() * sides.length))]);
     setRolling(true);
-    
+
     // Start timer of one sec when rolling start
     // Set rolling to false again when time over
     setTimeout(() => {
       setRolling(false);
+      // setCurrentID(currentID + 1);
+      // setNextID(nextID + 1);
+      checkValidIDs(currentID + 1, nextID + 1);
+
     }, 1000)
-    setCurrentID(currentID + 1);
-    setNextID(nextID + 1);
   }
+
+  function checkValidIDs(current, next) {
+    if (current >= players.length) {
+      setCurrentID(0);
+      setNextID(1);
+    } else if (next >= players.length) {
+      setCurrentID(current);
+      setNextID(0);
+    } else {
+      setCurrentID(current);
+      setNextID(next);
+    }
+  }
+
 
   const handleBtn = rolling ?
     'RollDice-rolling' : ''
@@ -41,7 +59,7 @@ function RollDice() {
     <div className='RollDice'>
       <button className={handleBtn}
         // disabled={this.state.rolling}
-        onClick={() => roll()}>
+        onClick={() => { roll() }}>
         {rolling ? 'Rolling' : 'Click to Roll!'}
       </button>
 
