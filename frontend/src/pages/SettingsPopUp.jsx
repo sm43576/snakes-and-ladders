@@ -5,7 +5,7 @@ function SettingsPopUp(props) {
     <div className="settings-popup">
       <div className="popup-inner">
         <button className="close-btn" onClick={() => props.setTrigger(false)}>
-          {'<'}
+          X
         </button>
         <h1>SETTINGS</h1>
         <h2>PAUSED</h2>
