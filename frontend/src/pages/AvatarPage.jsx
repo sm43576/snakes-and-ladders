@@ -149,6 +149,7 @@ function AvatarPage() {
         <button
           className="next-btn"
           disabled={!nextPlayerBtnState} 
+          aria-label="nextPlayerAvatarBtn"
           onClick={() => {
             editAvatar(currentID, inputName, activeAvatar);
             clearAvatarSelectionAndNameInput();
@@ -162,6 +163,7 @@ function AvatarPage() {
         <button
           className="start-game-btn"
           disabled={!gameBtnState}
+          aria-label="startGameBtn"
           onClick={() => {
             editAvatar(currentID, inputName, activeAvatar);
             setCurrentID(0);
