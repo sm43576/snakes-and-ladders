@@ -27,18 +27,18 @@ function BackToHomePopUp(props) {
                         Your game progress will <b>NOT</b> be saved
                     </div>
 
-                    {/* Quits game. Users are directed back to home page and all data is removed from database. */}
-                    <Link to="/">
-                        <button className="backtohome-button" onClick={() => clearDatabse()}>
-                            Yes, quit game
-                        </button>
-                    </Link>
-
                     {/* Resumes game. Exits popup */}
                     <button className="cancel-button"
                         onClick={() => props.setTrigger(false)}>
-                        No, resume game
+                        Resume
                     </button>
+
+                    {/* Quits game. Users are directed back to home page and all data is removed from database. */}
+                    <Link to="/">
+                        <button className="backtohome-button" onClick={() => clearDatabse()}>
+                            Quit
+                        </button>
+                    </Link>
                     {props.children}
                 </div>
             </div>
