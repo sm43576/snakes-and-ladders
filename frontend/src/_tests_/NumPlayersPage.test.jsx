@@ -3,6 +3,7 @@ import { expect, test, vi } from 'vitest';
 import { MemoryRouter, Routes, Route} from 'react-router-dom';
 import { fireEvent, render,screen,getByTestId} from '@testing-library/react';
 import NumPlayersPage from '../pages/NumPlayersPage';
+import userEvent from '@testing-library/user-event'
 import { AppContext } from '../AppContextProvider';
 
 
@@ -39,7 +40,7 @@ test('renders MyComponent for /path', () => {
     // "checks text"
     
     const element = screen.getByRole('button',{name:/increase-btn1/i})
-    fireEvent.click(element);
+    userEvent.click(element);
     expect(screen.getByText('2')).toBeInTheDocument();
 
 })
