@@ -3,23 +3,26 @@ import { AppContext } from "../AppContextProvider";
 import "../css/GameBoard.css";
 
 function GameBoard() {
-  const { currentID, players } = useContext(AppContext);
+  const { players } = useContext(AppContext);
 
   function matchPlayer(num, dice) {
+    var avatars = [];
+
     for (let i = 0; i < players.length; i++) {
+      console.log(i + ": " + players[i]["name"]);
       if (num == players[i]["placement"] + dice) {
-        return players[currentID]["image"];
-      } else {
-        return null;
+        avatars.push(players[i]["image"]);
       }
     }
+
+    return avatars;
   }
 
   useEffect(() => {
     const renderBoard = () => {
-      console.log(players[currentID]["name"]);
-      console.log(players[currentID]["placement"]);
-      console.log(players[currentID]["image"]);
+      // console.log(players[currentID]["name"]);
+      // console.log(players[currentID]["placement"]);
+      // console.log(players[currentID]["image"]);
 
       const dice = 13;
 
@@ -42,12 +45,13 @@ function GameBoard() {
               num -= 11;
               newRow = false;
             }
-            if (matchPlayer(num, dice) != null) {
-              td.style.backgroundImage = `url(/src/assets/selectable_avatars/${matchPlayer(
-                num,
-                dice
-              )})`;
-              console.log(matchPlayer(num, dice));
+            if (matchPlayer(num, dice).length > 0) {
+              console.log(num);
+              // console.log(matchPlayer(num, dice));
+              var avatar = `url(/src/assets/selectable_avatars/${
+                matchPlayer(num, dice)[0]
+              })`;
+              (td.style.backgroundImage = avatar), avatar;
             }
             num--;
           } else {
@@ -55,12 +59,13 @@ function GameBoard() {
               num -= 9;
               newRow = false;
             }
-            if (matchPlayer(num, dice) != null) {
-              td.style.backgroundImage = `url(/src/assets/selectable_avatars/${matchPlayer(
-                num,
-                dice
-              )})`;
-              console.log(matchPlayer(num, dice));
+            if (matchPlayer(num, dice).length > 0) {
+              console.log(num);
+              // console.log(matchPlayer(num, dice));
+              var avatar = `url(/src/assets/selectable_avatars/${
+                matchPlayer(num, dice)[0]
+              })`;
+              (td.style.backgroundImage = avatar), avatar;
             }
             num++;
           }
@@ -80,7 +85,7 @@ function GameBoard() {
       const table = renderBoard();
       renderBoardDiv.appendChild(table);
     }
-  }, [currentID, players]);
+  }, [players]);
 
   return (
     <div>
