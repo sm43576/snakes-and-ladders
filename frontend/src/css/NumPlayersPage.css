@@ -51,7 +51,7 @@
     align-items: center;
     background-image: url("../assets/back_button.png");
     background-repeat: no-repeat;
-    background-size: 70%;
+    background-size: 60%;
     background-position: center;
 }
 
@@ -71,7 +71,7 @@
     align-items: center;
     background-image: url("../assets/next_button.png");
     background-repeat: no-repeat;
-    background-size: 70%;
+    background-size: 60%;
     background-position: center;
 }
 

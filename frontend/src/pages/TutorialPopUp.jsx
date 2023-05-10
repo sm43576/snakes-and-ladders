@@ -8,30 +8,28 @@ function TutorialPopUp(props) {
   return props.trigger ? (
     <div className="tutorial-popup">
       <div className="popup-inner">
-        {/* <button className="close-btn" onClick={() => props.setTrigger(false)}>
-          {'<'}
-        </button> */}
-        <div className="tutorial-header">
-          <h1>HOW TO PLAY<img className="how-to-play" src={howToPlay} /></h1>
-        </div>
-        <div className="tutorial-content">
-          <div className="board-image">
-            <img className="board-image" src={BoardImage} />
+        <div>
+          <div className="tutorial-header">
+            <h1>HOW TO PLAY<img className="how-to-play" src={howToPlay} /></h1>
           </div>
-          <div className="instruction">
-            <p>
-              Reach the end of the<br/>board launching the Dice. <br/><br/>
-              Ladder: You go up! <br/> Snake: You go down! <br/>
+          <div className="tutorial-content">
+            <div className="board-image">
+              <img className="board-image" src={BoardImage} />
+            </div>
+            <p className="instruction">
+              Roll dice to make you way to the treasure!<br/><br/>
+              If you land on a square with seaweed, you slide down.<br/><br/>
+              If you land on a square with bubbles, you float up.<br/>
             </p>
           </div>
+          {props.children}
         </div>
-        {props.children}
       </div>
 
       <div>
         <img className="bubble-top-left" src={bubbleCornerTop} />
-        <button className="back-btn" onClick={() => props.setTrigger(false)}>
-          {'X'}
+        <button className="close-btn" onClick={() => props.setTrigger(false)}>
+          {/* {'X'} */}
         </button>
       </div>
 
