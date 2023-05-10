@@ -18,7 +18,8 @@ function GamePage() {
 
   library.add(fas);
 
-  const { currentID, nextID, players, setCurrentID } = useContext(AppContext);
+  const { currentID, nextID, players, setCurrentID, setNextID, movePlayer } =
+    useContext(AppContext);
 
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(false);
   const [settingsButtonPopup, setSettingsButtonPopup] = useState(false);
@@ -33,6 +34,7 @@ function GamePage() {
     button.classList.toggle("active");
   };
 
+  // Face numbers passes as default props
   const sides = ["one", "two", "three", "four", "five", "six"];
 
   const [die1, setDie1] = useState("one");
@@ -40,33 +42,46 @@ function GamePage() {
   const [rolling, setRolling] = useState(false);
 
   function roll() {
-    setDie1(sides[Math.floor(Math.random() * sides.length)]);
-    setDie2(sides[Math.floor(Math.random() * sides.length)]);
+    const s1 = Math.floor(Math.random() * sides.length);
+    const s2 = Math.floor(Math.random() * sides.length);
+    setDie1(sides[s1]);
+    setDie2(sides[s2]);
     setRolling(true);
 
+    // Start timer of one sec when rolling start
+    // Set rolling to false again when time over
     setTimeout(() => {
       setRolling(false);
+      // setCurrentID(currentID + 1);
+      // setNextID(nextID + 1);
       checkValidIDs(currentID + 1, nextID + 1);
     }, 1000);
+
+    step(s1 + 1, s2 + 1);
+    setRollCount(rollCount + 1); // Increment rollCount
   }
 
   function checkValidIDs(current, next) {
     if (current >= players.length) {
       setCurrentID(0);
+      setNextID(1);
+    } else if (next >= players.length) {
+      setCurrentID(current);
+      setNextID(0);
     } else {
       setCurrentID(current);
+      setNextID(next);
     }
   }
 
   const handleBtn = rolling ? "RollDice-rolling" : "";
 
-  // Update rollCount when button is clicked
-  useEffect(() => {
-    if (rollCount > 0) {
-      // Perform any necessary actions after the button is clicked
-      // You can add logic here to update or fetch data, etc.
-    }
-  }, [rollCount]);
+  function step(step1, step2) {
+    var step = step1 + step2;
+    const id = players[currentID]["_id"];
+    const para = players[currentID]["placement"] + step;
+    movePlayer(id, para);
+  }
 
   return (
     <div className="game-page">
@@ -77,7 +92,6 @@ function GamePage() {
               className={handleBtn}
               onClick={() => {
                 roll();
-                setRollCount((prevCount) => prevCount + 1); // Update rollCount
               }}>
               {rolling ? "Rolling" : "Click to Roll!"}
             </button>

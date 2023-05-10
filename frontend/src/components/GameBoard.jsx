@@ -3,15 +3,16 @@ import { AppContext } from "../AppContextProvider";
 import "../css/GameBoard.css";
 
 function GameBoard() {
-  const { players } = useContext(AppContext);
+  const { players, currentID, editPlayer } = useContext(AppContext);
 
-  function matchPlayer(num, dice) {
+  function matchPlayer(num) {
     var avatars = [];
 
     for (let i = 0; i < players.length; i++) {
-      console.log(i + ": " + players[i]["name"]);
-      if (num == players[i]["placement"] + dice) {
+      console.log(i + ": " + players[i]["image"]);
+      if (num == players[i]["placement"]) {
         avatars.push(players[i]["image"]);
+        console.log(players[i]["image"]);
       }
     }
 
@@ -24,7 +25,7 @@ function GameBoard() {
       // console.log(players[currentID]["placement"]);
       // console.log(players[currentID]["image"]);
 
-      const dice = 13;
+      const playerPlacement = players[currentID]["placement"];
 
       const id = players[currentID]["_id"];
       const inputName = players[currentID]["name"];
@@ -50,13 +51,11 @@ function GameBoard() {
               num -= 11;
               newRow = false;
             }
-            if (matchPlayer(num, dice).length > 0) {
-              console.log(num);
-              // console.log(matchPlayer(num, dice));
-              var avatar = `url(/src/assets/selectable_avatars/${
-                matchPlayer(num, dice)[0]
-              })`;
-              (td.style.backgroundImage = avatar), avatar;
+            var avatars = matchPlayer(num);
+            if (avatars.length > 0) {
+              console.log("avatar length > 0");
+              var avatar = `url(/src/assets/selectable_avatars/${avatars[0]})`;
+              td.style.backgroundImage = (avatar, avatar);
             }
             num--;
           } else {
@@ -64,13 +63,11 @@ function GameBoard() {
               num -= 9;
               newRow = false;
             }
-            if (matchPlayer(num, dice).length > 0) {
-              console.log(num);
-              // console.log(matchPlayer(num, dice));
-              var avatar = `url(/src/assets/selectable_avatars/${
-                matchPlayer(num, dice)[0]
-              })`;
-              (td.style.backgroundImage = avatar), avatar;
+            var avatars = matchPlayer(num);
+            if (avatars.length > 0) {
+              console.log("avatar length > 0");
+              var avatar = `url(/src/assets/selectable_avatars/${avatars[0]})`;
+              td.style.backgroundImage = (avatar, avatar);
             }
             num++;
           }
