@@ -43,7 +43,7 @@ function AvatarPage() {
 
   function handleAvatarBtnClick(avatarFileName) {
     setActiveAvatar(avatarFileName);
-    if(currentID + 1 <= maxPlayers){ // only enable the next button if the current ID is not the max number of players and an avatar is selected
+    if(currentID + 1 < maxPlayers){ // only enable the next button if the current ID is not the max number of players and an avatar is selected
       setNextBtnState(true);
     }
     canPlayersStartGame(true); // Checks if last player has chosen avatar in order to play game
