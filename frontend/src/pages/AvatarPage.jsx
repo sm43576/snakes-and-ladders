@@ -2,11 +2,8 @@ import "../css/AvatarPage.css";
 import { Link, NavLink } from "react-router-dom";
 import { useState, useRef, useContext } from "react";
 import { AppContext } from "../AppContextProvider";
-
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
-import backButton from "../assets/back_button.png";
-import nextButton from "../assets/next_button.png";
 
 const avatarImageFiles = [
   "avatar_pufferfish.png",
