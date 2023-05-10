@@ -26,6 +26,11 @@ function GameBoard() {
 
       const dice = 13;
 
+      const id = players[currentID]["_id"];
+      const inputName = players[currentID]["name"];
+      const activeAvatar = players[currentID]["image"];
+      editPlayer(id, inputName, playerPlacement, activeAvatar);
+
       const table = document.createElement("table");
       let num = 100;
 
