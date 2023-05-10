@@ -68,11 +68,17 @@ function AvatarPage() {
   // To check if avatar has already been selected by a previous player and disable the button if it has
   function checkAvatarAlreadySelected(file) {
     var hasAlreadySelected = false;
+// testing
+    var result = players.filter((player) => player.image === file);
+    if (result.length > 0) {
+      hasAlreadySelected = true;
+//////////////////////
 
     for (let i = 0; i < currentID; i++) {
       if (players[i]["image"] == file) {
         hasAlreadySelected = true;
       }
+// main
     }
     return hasAlreadySelected;
   }
@@ -120,11 +126,13 @@ function AvatarPage() {
               }
               key={"button" + file}
               onClick={() => handleAvatarBtnClick(file)}
-              disabled={checkAvatarAlreadySelected(file)}>
+              disabled={checkAvatarAlreadySelected(file)}
+              aria-label={file}>
               <img
                 className="avatar-images"
                 key={file}
                 src={`/src/assets/selectable_avatars/${file}`}
+                // alt={file}
               />
             </button>
           </div>
