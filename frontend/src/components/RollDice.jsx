@@ -44,23 +44,22 @@ function RollDice() {
 
   const handleBtn = rolling ? "RollDice-rolling" : "";
 
-  return (
-    <div className="RollDice">
-      <button
-        className={handleBtn}
-        // disabled={this.state.rolling}
-        onClick={() => {
-          roll();
-        }}>
-        {rolling ? "Rolling" : "Click to Roll!"}
-      </button>
+  // return (
+  //   <div className="RollDice">
+  //     <button
+  //       className={handleBtn}
+  //       onClick={() => {
+  //         roll();
+  //       }}>
+  //       {rolling ? "Rolling" : "Click to Roll!"}
+  //     </button>
 
-      <div className="RollDice-container">
-        <Die face={die1} rolling={rolling} />
-        <Die face={die2} rolling={rolling} />
-      </div>
-    </div>
-  );
+  //     <div className="RollDice-container">
+  //       <Die face={die1} rolling={rolling} />
+  //       <Die face={die2} rolling={rolling} />
+  //     </div>
+  //   </div>
+  // );
 }
 
 export default RollDice;

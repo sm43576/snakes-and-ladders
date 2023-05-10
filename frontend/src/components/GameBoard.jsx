@@ -3,7 +3,7 @@ import { AppContext } from "../AppContextProvider";
 import "../css/GameBoard.css";
 
 function GameBoard() {
-  const { currentID, nextID, players, checkValidIDs } = useContext(AppContext);
+  const { currentID, players } = useContext(AppContext);
 
   useEffect(() => {
     const renderBoard = () => {
