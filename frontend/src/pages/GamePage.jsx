@@ -48,39 +48,25 @@ function GamePage() {
     setDie2(sides[s2]);
     setRolling(true);
 
-    // Start timer of one sec when rolling start
-    // Set rolling to false again when time over
     setTimeout(() => {
+      setRollCount((prevRollCount) => prevRollCount + 1); // Use functional form of setRollCount
       setRolling(false);
-      // setCurrentID(currentID + 1);
-      // setNextID(nextID + 1);
+      setCurrentID((current) =>
+        current + 1 >= players.length ? 0 : current + 1
+      );
+      setNextID((next) => (next + 1 >= players.length ? 0 : next + 1));
       step(s1 + 1, s2 + 1);
-      checkValidIDs(currentID + 1, nextID + 1);
     }, 1000);
   }
 
-  function checkValidIDs(current, next) {
-    if (current >= players.length) {
-      setCurrentID(0);
-      setNextID(1);
-    } else if (next >= players.length) {
-      setCurrentID(current);
-      setNextID(0);
-    } else {
-      setCurrentID(current);
-      setNextID(next);
-    }
-  }
-
-  const handleBtn = rolling ? "RollDice-rolling" : "";
-
   async function step(step1, step2) {
-    var step = step1 + step2;
+    const step = step1 + step2;
     const id = players[currentID]["_id"];
     const para = players[currentID]["placement"] + step;
     movePlayer(id, para);
-    setRollCount(rollCount + 1); // Increment rollCount
   }
+
+  const handleBtn = rolling ? "RollDice-rolling" : "";
 
   return (
     <div className="game-page">
@@ -89,7 +75,6 @@ function GamePage() {
           <div className="RollDice">
             <button
               className={handleBtn}
-              // disabled={this.state.rolling}
               onClick={() => {
                 roll();
               }}>
@@ -111,12 +96,14 @@ function GamePage() {
               <img
                 className="current-player-image"
                 src={`/src/assets/selectable_avatars/${players[currentID]["image"]}`}
+                alt="Current Player"
               />
             </div>
             <div className="next-player">
               <img
                 className="next-player-image"
                 src={`/src/assets/selectable_avatars/${players[nextID]["image"]}`}
+                alt="Next Player"
               />
             </div>
           </div>
@@ -124,7 +111,7 @@ function GamePage() {
       </div>
 
       <div className="div-2">
-        <GameBoard key={rollCount} /> {/* Pass rollCount as key */}
+        <GameBoard key={rollCount} />
       </div>
 
       <div className="div-3">
