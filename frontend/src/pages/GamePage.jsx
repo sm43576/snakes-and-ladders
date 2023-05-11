@@ -111,7 +111,9 @@ function GamePage() {
 
   function checkWinner() {
     if (players[currentID]["placement"] >= 100) {
-      navigate("/results"); // Navigate to the results page
+      setTimeout(() => {
+        navigate("/results"); // Navigate to the results page
+      }, 2000);
     }
   }
 
