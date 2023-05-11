@@ -46,7 +46,6 @@ function GamePage() {
 
   const [die1, setDie1] = useState("one");
   const [die2, setDie2] = useState("two");
-  const [rolling, setRolling] = useState(false);
 
 
   function roll(isHuman) {
@@ -54,10 +53,8 @@ function GamePage() {
     const s2 = Math.floor(Math.random() * sides.length);
     setDie1(sides[s1]);
     setDie2(sides[s2]);
-    setRolling(true);
 
     setTimeout(() => {
-      setRolling(false);
       step(s1 + 1, s2 + 1, isHuman);
     }, 1000);
   }
@@ -121,7 +118,6 @@ function GamePage() {
     document.getElementById("seaweed-animation").style.display = "none";
     document.getElementById("bubbles-animation").style.display = "none";
   }
-  const handleBtn = rolling ? "roll-dice-rolling" : "";
 
   return (
     <div className="game-page">
@@ -137,9 +133,8 @@ function GamePage() {
       />
       <div id="game-page-content" className="game-page-content">
         <div className="div-1">
-          <div className="roll-dice">
+          <div className="container roll-dice">
             <button
-              className={handleBtn}
               onClick={() => {
                 document.querySelector(".roll-dice button").disabled = true;
                 document.querySelector(".swim-btn").disabled = false;
@@ -147,14 +142,14 @@ function GamePage() {
                 console.log("onClick");
                 reRender();
               }}>
-              {rolling ? "Rolling" : "Click to Roll!"}
+              {"Click to Roll!"}
             </button>
           </div>
           <div className="container white-bgr">
             {/* <div className="roll-dice"> */}
               <div className="roll-dice-container">
-                <Die face={die1} rolling={rolling} />
-                <Die face={die2} rolling={rolling} />
+                <Die face={die1} />
+                <Die face={die2} />
               </div>
             {/* </div> */}
           </div>
