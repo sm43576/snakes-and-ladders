@@ -111,7 +111,7 @@ function GamePage() {
       </div>
 
       <div className="div-2">
-        <GameBoard key={rollCount} />
+        <GameBoard key={rolling} players={players} />
       </div>
 
       <div className="div-3">
