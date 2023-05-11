@@ -16,8 +16,16 @@ import bgm from "../music/baby-shark-bgm.mp3";
 function GamePage() {
   library.add(fas);
 
-  const { currentID, nextID, players, setCurrentID, setNextID, movePlayer } =
-    useContext(AppContext);
+  const {
+    currentID,
+    nextID,
+    players,
+    setCurrentID,
+    setNextID,
+    movePlayer,
+    seaweeds,
+    bubbles,
+  } = useContext(AppContext);
 
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(true);
   const [backToHomeButtonPopUp, setBackToHomeButtonPopUp] = useState(false);
@@ -92,18 +100,26 @@ function GamePage() {
       [71, 91],
       [80, 82],
     ];
+    
+//     reRender();
 
-    for (let i = 0; i < seaweedsAndBubblesPositions.length; i++) {
-      if (
-        players[currentID]["placement"] == seaweedsAndBubblesPositions[i][0]
-      ) {
-        movePlayer(
-          players[currentID]["_id"],
-          seaweedsAndBubblesPositions[i][1]
-        );
+    for (let i = 0; i < seaweeds.length; i++) {
+      if (players[currentID]["placement"] == seaweeds[i][0]) {
+        movePlayer(players[currentID]["_id"], seaweeds[i][1]);
       }
     }
-    reRender();
+
+    for (let i = 0; i < bubbles.length; i++) {
+      if (players[currentID]["placement"] == bubbles[i][0]) {
+        movePlayer(players[currentID]["_id"], bubbles[i][1]);
+      }
+    }
+  }
+
+  async function checkWinner() {
+    if (players[currentID]["placement"] >= 100) {
+      <TODO>RESULTS</TODO>;
+    }
   }
 
   async function reRender() {
@@ -140,6 +156,22 @@ function GamePage() {
               onClick={() => {
                 console.log("onClick2");
                 reRender();
+                checkSeaweedsBubbles();
+                checkCom();
+                setCurrentID((current) =>
+                  current + 1 >= players.length ? 0 : current + 1
+                );
+                setNextID((next) => (next + 1 >= players.length ? 0 : next + 1));
+              }}></button>
+          </div>
+
+          <div className="container">
+            <button
+              className="swim-btn"
+              onClick={() => {
+                console.log("onClick2");
+                reRender();
+                checkWinner();
                 checkSeaweedsBubbles();
                 checkCom();
                 setCurrentID((current) =>
