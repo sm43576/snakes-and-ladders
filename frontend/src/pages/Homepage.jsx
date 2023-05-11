@@ -13,23 +13,23 @@ function HomePage() {
   } = useContext(AppContext);
 
  const waveoptions= {
-    height: 30,
+    height: 50,
     amplitude: 30,
-    speed: 0.15,
-    points: 6
+    speed: 0.13,
+    points: 8
   }
 
   const waveoptions2= {
     height: 30,
     amplitude: 20,
-    speed: 0.2,
+    speed: 0.14,
     points: 6
   }
   const waveoptions3= {
     height: 20,
     amplitude: 20,
-    speed: 0.4,
-    points: 6
+    speed: 0.16,
+    points: 8
   }
 
 
@@ -72,10 +72,18 @@ function HomePage() {
 
       <Wave 
         className="layer4"
-        fill='#99A0C4'
+        fill='#596391'
         paused={false}
         options={waveoptions2}/>
+    
+
+    <Wave 
+    className="layer5"
+    fill='#99A0C4'
+    paused={false}
+    options={waveoptions2}/>
     </div>
+
   );
 }
 

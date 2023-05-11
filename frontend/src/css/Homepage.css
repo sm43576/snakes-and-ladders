@@ -49,6 +49,14 @@
 }
 
   
+.layer5{
+
+    width: 120%;
+    height: 400px;
+    transform: translateY(-160%);
+    z-index: 6;
+
+}
 
 @keyframes wave {
     0% {
