@@ -254,6 +254,7 @@ table td::before {
 .swim-btn-container {
   background-repeat: repeat;
   background-size: contain;
+  background-image: url(../assets/Bubble2.png);
   border-radius: 20px;
   border: solid white 2px;
   margin-top: 20px;
@@ -267,7 +268,7 @@ table td::before {
   width: 100%;
   line-height: 20px;
   min-height: 50px;
-  color: #4b5683;
+  color: white;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   font-size: 24px;
