@@ -10,16 +10,26 @@ function TutorialPopUp(props) {
       <div className="popup-inner">
         <div>
           <div className="tutorial-header">
-            <h1>HOW TO PLAY<img className="how-to-play" src={HowToPlay} /></h1>
+            <h1>
+              HOW TO PLAY
+              <img className="how-to-play" src={HowToPlay} />
+            </h1>
           </div>
           <div className="tutorial-content">
             <div className="board-image">
               <img className="board-image" src={BoardImage} />
             </div>
             <p className="instruction">
-              Roll dice to make you way to the treasure!<br/><br/>
-              If you land on a square with seaweed, you slide down.<br/><br/>
-              If you land on a square with bubbles, you float up.<br/>
+              Roll the dice and Swim to make your way to the treasure!
+              <br />
+              <br />
+              If you land on a square with seaweed, you slide down.
+              <br />
+              <br />
+              If you land on a square with bubbles, you float up.
+              <br />
+              <br />
+              First one to 100 is the winner!
             </p>
           </div>
           {props.children}
@@ -34,7 +44,7 @@ function TutorialPopUp(props) {
       </div>
 
       <div>
-        <div className="placing-btn" ></div>
+        <div className="placing-btn"></div>
         <img className="bubble-bot-right" src={bubbleCornerBtm} />
       </div>
     </div>

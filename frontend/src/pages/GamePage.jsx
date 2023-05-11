@@ -1,5 +1,5 @@
 import "../css/GamePage.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AppContext } from "../AppContextProvider";
 
@@ -13,9 +13,10 @@ import BackToHomePopUp from "./BackToHomePopUp";
 import bgm from "../music/baby-shark-bgm.mp3";
 import seaweedSound from "../music/whistle-down.mp3";
 import bubbleSound from "../music/soap-bubbles-pop.mp3";
-
 import bubblesBackground from "../assets/bubbles.png";
 import seaweedBackground from "../assets/seaweed_popup.png";
+import ResultsPage from "./ResultsPage";
+import axios from "axios";
 
 function GamePage() {
   document.body.style.backgroundColor = "#A5ACCD";
@@ -31,11 +32,14 @@ function GamePage() {
     movePlayer,
     seaweeds,
     bubbles,
+    goToResults,
   } = useContext(AppContext);
 
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(true);
+  const [showResultsPopup, setShowResultsPopup] = useState(false);
   const [backToHomeButtonPopUp, setBackToHomeButtonPopUp] = useState(false);
   const [rollCount, setRollCount] = useState(0); // New state variable
+  const [rollDiceBtnEnabled, setRollDiceBtnEnabled] = useState(true);
 
   const button = document.querySelector(".sound");
   const audioMute = () => {
@@ -49,16 +53,19 @@ function GamePage() {
 
   const [die1, setDie1] = useState("one");
   const [die2, setDie2] = useState("two");
+  const [rolling, setRolling] = useState(false);
 
-  const [rollDiceBtnEnabled, setRollDiceBtnEnabled] = useState(true);
+  const navigate = useNavigate(); // Use the useNavigate hook
 
   function roll(isHuman) {
     const s1 = Math.floor(Math.random() * sides.length);
     const s2 = Math.floor(Math.random() * sides.length);
     setDie1(sides[s1]);
     setDie2(sides[s2]);
+    setRolling(true);
 
     setTimeout(() => {
+      setRolling(false);
       step(s1 + 1, s2 + 1, isHuman);
     }, 1000);
   }
@@ -89,7 +96,7 @@ function GamePage() {
       if (players[currentID]["placement"] == seaweeds[i][0]) {
         movePlayer(players[currentID]["_id"], seaweeds[i][1]);
         new Audio(seaweedSound).play();
-        document.getElementById("game-page-content").style.opacity = "50%";
+        getElementById("game-page-content").style.opacity = "50%";
         document.getElementById("seaweed-pop-up").style.display = "block";
         document.getElementById("seaweed-animation").style.display = "block";
       }
@@ -106,9 +113,11 @@ function GamePage() {
     }
   }
 
-  async function checkWinner() {
+  function checkWinner() {
     if (players[currentID]["placement"] >= 100) {
-      <TODO>RESULTS</TODO>;
+      setTimeout(() => {
+        navigate("/results"); // Navigate to the results page
+      }, 2000);
     }
   }
 
@@ -123,6 +132,7 @@ function GamePage() {
     document.getElementById("seaweed-animation").style.display = "none";
     document.getElementById("bubbles-animation").style.display = "none";
   }
+  const handleBtn = rolling ? "roll-dice-rolling" : "";
 
   return (
     <div className="game-page">
@@ -149,10 +159,10 @@ function GamePage() {
             </button>
           </div>
           <div className="container white-bgr">
-              <div className="roll-dice-container">
-                <Die face={die1} />
-                <Die face={die2} />
-              </div>
+            <div className="roll-dice-container">
+              <Die face={die1} rolling={rolling} />
+              <Die face={die2} rolling={rolling} />
+            </div>
           </div>
           <div className="container">
             <button
@@ -233,9 +243,10 @@ function GamePage() {
             />
           </div>
 
-          <Link to="/results">
-            <button className="btn">R</button>
-          </Link>
+          {/* <ResultsPage
+            trigger={showResultsPopup}
+            setTrigger={setShowResultsPopup}
+          /> */}
         </div>
       </div>
 
