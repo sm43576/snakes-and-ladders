@@ -191,3 +191,14 @@ table td::before {
 .active {
     background-image: url("../assets/sound_off.png");
 }
+
+.dice-btn {
+  width: 100%;
+  height: fit-content;
+  color: #4b5683;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-color: #f7da86;
+  border-radius: 20px;
+  padding: 5px;
+}

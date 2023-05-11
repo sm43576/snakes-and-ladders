@@ -12,6 +12,8 @@ import { AppContext } from "../AppContextProvider";
 
 import Die from "../components/Die";
 import "../css/GameBoard.css";
+import "../css/RollDice.css";
+
 
 function GamePage() {
   document.body.style.backgroundColor = "#A5ACCD";
@@ -92,6 +94,9 @@ function GamePage() {
               <Die face={die2} rolling={rolling} />
             </div>
           </div>
+        </div>
+        <div className="container">
+          <button className="dice-btn">Swim</button>
         </div>
         <div className="container">
           <p className="current-player-tag">
