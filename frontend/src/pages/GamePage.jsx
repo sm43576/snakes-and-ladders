@@ -107,6 +107,7 @@ function GamePage() {
 
   const handleBtn = rolling ? "roll-dice-rolling" : "";
 
+  
   return (
     <div className="game-page">
       <div className="game-page-content">
@@ -212,8 +213,15 @@ function GamePage() {
           </Link>
         </div>
       </div>
+      
+      <div className="bubbles-seaweed-pop-up">
+        <p>YAY You float up the bubbles!</p>
+        <button className="continue-button"> CONTINUE </button>
+      </div>
+
     </div>
   );
+  
 }
 
 export default GamePage;
