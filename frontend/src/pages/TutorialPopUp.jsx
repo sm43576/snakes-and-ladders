@@ -1,7 +1,7 @@
 import "../css/TutorialPopUp.css";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
-import BoardImage from "../assets/game_board.png";
+import TutorialImage from "../assets/tutorial_image.png";
 import HowToPlay from "../assets/how_to_play.png";
 
 function TutorialPopUp(props) {
@@ -17,7 +17,7 @@ function TutorialPopUp(props) {
           </div>
           <div className="tutorial-content">
             <div className="board-image">
-              <img className="board-image" src={BoardImage} />
+              <img className="board-image" src={TutorialImage} />
             </div>
             <p className="instruction">
               Roll the dice and Swim to make your way to the treasure!
