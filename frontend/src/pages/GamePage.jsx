@@ -42,7 +42,7 @@ function GamePage() {
   const [die2, setDie2] = useState("two");
   const [rolling, setRolling] = useState(false);
 
-  function roll() {
+  function roll(isHuman) {
     const s1 = Math.floor(Math.random() * sides.length);
     const s2 = Math.floor(Math.random() * sides.length);
     setDie1(sides[s1]);
@@ -51,29 +51,40 @@ function GamePage() {
 
     setTimeout(() => {
       setRolling(false);
-      step(s1 + 1, s2 + 1);
+      step(s1 + 1, s2 + 1, isHuman);
     }, 1000);
   }
 
-  async function step(step1, step2) {
+  async function step(step1, step2, isHuman) {
     const step = step1 + step2;
-    console.log("-------");
-    console.log("current player: " + players[currentID]["name"]);
-    const id = players[currentID]["_id"];
-    const para = players[currentID]["placement"] + step;
-    console.log("placement: ", para);
+    var id;
+    var para;
+    if (isHuman) {
+      id = players[currentID]["_id"];
+      para = players[currentID]["placement"] + step;
+    } else {
+      id = players[nextID]["_id"];
+      para = players[nextID]["placement"] + step;
+    }
+
     movePlayer(id, para);
-    console.log("placement in players data " + players[currentID]["placement"]);
-    console.log("-------");
   }
 
   async function checkCom() {
     if (!players[nextID]["isHuman"]) {
-      setRollCount(rollCount + 1); // Use functional form of setRollCount
-      setCurrentID((current) =>
-        current + 1 >= players.length ? 0 : current + 1
-      );
-      roll();
+      console.log("current" + currentID);
+      console.log("next" + nextID);
+      // reRender();
+      // setCurrentID((current) =>
+      //   current + 1 >= players.length ? 0 : current + 1
+      // );
+      // setNextID((next) => (next + 1 >= players.length ? 0 : next + 1));
+      console.log("checkCom2");
+      reRender();
+      console.log("________________");
+      console.log("current" + currentID);
+      console.log("next" + nextID);
+      roll(false);
     }
   }
 
@@ -112,6 +123,13 @@ function GamePage() {
         );
       }
     }
+    console.log("checkSeaweedAndBubbles");
+    reRender();
+  }
+
+  async function reRender() {
+    setRollCount(rollCount + 1); // Use functional form of setRollCount
+    console.log("rollcount: " + rollCount);
   }
 
   const handleBtn = rolling ? "RollDice-rolling" : "";
@@ -124,8 +142,9 @@ function GamePage() {
             <button
               className={handleBtn}
               onClick={() => {
-                roll();
-                // setRollCount(rollCount + 1); // Use functional form of setRollCount
+                roll(true);
+                console.log("onClick");
+                reRender();
               }}>
               {rolling ? "Rolling" : "Click to Roll!"}
             </button>
@@ -140,13 +159,14 @@ function GamePage() {
           <button
             className="dice-btn"
             onClick={() => {
-              setRollCount(rollCount + 1); // Use functional form of setRollCount
+              console.log("onClick2");
+              reRender();
               checkSeaweedsBubbles();
+              checkCom();
               setCurrentID((current) =>
                 current + 1 >= players.length ? 0 : current + 1
               );
               setNextID((next) => (next + 1 >= players.length ? 0 : next + 1));
-              checkCom();
             }}></button>
         </div>
         <div className="container">
