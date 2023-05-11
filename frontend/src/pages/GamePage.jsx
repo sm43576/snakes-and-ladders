@@ -13,7 +13,6 @@ import BackToHomePopUp from "./BackToHomePopUp";
 import bgm from "../music/baby-shark-bgm.mp3";
 import seaweedSound from "../music/whistle-down.mp3";
 import bubbleSound from "../music/soap-bubbles-pop.mp3";
-
 import bubblesBackground from "../assets/bubbles.png";
 import seaweedBackground from "../assets/seaweed_popup.png";
 import ResultsPage from "./ResultsPage";
@@ -40,6 +39,7 @@ function GamePage() {
   const [showResultsPopup, setShowResultsPopup] = useState(false);
   const [backToHomeButtonPopUp, setBackToHomeButtonPopUp] = useState(false);
   const [rollCount, setRollCount] = useState(0); // New state variable
+  const [rollDiceBtnEnabled, setRollDiceBtnEnabled] = useState(true);
 
   const button = document.querySelector(".sound");
   const audioMute = () => {
@@ -53,6 +53,7 @@ function GamePage() {
 
   const [die1, setDie1] = useState("one");
   const [die2, setDie2] = useState("two");
+  const [rolling, setRolling] = useState(false);
 
   const navigate = useNavigate(); // Use the useNavigate hook
 
@@ -61,8 +62,10 @@ function GamePage() {
     const s2 = Math.floor(Math.random() * sides.length);
     setDie1(sides[s1]);
     setDie2(sides[s2]);
+    setRolling(true);
 
     setTimeout(() => {
+      setRolling(false);
       step(s1 + 1, s2 + 1, isHuman);
     }, 1000);
   }
@@ -88,13 +91,12 @@ function GamePage() {
   }
 
   async function checkSeaweedsBubbles() {
-    console.log("checkSeaweedsBubbles: " + players[currentID]["placement"]);
 
     for (let i = 0; i < seaweeds.length; i++) {
       if (players[currentID]["placement"] == seaweeds[i][0]) {
         movePlayer(players[currentID]["_id"], seaweeds[i][1]);
         new Audio(seaweedSound).play();
-        document.getElementById("game-page-content").style.opacity = "50%";
+        getElementById("game-page-content").style.opacity = "50%";
         document.getElementById("seaweed-pop-up").style.display = "block";
         document.getElementById("seaweed-animation").style.display = "block";
       }
@@ -130,6 +132,7 @@ function GamePage() {
     document.getElementById("seaweed-animation").style.display = "none";
     document.getElementById("bubbles-animation").style.display = "none";
   }
+  const handleBtn = rolling ? "roll-dice-rolling" : "";
 
   return (
     <div className="game-page">
@@ -146,32 +149,26 @@ function GamePage() {
       <div id="game-page-content" className="game-page-content">
         <div className="div-1">
           <div className="container roll-dice">
-            <button
+            <button disabled={!rollDiceBtnEnabled}
               onClick={() => {
-                document.querySelector(".roll-dice button").disabled = true;
-                document.querySelector(".swim-btn").disabled = false;
+                setRollDiceBtnEnabled(false)
                 roll(true);
-                console.log("onClick");
                 reRender();
               }}>
               {"Click to Roll!"}
             </button>
           </div>
           <div className="container white-bgr">
-            {/* <div className="roll-dice"> */}
             <div className="roll-dice-container">
-              <Die face={die1} />
-              <Die face={die2} />
+              <Die face={die1} rolling={rolling} />
+              <Die face={die2} rolling={rolling} />
             </div>
-            {/* </div> */}
           </div>
           <div className="container">
             <button
-              className="swim-btn"
+              className="swim-btn" disabled={rollDiceBtnEnabled}
               onClick={() => {
-                console.log("onClick2");
-                document.querySelector(".roll-dice button").disabled = false;
-                document.querySelector(".swim-btn").disabled = true;
+                setRollDiceBtnEnabled(true)
                 reRender();
                 checkWinner();
                 checkSeaweedsBubbles();
