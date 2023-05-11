@@ -47,7 +47,8 @@
   width: 100%;
   height: fit-content;
   border-radius: 20px;
-  padding: 15px 15px 0 15px;
+  padding: 15px 15px 15px 15px;
+  margin: 10px 0 0 0;
 }
 
 .div-players {
@@ -287,6 +288,7 @@ table td::before {
   border-radius: 20px;
   padding: 5px;
   border: solid white 2px;
+  display:block;
 }
 
 .swim-btn:hover {
@@ -301,6 +303,8 @@ table td::before {
   flex-flow: column nowrap;
   /* min-height: 100vh; */
   border: none;
+  width: 100%;
+  /* background-color: pink; */
 }
 
 /* Shows each dice in one row */
@@ -315,17 +319,35 @@ table td::before {
 /* Styling roll-dice button */
 .roll-dice button {
   height: fit-content;
-  color: #4B5683;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  width: 100%;
+  line-height: 20px;
+  min-height: 40px;
+  min-width: 300px;
+  color: #4b5683;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   background-color: #F7DA86;
   border-radius: 20px;
   padding: 5px;
+  display:block;
 }
 
 /* Setting hover effect on button */
 .roll-dice button:hover {
   cursor: pointer;
   /* border: none; */
+}
+
+/* Styling roll-dice button */
+.roll-dice button:disabled {
+  opacity: 0;
+  cursor: context-menu;
+  /* display: none; */
+}
+
+/* Setting hover effect on button */
+.roll-dice button:hover:disabled {
+  cursor: context-menu;
 }
 
 .roll-dice-rolling {
@@ -335,4 +357,22 @@ table td::before {
   background-color: #A5ACCD !important;
   border-radius: 20px;
   padding: 5px;
+}
+
+.swim-btn:hover:disabled {
+  /* filter: brightness(100%);
+  background-color: #4b5683;
+  color: white;
+  border: solid white 2px; */
+  cursor: context-menu;
+}
+
+.swim-btn:disabled {
+  /* filter: brightness(100%);
+  background-color: #4b5683;
+  color: white;
+  border: solid white 2px; */
+  opacity: 0;
+  cursor: context-menu;
+  /* display: none; */
 }
