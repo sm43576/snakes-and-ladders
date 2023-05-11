@@ -250,13 +250,35 @@ table td::before {
     width: 20px;
   }
 }
-.dice-btn {
+
+.swim-btn-container {
+  background-repeat: repeat;
+  background-size: contain;
+  border-radius: 20px;
+  border: solid white 2px;
+  margin-top: 20px;
+  margin-left: 15px;
   width: 100%;
-  height: fit-content;
+  line-height: 20px;
+  min-height: 50px;
+}
+
+.swim-btn {
+  width: 100%;
+  line-height: 20px;
+  min-height: 50px;
   color: #4b5683;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  background-color: #f7da86;
+  font-size: 24px;
+  background-color: transparent;
   border-radius: 20px;
   padding: 5px;
+}
+
+.swim-btn:hover {
+    filter: brightness(100%);
+    background-color: white;
+    color: #4b5683;
+    opacity: 60%;
 }
