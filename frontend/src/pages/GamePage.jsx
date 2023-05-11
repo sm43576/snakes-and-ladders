@@ -46,6 +46,7 @@ function GamePage() {
   const [die2, setDie2] = useState("two");
   const [rolling, setRolling] = useState(false);
 
+
   function roll(isHuman) {
     const s1 = Math.floor(Math.random() * sides.length);
     const s2 = Math.floor(Math.random() * sides.length);
@@ -111,29 +112,34 @@ function GamePage() {
     <div className="game-page">
       <div className="game-page-content">
         <div className="div-1">
+          <div className="roll-dice">
+            <button
+              className={handleBtn}
+              onClick={() => {
+                document.querySelector(".roll-dice button").disabled = true;
+                document.querySelector(".swim-btn").disabled = false;
+                roll(true);
+                console.log("onClick");
+                reRender();
+              }}>
+              {rolling ? "Rolling" : "Click to Roll!"}
+            </button>
+          </div>
           <div className="container white-bgr">
-            <div className="roll-dice">
-              <button
-                className={handleBtn}
-                onClick={() => {
-                  roll(true);
-                  console.log("onClick");
-                  reRender();
-                }}>
-                {rolling ? "Rolling" : "Click to Roll!"}
-              </button>
-
+            {/* <div className="roll-dice"> */}
               <div className="roll-dice-container">
                 <Die face={die1} rolling={rolling} />
                 <Die face={die2} rolling={rolling} />
               </div>
-            </div>
+            {/* </div> */}
           </div>
           <div className="container">
             <button
               className="swim-btn"
               onClick={() => {
                 console.log("onClick2");
+                document.querySelector(".roll-dice button").disabled = false;
+                document.querySelector(".swim-btn").disabled = true;
                 reRender();
                 checkWinner();
                 checkSeaweedsBubbles();
