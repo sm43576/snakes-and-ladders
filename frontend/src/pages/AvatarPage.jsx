@@ -43,7 +43,7 @@ function AvatarPage() {
 
   function handleAvatarBtnClick(avatarFileName) {
     setActiveAvatar(avatarFileName);
-    if(currentID + 1 < maxPlayers){ // only enable the next button if the current ID is not the max number of players and an avatar is selected
+    if (currentID + 1 < maxPlayers) { // only enable the next button if the current ID is not the max number of players and an avatar is selected
       setNextBtnState(true);
     }
     canPlayersStartGame(true); // Checks if last player has chosen avatar in order to play game
@@ -64,7 +64,7 @@ function AvatarPage() {
       setActiveAvatar("");
     }
   }
-  
+
   // Modifies player's name and avatar in database
   async function editAvatar(currentID, inputName, activeAvatar) {
     const id = players[currentID]["_id"];
@@ -81,7 +81,8 @@ function AvatarPage() {
       }
     }
     return hasAlreadySelected;
-}
+  }
+
   return (
     <div className="avatar-page">
       <img className="bubble-top" src={bubbleCornerTop} />
@@ -95,7 +96,7 @@ function AvatarPage() {
           className="back-btn"
           onClick={() => {
             clearAvatarSelectionAndNameInput();
-            if(currentID > 0){
+            if (currentID > 0) {
               setCurrentID(currentID - 1);
             }
           }}>
@@ -140,35 +141,35 @@ function AvatarPage() {
             </div>
           ))}
         </div>
-      
-      {/* ------ Next button & start game button -----*/}
-      <img className="bubble-bot" src={bubbleCornerBtm} />
-      <NavLink
-        to={"/avatar/" + nextID.toString() + "/" + maxPlayers.toString()}>
-        <button
-          className="next-btn"
-          disabled={!nextPlayerBtnState} 
-          aria-label="nextPlayerAvatarBtn"
-          onClick={() => {
-            editAvatar(currentID, inputName, activeAvatar);
-            clearAvatarSelectionAndNameInput();
-            setCurrentID(currentID + 1);
-            setNextBtnState(false); // reset for next page
-          }}>
-        </button>
-      </NavLink>
-      <Link to="/game">
-        <button
-          className="start-game-btn"
-          disabled={!gameBtnState}
-          aria-label="startGameBtn"
-          onClick={() => {
-            editAvatar(currentID, inputName, activeAvatar);
-            setCurrentID(0);
-          }}>
-          {"PLAY GAME"}
-        </button>
-      </Link>
+
+        {/* ------ Next button & start game button -----*/}
+        <img className="bubble-bot" src={bubbleCornerBtm} />
+        <NavLink
+          to={"/avatar/" + nextID.toString() + "/" + maxPlayers.toString()}>
+          <button
+            className="next-btn"
+            disabled={!nextPlayerBtnState}
+            aria-label="nextPlayerAvatarBtn"
+            onClick={() => {
+              editAvatar(currentID, inputName, activeAvatar);
+              clearAvatarSelectionAndNameInput();
+              setCurrentID(currentID + 1);
+              setNextBtnState(false); // reset for next page
+            }}>
+          </button>
+        </NavLink>
+        <Link to="/game">
+          <button
+            className="start-game-btn"
+            disabled={!gameBtnState}
+            aria-label="startGameBtn"
+            onClick={() => {
+              editAvatar(currentID, inputName, activeAvatar);
+              setCurrentID(0);
+            }}>
+            {"PLAY GAME"}
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -1,48 +1,35 @@
 import "../css/ResultsPage.css"
 import { Link } from "react-router-dom"
+import bubblesBackground from "../assets/bubbles.png"
+import comAvatar from "../assets/selectable_avatars/avatar_com.png" //placeholder
+import seaweed from "../assets/results_seaweed.gif"
 
 import seaweedSound from "../music/whistle-down.mp3";
 import bubbleSound from "../music/soap-bubbles-pop.mp3";
 import resultSound from "../music/tadaa.mp3";
 
 function ResultsPage() {
-
   return (
     <div className="results-page">
-      <h1 className="heading">Results</h1>
+    
       <audio id="player" src={resultSound} autoPlay></audio>
-
-
-      <div className="div2">
-        <div className="first">
-          <div className="rectangle1">
-            <p className="first-text">1st</p>
-          </div>
-          <div className="avatar1"></div>
+      <img className="bubbles-animation" src={bubblesBackground}/>
+        
+      <div className="results-content">
+        <div className="winner-player-image-div">
+          <img className="winner-player-image" src={comAvatar}> 
+          </img>
         </div>
-        <div className="second">
-          <div className="rectangle2">
-            <p className="second-third-text">2nd</p>
-          </div>
-          <div className="avatar2"></div>
-        </div>
-        <div className="third">
-          <div className="rectangle3">
-            <p className="second-third-text">3rd</p>
-          </div>
-          <div className="avatar3"></div>
-        </div>
-        <div className="button-position">
-
-          <Link to="/" >
-            <button className="home-button">{'>'}</button>
-          </Link>
-
+        <img className="seaweed" src={seaweed} />
+        <div className="podium">
+          <h1 className="winner-tag">Winner</h1>
+          <h2 className="winner-player-tag">Player</h2>
         </div>
       </div>
 
-
-
+      <Link to="/" >
+        <button className="next-btn"></button>
+      </Link>
     </div>
   )
 }
