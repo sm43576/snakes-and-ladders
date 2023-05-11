@@ -49,11 +49,23 @@ function AppContextProvider({ children }) {
     return playerResponse.data;
   }
 
-
   async function removePlayer(id) {
     const playerResponse = await axios.delete(
-      `${API_BASE_URL}/player/${id}`,
+      `${API_BASE_URL}/player/${id}`
       // playerToEdit
+    );
+    refreshPlayers();
+    return playerResponse.data;
+  }
+
+  async function movePlayer(id, newPlacement) {
+    const playerToMove = {
+      placement: newPlacement,
+    };
+
+    const playerResponse = await axios.put(
+      `${API_BASE_URL}/player/${id}`,
+      playerToMove
     );
     refreshPlayers();
     return playerResponse.data;
@@ -71,6 +83,7 @@ function AppContextProvider({ children }) {
     addPlayer,
     editPlayer,
     removePlayer,
+    movePlayer,
     currentID,
     setCurrentID,
     nextID,
