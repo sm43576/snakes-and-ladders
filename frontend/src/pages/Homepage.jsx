@@ -4,11 +4,7 @@ import { useContext } from "react";
 import { AppContext } from "../AppContextProvider";
 
 function HomePage() {
-
-  const {
-    players,
-    removePlayer,
-  } = useContext(AppContext);
+  const { players, removePlayer } = useContext(AppContext);
 
   // Removes all existing players from the database
   async function clearDatabase() {
@@ -20,13 +16,15 @@ function HomePage() {
 
   return (
     <div className="home-page">
-      <h1 className="title">Snakes and Ladders</h1>
+      <h1 className="title">Seaweed and Bubbles</h1>
       <Link to="/players">
         <button
           className="button-start"
           aria-label="button-start"
           onClick={() => clearDatabase()}
-        >PLAY</button>
+        >
+          PLAY
+        </button>
       </Link>
     </div>
   );
