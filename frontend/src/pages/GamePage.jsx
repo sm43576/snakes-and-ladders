@@ -12,10 +12,9 @@ import TutorialPopUp from "./TutorialPopUp";
 import BackToHomePopUp from "./BackToHomePopUp";
 import bgm from "../music/baby-shark-bgm.mp3";
 
-
 function GamePage() {
   document.body.style.backgroundColor = "#A5ACCD";
-  
+
   library.add(fas);
 
   const {
@@ -35,7 +34,8 @@ function GamePage() {
 
   const button = document.querySelector(".sound");
   const audioMute = () => {
-    document.getElementById("player").muted = !document.getElementById("player").muted;
+    document.getElementById("player").muted =
+      !document.getElementById("player").muted;
     button.classList.toggle("active");
   };
 
@@ -85,12 +85,14 @@ function GamePage() {
     for (let i = 0; i < seaweeds.length; i++) {
       if (players[currentID]["placement"] == seaweeds[i][0]) {
         movePlayer(players[currentID]["_id"], seaweeds[i][1]);
+        document.getElementById("seaweed-pop-up").style.display = "block";
       }
     }
 
     for (let i = 0; i < bubbles.length; i++) {
       if (players[currentID]["placement"] == bubbles[i][0]) {
         movePlayer(players[currentID]["_id"], bubbles[i][1]);
+        document.getElementById("bubbles-pop-up").style.display = "block";
       }
     }
   }
@@ -105,9 +107,12 @@ function GamePage() {
     setRollCount(rollCount + 1); // Use functional form of setRollCount
   }
 
+  function closePopUps() {
+    document.getElementById("seaweed-pop-up").style.display = "none";
+    document.getElementById("bubbles-pop-up").style.display = "none";
+  }
   const handleBtn = rolling ? "roll-dice-rolling" : "";
 
-  
   return (
     <div className="game-page">
       <div className="game-page-content">
@@ -142,9 +147,10 @@ function GamePage() {
                 setCurrentID((current) =>
                   current + 1 >= players.length ? 0 : current + 1
                 );
-                setNextID((next) => (next + 1 >= players.length ? 0 : next + 1));
-              }}
-            >
+                setNextID((next) =>
+                  next + 1 >= players.length ? 0 : next + 1
+                );
+              }}>
               Swim!
             </button>
           </div>
@@ -213,15 +219,36 @@ function GamePage() {
           </Link>
         </div>
       </div>
-      
-      <div className="bubbles-seaweed-pop-up">
-        <p>YAY You float up the bubbles!</p>
-        <button className="continue-button"> CONTINUE </button>
+
+      {/* Seaweed Pop Up */}
+      <div id="seaweed-pop-up" className="seaweed-pop-up">
+        <p>OOPS You slide down the seaweed!</p>
+        <button
+          className="continue-button"
+          onClick={() => {
+            closePopUps();
+            reRender();
+          }}>
+          {" "}
+          CONTINUE{" "}
+        </button>
       </div>
 
+      {/* Bubbles Pop Up */}
+      <div id="bubbles-pop-up" className="bubbles-pop-up">
+        <p>YAY You float up the bubbles!</p>
+        <button
+          className="continue-button"
+          onClick={() => {
+            closePopUps();
+            reRender();
+          }}>
+          {" "}
+          CONTINUE{" "}
+        </button>
+      </div>
     </div>
   );
-  
 }
 
 export default GamePage;

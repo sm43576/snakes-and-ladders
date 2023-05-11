@@ -8,8 +8,7 @@
 }
 
 .game-page-content {
-    display: flex;
-
+  display: flex;
 }
 
 .div-1 {
@@ -290,10 +289,10 @@ table td::before {
 }
 
 .swim-btn:hover {
-    filter: brightness(100%);
-    background-color: #4b5683;
-    color: white;
-    border: solid white 2px;
+  filter: brightness(100%);
+  background-color: #4b5683;
+  color: white;
+  border: solid white 2px;
 }
 
 .roll-dice {
@@ -315,9 +314,10 @@ table td::before {
 /* Styling roll-dice button */
 .roll-dice button {
   height: fit-content;
-  color: #4B5683;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background-color: #F7DA86;
+  color: #4b5683;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-color: #f7da86;
   border-radius: 20px;
   padding: 5px;
 }
@@ -330,23 +330,28 @@ table td::before {
 
 .roll-dice-rolling {
   height: fit-content;
-  color: #4B5683;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background-color: #A5ACCD !important;
+  color: #4b5683;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-color: #a5accd !important;
   border-radius: 20px;
   padding: 5px;
 }
 
-
-
 /* BUBBLES/SEAWEED POP UP */
-.bubbles-seaweed-pop-up {
+.bubbles-pop-up,
+.seaweed-pop-up {
   position: absolute;
   width: 80vw;
   background-color: black;
   border-radius: 20px;
   padding: 20px;
+  display: none;
 }
+
+/* .none {
+  display: none;
+} */
 
 .continue-button {
   border-radius: 50px;
