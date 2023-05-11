@@ -150,55 +150,43 @@ function GamePage() {
               </div>
             </div>
           </div>
-          <div className="container">
-            <button
-              className="dice-btn"
-              onClick={() => {
-                console.log("onClick2");
-                reRender();
-                checkSeaweedsBubbles();
-                checkCom();
-                setCurrentID((current) =>
-                  current + 1 >= players.length ? 0 : current + 1
-                );
-                setNextID((next) => (next + 1 >= players.length ? 0 : next + 1));
-              }}></button>
-          </div>
-
-          <div className="container">
-            <button
-              className="swim-btn"
-              onClick={() => {
-                console.log("onClick2");
-                reRender();
-                checkWinner();
-                checkSeaweedsBubbles();
-                checkCom();
-                setCurrentID((current) =>
-                  current + 1 >= players.length ? 0 : current + 1
-                );
-                setNextID((next) => (next + 1 >= players.length ? 0 : next + 1));
-              }}></button>
-          </div>
-          <div className="container">
-            <p className="current-player-tag">
-              Current Player: {players[currentID]["name"]}
-            </p>
-            <div className="div-players">
-              <div className="current-player">
-                <img
-                  className="current-player-image"
-                  src={`/src/assets/selectable_avatars/${players[currentID]["image"]}`}
-                  alt="Current Player"
-                />
-              </div>
-              <div className="next-player">
-                <img
-                  className="next-player-image"
-                  src={`/src/assets/selectable_avatars/${players[nextID]["image"]}`}
-                  alt="Next Player"
-                />
-              </div>
+        </div>
+        <div className="container">
+          <button
+            className="swim-btn"
+            onClick={() => {
+              console.log("onClick2");
+              reRender();
+              checkWinner();
+              checkSeaweedsBubbles();
+              checkCom();
+              setCurrentID((current) =>
+                current + 1 >= players.length ? 0 : current + 1
+              );
+              setNextID((next) => (next + 1 >= players.length ? 0 : next + 1));
+            }}
+          >
+            Swim!
+          </button>
+        </div>
+        <div className="container">
+          <p className="current-player-tag">
+            Current Player: {players[currentID]["name"]}
+          </p>
+          <div className="div-players">
+            <div className="current-player">
+              <img
+                className="current-player-image"
+                src={`/src/assets/selectable_avatars/${players[currentID]["image"]}`}
+                alt="Current Player"
+              />
+            </div>
+            <div className="next-player">
+              <img
+                className="next-player-image"
+                src={`/src/assets/selectable_avatars/${players[nextID]["image"]}`}
+                alt="Next Player"
+              />
             </div>
           </div>
         </div>
