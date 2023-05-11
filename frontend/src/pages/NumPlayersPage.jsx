@@ -16,6 +16,7 @@ function NumPlayersPage() {
     addPlayer,
   } = useContext(AppContext);
 
+  
   // Increases/decrease number of players accordingly - ensures total number of players (including COM) is max 6
   function handlePlayerCount(string) {
     if (string == ">" && maxPlayers + maxCommies != 6) setMaxPlayers(maxPlayers + 1);
@@ -47,7 +48,8 @@ function NumPlayersPage() {
       {/* ------ Back Button ------ */}
       <img className="bubble-top" src={bubbleCornerTop} />
       <Link to="/">
-        <button className="back-btn">{"<"}</button>
+        <button className="back-btn">
+        </button>
       </Link>
 
       <div className="bubbles-div">
@@ -98,7 +100,6 @@ function NumPlayersPage() {
             handleAddPlayer();
             setCurrentID(0);
           }}>
-          {">"}
         </button>
       </NavLink>
     </div>
