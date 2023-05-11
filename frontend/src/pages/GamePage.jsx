@@ -1,5 +1,5 @@
 import "../css/GamePage.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AppContext } from "../AppContextProvider";
 
@@ -16,6 +16,8 @@ import bubbleSound from "../music/soap-bubbles-pop.mp3";
 
 import bubblesBackground from "../assets/bubbles.png";
 import seaweedBackground from "../assets/seaweed_popup.png";
+import ResultsPage from "./ResultsPage";
+import axios from "axios";
 
 function GamePage() {
   document.body.style.backgroundColor = "#A5ACCD";
@@ -31,9 +33,11 @@ function GamePage() {
     movePlayer,
     seaweeds,
     bubbles,
+    goToResults,
   } = useContext(AppContext);
 
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(true);
+  const [showResultsPopup, setShowResultsPopup] = useState(false);
   const [backToHomeButtonPopUp, setBackToHomeButtonPopUp] = useState(false);
   const [rollCount, setRollCount] = useState(0); // New state variable
 
@@ -50,6 +54,7 @@ function GamePage() {
   const [die1, setDie1] = useState("one");
   const [die2, setDie2] = useState("two");
 
+  const navigate = useNavigate(); // Use the useNavigate hook
 
   function roll(isHuman) {
     const s1 = Math.floor(Math.random() * sides.length);
@@ -106,9 +111,11 @@ function GamePage() {
     }
   }
 
-  async function checkWinner() {
+  function checkWinner() {
     if (players[currentID]["placement"] >= 100) {
-      <TODO>RESULTS</TODO>;
+      setTimeout(() => {
+        navigate("/results"); // Navigate to the results page
+      }, 2000);
     }
   }
 
@@ -152,10 +159,10 @@ function GamePage() {
           </div>
           <div className="container white-bgr">
             {/* <div className="roll-dice"> */}
-              <div className="roll-dice-container">
-                <Die face={die1} />
-                <Die face={die2} />
-              </div>
+            <div className="roll-dice-container">
+              <Die face={die1} />
+              <Die face={die2} />
+            </div>
             {/* </div> */}
           </div>
           <div className="container">
@@ -239,9 +246,10 @@ function GamePage() {
             />
           </div>
 
-          <Link to="/results">
-            <button className="btn">R</button>
-          </Link>
+          {/* <ResultsPage
+            trigger={showResultsPopup}
+            setTrigger={setShowResultsPopup}
+          /> */}
         </div>
       </div>
 
