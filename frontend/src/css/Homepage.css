@@ -77,15 +77,36 @@
 
 .button-start {
     position: relative;
-    height: '75px';
-    width: '150px';
+    display: inline-block; /* Change display property to inline-block */
+    align-self: center;
+    height: 75px;
+    width: 150px;
     border-radius: 50px;
     font-size: 30px;
     background-color: white;
     border: 1px solid #4B5683;
     color: #4B5683;
     z-index: 2;
+    animation: button-animation 4s infinite;
 }
+
+@keyframes button-animation {
+    0% {
+      transform: translateY(20%);
+    }
+    25% {
+      transform: translateX(50%);
+    }
+    50% {
+      transform: translateY(-50%);
+    }
+    75% {
+        transform: translateX(-50%);
+    }
+    100% {
+    transform: translateY(20%);
+    }
+  }
 
 .button-start:hover {
     background-color: #A5ACCD;

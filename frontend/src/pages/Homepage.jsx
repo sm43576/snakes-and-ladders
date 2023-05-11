@@ -9,10 +9,10 @@ function HomePage() {
   const { players, removePlayer } = useContext(AppContext);
 
  const waveoptions= {
-    height: 80,
+    height: 50,
     amplitude: 40,
     speed: 0.2,
-    points: 12
+    points: 18
   }
 
   const waveoptions2= {
@@ -22,10 +22,10 @@ function HomePage() {
     points: 18
   }
   const waveoptions3= {
-    height: 40,
-    amplitude: 30,
-    speed: 0.16,
-    points: 22
+    height: 30,
+    amplitude: 40,
+    speed: 0.2,
+    points: 18
   }
 
 
@@ -40,17 +40,15 @@ function HomePage() {
   return (
     <div className="home-page">
       <h1 className="title">Seaweed and Bubbles</h1>
-      <Link to="/players">
-  
-        <button
-          className="button-start"
-          aria-label="button-start"
-          onClick={() => clearDatabase()}
-        >
-          PLAY
-        </button>
-      </Link>
-
+      <button
+        className="button-start"
+        aria-label="button-start"
+        onClick={() => clearDatabase()}
+      >
+        <Link to="/players">
+        PLAY
+        </Link>
+      </button>
       <Wave 
         className="layer1"
         fill='#99A0C4'
@@ -86,8 +84,8 @@ function HomePage() {
         className="layer6"
         fill='#F6E1A7'
         paused={false}
-        options={waveoptions2}/>
-        </div>
+        options={waveoptions3}/>
+    </div>
 
   );
 }
