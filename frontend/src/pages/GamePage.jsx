@@ -14,6 +14,8 @@ import bgm from "../music/baby-shark-bgm.mp3";
 
 
 function GamePage() {
+  document.body.style.backgroundColor = "#A5ACCD";
+  
   library.add(fas);
 
   const {
@@ -79,29 +81,6 @@ function GamePage() {
 
   async function checkSeaweedsBubbles() {
     console.log("checkSeaweedsBubbles: " + players[currentID]["placement"]);
-    let seaweedsAndBubblesPositions = [
-      [16, 6],
-      [49, 11],
-      [62, 19],
-      [87, 24],
-      [47, 26],
-      [56, 53],
-      [64, 60],
-      [93, 73],
-      [95, 75],
-      [98, 78],
-      [2, 38],
-      [4, 14],
-      [9, 31],
-      [28, 76],
-      [21, 42],
-      [36, 44],
-      [51, 67],
-      [71, 91],
-      [80, 82],
-    ];
-    
-//     reRender();
 
     for (let i = 0; i < seaweeds.length; i++) {
       if (players[currentID]["placement"] == seaweeds[i][0]) {
@@ -150,43 +129,43 @@ function GamePage() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="container">
-          <button
-            className="swim-btn"
-            onClick={() => {
-              console.log("onClick2");
-              reRender();
-              checkWinner();
-              checkSeaweedsBubbles();
-              checkCom();
-              setCurrentID((current) =>
-                current + 1 >= players.length ? 0 : current + 1
-              );
-              setNextID((next) => (next + 1 >= players.length ? 0 : next + 1));
-            }}
-          >
-            Swim!
-          </button>
-        </div>
-        <div className="container">
-          <p className="current-player-tag">
-            Current Player: {players[currentID]["name"]}
-          </p>
-          <div className="div-players">
-            <div className="current-player">
-              <img
-                className="current-player-image"
-                src={`/src/assets/selectable_avatars/${players[currentID]["image"]}`}
-                alt="Current Player"
-              />
-            </div>
-            <div className="next-player">
-              <img
-                className="next-player-image"
-                src={`/src/assets/selectable_avatars/${players[nextID]["image"]}`}
-                alt="Next Player"
-              />
+          <div className="container">
+            <button
+              className="swim-btn"
+              onClick={() => {
+                console.log("onClick2");
+                reRender();
+                checkWinner();
+                checkSeaweedsBubbles();
+                checkCom();
+                setCurrentID((current) =>
+                  current + 1 >= players.length ? 0 : current + 1
+                );
+                setNextID((next) => (next + 1 >= players.length ? 0 : next + 1));
+              }}
+            >
+              Swim!
+            </button>
+          </div>
+          <div className="container">
+            <p className="current-player-tag">
+              Current Player: {players[currentID]["name"]}
+            </p>
+            <div className="div-players">
+              <div className="current-player">
+                <img
+                  className="current-player-image"
+                  src={`/src/assets/selectable_avatars/${players[currentID]["image"]}`}
+                  alt="Current Player"
+                />
+              </div>
+              <div className="next-player">
+                <img
+                  className="next-player-image"
+                  src={`/src/assets/selectable_avatars/${players[nextID]["image"]}`}
+                  alt="Next Player"
+                />
+              </div>
             </div>
           </div>
         </div>
