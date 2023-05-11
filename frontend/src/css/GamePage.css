@@ -270,22 +270,19 @@ table td::before {
   background-image: url(../assets/Bubble2.png);
   width: 100%;
   line-height: 20px;
-  min-height: 50px;
-  /* color: #4b5683; */
-  background-color:#4b5683;
-    color: white;
+  min-height: 40px;
+  color: #4b5683;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  /* background-color: transparent; */
+  background-color: transparent;
   border-radius: 20px;
   padding: 5px;
   border: solid white 2px;
-  margin-top: 10px;
 }
 
 .swim-btn:hover {
     filter: brightness(100%);
-    background-color:transparent;
-    color: #4b5683;
+    background-color: #4b5683;
+    color: white;
     border: solid white 2px;
 }
