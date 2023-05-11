@@ -145,7 +145,8 @@ function GamePage() {
                 roll(true);
                 console.log("onClick");
                 reRender();
-              }}>
+              }}
+            >
               {rolling ? "Rolling" : "Click to Roll!"}
             </button>
 
@@ -155,9 +156,14 @@ function GamePage() {
             </div>
           </div>
         </div>
-        <div className="container">
+        <div
+          className="swim-btn-container"
+          style={{
+            backgroundImage: `url(/src/assets/selectable_avatars/${players[currentID]["image"]})`,
+          }}
+        >
           <button
-            className="dice-btn"
+            className="swim-btn"
             onClick={() => {
               console.log("onClick2");
               reRender();
@@ -167,7 +173,10 @@ function GamePage() {
                 current + 1 >= players.length ? 0 : current + 1
               );
               setNextID((next) => (next + 1 >= players.length ? 0 : next + 1));
-            }}></button>
+            }}
+          >
+            Swim!
+          </button>
         </div>
         <div className="container">
           <p className="current-player-tag">
@@ -214,7 +223,8 @@ function GamePage() {
             <button
               id="sound-button"
               className="pop-up-button purple-light-bgr sound btn"
-              onClick={audioMute}></button>
+              onClick={audioMute}
+            ></button>
           </div>
         </div>
 
