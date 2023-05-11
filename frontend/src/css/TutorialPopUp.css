@@ -122,7 +122,7 @@
     
     .popup-inner {
         width: calc(100% - 350px);
-        height: calc(100vh - 105px);
+        height: calc(110vh - 120px);
     }
 
     .tutorial-popup h1 {
