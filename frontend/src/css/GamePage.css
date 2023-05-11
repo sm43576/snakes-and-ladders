@@ -274,7 +274,7 @@ table td::before {
   border-radius: 20px;
   padding: 5px;
   border: solid white 2px;
-  display:block;
+  display: block;
 }
 
 .swim-btn:hover {
@@ -311,10 +311,10 @@ table td::before {
   color: #4b5683;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  background-color: #F7DA86;
+  background-color: #f7da86;
   border-radius: 20px;
   padding: 5px;
-  display:block;
+  display: block;
 }
 
 /* Setting hover effect on button */
@@ -558,6 +558,7 @@ table td::before {
   to {
     transform: translate3d(0, 100%, 0);
   }
+}
 
 .swim-btn:hover:disabled {
   cursor: context-menu;
