@@ -19,8 +19,16 @@ function GamePage() {
 
   library.add(fas);
 
-  const { currentID, nextID, players, setCurrentID, setNextID, movePlayer } =
-    useContext(AppContext);
+  const {
+    currentID,
+    nextID,
+    players,
+    setCurrentID,
+    setNextID,
+    movePlayer,
+    seaweeds,
+    bubbles,
+  } = useContext(AppContext);
 
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(true);
   const [settingsButtonPopup, setSettingsButtonPopup] = useState(false);
@@ -89,42 +97,23 @@ function GamePage() {
   }
 
   async function checkSeaweedsBubbles() {
-    console.log("checkSeaweedsBubbles: " + players[currentID]["placement"]);
-    let seaweedsAndBubblesPositions = [
-      [16, 6],
-      [49, 11],
-      [62, 19],
-      [87, 24],
-      [47, 26],
-      [56, 53],
-      [64, 60],
-      [93, 73],
-      [95, 75],
-      [98, 78],
-      [2, 38],
-      [4, 14],
-      [9, 31],
-      [28, 76],
-      [21, 42],
-      [36, 44],
-      [51, 67],
-      [71, 91],
-      [80, 82],
-    ];
-
-    for (let i = 0; i < seaweedsAndBubblesPositions.length; i++) {
-      if (
-        players[currentID]["placement"] == seaweedsAndBubblesPositions[i][0]
-      ) {
-        console.log("seaweed bubbl: " + seaweedsAndBubblesPositions[i][0]);
-        movePlayer(
-          players[currentID]["_id"],
-          seaweedsAndBubblesPositions[i][1]
-        );
+    for (let i = 0; i < seaweeds.length; i++) {
+      if (players[currentID]["placement"] == seaweeds[i][0]) {
+        movePlayer(players[currentID]["_id"], seaweeds[i][1]);
       }
     }
-    console.log("checkSeaweedAndBubbles");
-    reRender();
+
+    for (let i = 0; i < bubbles.length; i++) {
+      if (players[currentID]["placement"] == bubbles[i][0]) {
+        movePlayer(players[currentID]["_id"], bubbles[i][1]);
+      }
+    }
+  }
+
+  async function checkWinner() {
+    if (players[currentID]["placement"] >= 100) {
+      <TODO>RESULTS</TODO>;
+    }
   }
 
   async function reRender() {
@@ -157,10 +146,11 @@ function GamePage() {
         </div>
         <div className="container">
           <button
-            className="dice-btn"
+            className="swim-btn"
             onClick={() => {
               console.log("onClick2");
               reRender();
+              checkWinner();
               checkSeaweedsBubbles();
               checkCom();
               setCurrentID((current) =>
