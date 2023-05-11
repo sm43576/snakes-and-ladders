@@ -77,6 +77,43 @@ function GamePage() {
     }
   }
 
+  async function checkSeaweedsBubbles() {
+    console.log("checkSeaweedsBubbles: " + players[currentID]["placement"]);
+    let seaweedsAndBubblesPositions = [
+      [16, 6],
+      [49, 11],
+      [62, 19],
+      [87, 24],
+      [47, 26],
+      [56, 53],
+      [64, 60],
+      [93, 73],
+      [95, 75],
+      [98, 78],
+      [2, 38],
+      [4, 14],
+      [9, 31],
+      [28, 76],
+      [21, 42],
+      [36, 44],
+      [51, 67],
+      [71, 91],
+      [80, 82],
+    ];
+
+    for (let i = 0; i < seaweedsAndBubblesPositions.length; i++) {
+      if (
+        players[currentID]["placement"] == seaweedsAndBubblesPositions[i][0]
+      ) {
+        console.log("seaweed bubbl: " + seaweedsAndBubblesPositions[i][0]);
+        movePlayer(
+          players[currentID]["_id"],
+          seaweedsAndBubblesPositions[i][1]
+        );
+      }
+    }
+  }
+
   const handleBtn = rolling ? "RollDice-rolling" : "";
 
   return (
@@ -104,6 +141,7 @@ function GamePage() {
             className="dice-btn"
             onClick={() => {
               setRollCount(rollCount + 1); // Use functional form of setRollCount
+              checkSeaweedsBubbles();
               setCurrentID((current) =>
                 current + 1 >= players.length ? 0 : current + 1
               );
