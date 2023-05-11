@@ -111,16 +111,7 @@ function GamePage() {
 
   function checkWinner() {
     if (players[currentID]["placement"] >= 100) {
-      // // setShowResultsPopup(true);
-      // const navigate = useNavigate();
-      // return navigate("/results");
-      // console.log("100");
-      // <ResultsPage />;
-      // goToResults();
-      // history.push("/results");
-      if (players[currentID]["placement"] >= 10) {
-        navigate("/results"); // Navigate to the results page
-      }
+      navigate("/results"); // Navigate to the results page
     }
   }
 
