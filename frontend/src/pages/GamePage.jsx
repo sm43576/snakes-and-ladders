@@ -156,12 +156,7 @@ function GamePage() {
             </div>
           </div>
         </div>
-        <div
-          className="swim-btn-container"
-          // style={{
-          //   backgroundImage: `url(/src/assets/selectable_avatars/${players[currentID]["image"]})`,
-          // }}
-        >
+        <div className="container">
           <button
             className="swim-btn"
             onClick={() => {
