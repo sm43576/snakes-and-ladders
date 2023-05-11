@@ -4,7 +4,7 @@ import { render,screen,fireEvent,getByRole} from '@testing-library/react';
 import { MemoryRouter, Route, Routes, Router } from 'react-router-dom';
 import { AppContext } from '../AppContextProvider';
 
-import HomePage from '../pages/Homepage';
+import HomePage from "./pages/Homepage";
 import NumPlayersPage from '../pages/NumPlayersPage';
 
 

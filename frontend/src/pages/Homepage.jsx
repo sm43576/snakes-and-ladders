@@ -9,23 +9,23 @@ function HomePage() {
   const { players, removePlayer } = useContext(AppContext);
 
  const waveoptions= {
-    height: 50,
-    amplitude: 30,
-    speed: 0.13,
-    points: 8
+    height: 80,
+    amplitude: 40,
+    speed: 0.2,
+    points: 12
   }
 
   const waveoptions2= {
-    height: 30,
-    amplitude: 20,
-    speed: 0.14,
-    points: 6
+    height: 50,
+    amplitude: 40,
+    speed: 0.2,
+    points: 18
   }
   const waveoptions3= {
-    height: 20,
-    amplitude: 20,
+    height: 40,
+    amplitude: 30,
     speed: 0.16,
-    points: 8
+    points: 22
   }
 
 
@@ -41,6 +41,7 @@ function HomePage() {
     <div className="home-page">
       <h1 className="title">Seaweed and Bubbles</h1>
       <Link to="/players">
+  
         <button
           className="button-start"
           aria-label="button-start"
@@ -66,7 +67,7 @@ function HomePage() {
         className="layer3"
         fill='#BBC3DB'
         paused={false}
-        options={waveoptions3}/>
+        options={waveoptions2}/>
 
       <Wave 
         className="layer4"
@@ -75,12 +76,18 @@ function HomePage() {
         options={waveoptions2}/>
     
 
-    <Wave 
-    className="layer5"
-    fill='#99A0C4'
-    paused={false}
-    options={waveoptions2}/>
-    </div>
+        <Wave 
+        className="layer5"
+        fill='#99A0C4'
+        paused={false}
+        options={waveoptions2}/>
+
+      <Wave 
+        className="layer6"
+        fill='#F6E1A7'
+        paused={false}
+        options={waveoptions2}/>
+        </div>
 
   );
 }
