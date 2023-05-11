@@ -3,13 +3,23 @@
   height: 100vh;
   background-color: #a5accd;
   display: flex;
-  /* padding-bottom: 50px; */
+  justify-content: center;
+  align-items: center;
+}
+
+.game-page-content {
+    display: flex;
+
 }
 
 .div-1 {
   width: 35%;
-  height: fit-content;
+  /* height: fit-content; */
   margin: 50px 50px 50px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .div-2 {
@@ -20,7 +30,7 @@
   display: flex;
   padding: 7px;
   justify-content: center;
-  background-image: url("../assets/board_3.png");
+  background-image: url("../assets/game_board.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -37,13 +47,13 @@
   width: 100%;
   height: fit-content;
   border-radius: 20px;
-  padding: 15px 15px 10px 15px;
+  padding: 15px 15px 0 15px;
 }
 
 .div-players {
   height: fit-content;
   width: 100%;
-  margin: 35px 0 15px 0;
+  margin: 35px 0 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -112,7 +122,6 @@ td {
 }
 
 table td {
-  /* border: 1px solid white; */
   height: 100%;
   position: relative;
   box-sizing: border-box;
@@ -257,6 +266,47 @@ table td::before {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   background-color: #f7da86;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.roll-dice {
+  display: flex;
+  flex-flow: column nowrap;
+  /* min-height: 100vh; */
+  border: none;
+}
+
+/* Shows each dice in one row */
+.roll-dice-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border: none;
+  width: 100%;
+}
+
+/* Styling roll-dice button */
+.roll-dice button {
+  height: fit-content;
+  color: #4B5683;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: #F7DA86;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+/* Setting hover effect on button */
+.roll-dice button:hover {
+  cursor: pointer;
+  /* border: none; */
+}
+
+.roll-dice-rolling {
+  height: fit-content;
+  color: #4B5683;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: #A5ACCD !important;
   border-radius: 20px;
   padding: 5px;
 }
