@@ -4,8 +4,6 @@ import bubblesBackground from "../assets/bubbles.png";
 import comAvatar from "../assets/selectable_avatars/avatar_com.png"; //placeholder
 import seaweed from "../assets/results_seaweed.gif";
 
-import seaweedSound from "../music/whistle-down.mp3";
-import bubbleSound from "../music/soap-bubbles-pop.mp3";
 import resultSound from "../music/tadaa.mp3";
 
 function ResultsPage() {
