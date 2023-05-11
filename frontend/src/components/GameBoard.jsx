@@ -9,10 +9,15 @@ function GameBoard() {
     var avatars = [];
 
     for (let i = 0; i < players.length; i++) {
+      console.log("-------BEFORE--------");
       console.log(i + ": " + players[i]["image"]);
+      console.log("NUM " + num);
+      console.log("PLACEMENT " + players[i]["placement"]);
+      console.log("-------AFTER--------");
+
       if (num == players[i]["placement"]) {
         avatars.push(players[i]["image"]);
-        console.log(players[i]["image"]);
+        console.log("INSIDE IF");
       }
     }
 

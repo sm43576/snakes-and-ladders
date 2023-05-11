@@ -54,11 +54,9 @@ function GamePage() {
       setRolling(false);
       // setCurrentID(currentID + 1);
       // setNextID(nextID + 1);
+      step(s1 + 1, s2 + 1);
       checkValidIDs(currentID + 1, nextID + 1);
     }, 1000);
-
-    step(s1 + 1, s2 + 1);
-    setRollCount(rollCount + 1); // Increment rollCount
   }
 
   function checkValidIDs(current, next) {
@@ -76,11 +74,12 @@ function GamePage() {
 
   const handleBtn = rolling ? "RollDice-rolling" : "";
 
-  function step(step1, step2) {
+  async function step(step1, step2) {
     var step = step1 + step2;
     const id = players[currentID]["_id"];
     const para = players[currentID]["placement"] + step;
     movePlayer(id, para);
+    setRollCount(rollCount + 1); // Increment rollCount
   }
 
   return (
@@ -90,6 +89,7 @@ function GamePage() {
           <div className="RollDice">
             <button
               className={handleBtn}
+              // disabled={this.state.rolling}
               onClick={() => {
                 roll();
               }}>
