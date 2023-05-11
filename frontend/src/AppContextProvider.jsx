@@ -59,6 +59,9 @@ function AppContextProvider({ children }) {
   }
 
   async function movePlayer(id, newPlacement) {
+    if (newPlacement > 100) {
+      newPlacement = 100;
+    }
     const playerToMove = {
       placement: newPlacement,
     };
@@ -70,6 +73,31 @@ function AppContextProvider({ children }) {
     refreshPlayers();
     return playerResponse.data;
   }
+
+  const seaweeds = [
+    [16, 6],
+    [49, 11],
+    [62, 19],
+    [87, 24],
+    [47, 26],
+    [56, 53],
+    [64, 60],
+    [93, 73],
+    [95, 75],
+    [98, 78],
+  ];
+
+  const bubbles = [
+    [2, 38],
+    [4, 14],
+    [9, 31],
+    [28, 76],
+    [21, 42],
+    [36, 44],
+    [51, 67],
+    [71, 91],
+    [80, 82],
+  ];
 
   const [currentID, setCurrentID] = useState(0);
   const [nextID, setNextID] = useState(1);
@@ -92,6 +120,8 @@ function AppContextProvider({ children }) {
     setMaxPlayers,
     maxCommies,
     changeCom,
+    seaweeds,
+    bubbles,
   };
 
   // Wraps the given child components in a Provider for the above context.
