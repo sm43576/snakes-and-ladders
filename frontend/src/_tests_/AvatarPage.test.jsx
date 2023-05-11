@@ -1,22 +1,10 @@
 import '@testing-library/jest-dom';
 import { expect, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import axios from 'axios';
-import { AppContext, AppContextProvider } from '../AppContextProvider';
-import MockAdapter from 'axios-mock-adapter';
+import { AppContext} from '../AppContextProvider';
 import { MemoryRouter } from 'react-router-dom';
 import AvatarPage from '../pages/AvatarPage';
 import userEvent from '@testing-library/user-event'
-
-let axiosMock;
-beforeAll(()=>{
-    axiosMock =  new MockAdapter(axios); // mocks http requests
-    
-});
-
-afterEach(()=>{
-    axiosMock.reset(); // To make sure that its in a consistent state for each test run
-});
 
 test('Renders avatar page correctly', ()=>{
     const   player = [{
