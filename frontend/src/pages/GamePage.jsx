@@ -11,11 +11,12 @@ import GameBoard from "../components/GameBoard";
 import TutorialPopUp from "./TutorialPopUp";
 import BackToHomePopUp from "./BackToHomePopUp";
 import bgm from "../music/baby-shark-bgm.mp3";
-
+import bubblesBackground from "../assets/bubbles.png";
+import seaweedBackground from "../assets/seaweed_popup.png";
 
 function GamePage() {
   document.body.style.backgroundColor = "#A5ACCD";
-  
+
   library.add(fas);
 
   const {
@@ -35,7 +36,8 @@ function GamePage() {
 
   const button = document.querySelector(".sound");
   const audioMute = () => {
-    document.getElementById("player").muted = !document.getElementById("player").muted;
+    document.getElementById("player").muted =
+      !document.getElementById("player").muted;
     button.classList.toggle("active");
   };
 
@@ -86,12 +88,18 @@ function GamePage() {
     for (let i = 0; i < seaweeds.length; i++) {
       if (players[currentID]["placement"] == seaweeds[i][0]) {
         movePlayer(players[currentID]["_id"], seaweeds[i][1]);
+        document.getElementById("game-page-content").style.opacity = "50%";
+        document.getElementById("seaweed-pop-up").style.display = "block";
+        document.getElementById("seaweed-animation").style.display = "block";
       }
     }
 
     for (let i = 0; i < bubbles.length; i++) {
       if (players[currentID]["placement"] == bubbles[i][0]) {
         movePlayer(players[currentID]["_id"], bubbles[i][1]);
+        document.getElementById("game-page-content").style.opacity = "50%";
+        document.getElementById("bubbles-pop-up").style.display = "block";
+        document.getElementById("bubbles-animation").style.display = "block";
       }
     }
   }
@@ -106,11 +114,28 @@ function GamePage() {
     setRollCount(rollCount + 1); // Use functional form of setRollCount
   }
 
+  function closePopUps() {
+    document.getElementById("game-page-content").style.opacity = "100%";
+    document.getElementById("seaweed-pop-up").style.display = "none";
+    document.getElementById("bubbles-pop-up").style.display = "none";
+    document.getElementById("seaweed-animation").style.display = "none";
+    document.getElementById("bubbles-animation").style.display = "none";
+  }
   const handleBtn = rolling ? "roll-dice-rolling" : "";
 
   return (
     <div className="game-page">
-      <div className="game-page-content">
+      <img
+        id="bubbles-animation"
+        className="bubbles-popup-animation"
+        src={bubblesBackground}
+      />
+      <img
+        id="seaweed-animation"
+        className="seaweed-popup-animation"
+        src={seaweedBackground}
+      />
+      <div id="game-page-content" className="game-page-content">
         <div className="div-1">
           <div className="roll-dice">
             <button
@@ -147,9 +172,10 @@ function GamePage() {
                 setCurrentID((current) =>
                   current + 1 >= players.length ? 0 : current + 1
                 );
-                setNextID((next) => (next + 1 >= players.length ? 0 : next + 1));
-              }}
-            >
+                setNextID((next) =>
+                  next + 1 >= players.length ? 0 : next + 1
+                );
+              }}>
               Swim!
             </button>
           </div>
@@ -216,6 +242,38 @@ function GamePage() {
           <Link to="/results">
             <button className="btn">R</button>
           </Link>
+        </div>
+      </div>
+
+      {/* Seaweed Pop Up */}
+      <div id="seaweed-pop-up" className="seaweed-bubbles-pop-up">
+        <div className="seaweed-bubbles-pop-up-inner">
+          <p>{`Slide down to ${players[nextID]["placement"]} :(`}</p>
+          <button
+            className="continue-button"
+            onClick={() => {
+              closePopUps();
+              reRender();
+            }}>
+            {" "}
+            CONTINUE{" "}
+          </button>
+        </div>
+      </div>
+
+      {/* Bubbles Pop Up */}
+      <div id="bubbles-pop-up" className="seaweed-bubbles-pop-up">
+        <div className="seaweed-bubbles-pop-up-inner">
+          <p>{`Float up to ${players[nextID]["placement"]} !`}</p>
+          <button
+            className="continue-button"
+            onClick={() => {
+              closePopUps();
+              reRender();
+            }}>
+            {" "}
+            CONTINUE{" "}
+          </button>
         </div>
       </div>
     </div>
