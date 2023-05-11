@@ -51,10 +51,6 @@ function GamePage() {
 
     setTimeout(() => {
       setRolling(false);
-      setCurrentID((current) =>
-        current + 1 >= players.length ? 0 : current + 1
-      );
-      setNextID((next) => (next + 1 >= players.length ? 0 : next + 1));
       step(s1 + 1, s2 + 1);
     }, 1000);
   }
@@ -69,6 +65,16 @@ function GamePage() {
     movePlayer(id, para);
     console.log("placement in players data " + players[currentID]["placement"]);
     console.log("-------");
+  }
+
+  async function checkCom() {
+    if (!players[nextID]["isHuman"]) {
+      setRollCount(rollCount + 1); // Use functional form of setRollCount
+      setCurrentID((current) =>
+        current + 1 >= players.length ? 0 : current + 1
+      );
+      roll();
+    }
   }
 
   const handleBtn = rolling ? "RollDice-rolling" : "";
@@ -98,6 +104,11 @@ function GamePage() {
             className="dice-btn"
             onClick={() => {
               setRollCount(rollCount + 1); // Use functional form of setRollCount
+              setCurrentID((current) =>
+                current + 1 >= players.length ? 0 : current + 1
+              );
+              setNextID((next) => (next + 1 >= players.length ? 0 : next + 1));
+              checkCom();
             }}></button>
         </div>
         <div className="container">
