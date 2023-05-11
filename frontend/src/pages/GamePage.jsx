@@ -12,6 +12,7 @@ import TutorialPopUp from "./TutorialPopUp";
 import BackToHomePopUp from "./BackToHomePopUp";
 import bgm from "../music/baby-shark-bgm.mp3";
 import seaweedSound from "../music/whistle-down.mp3";
+import bubbleSound from "../music/soap-bubbles-pop.mp3";
 
 import bubblesBackground from "../assets/bubbles.png";
 import seaweedBackground from "../assets/seaweed_popup.png";
@@ -100,6 +101,7 @@ function GamePage() {
     for (let i = 0; i < bubbles.length; i++) {
       if (players[currentID]["placement"] == bubbles[i][0]) {
         movePlayer(players[currentID]["_id"], bubbles[i][1]);
+        new Audio(bubbleSound).play();
         document.getElementById("game-page-content").style.opacity = "50%";
         document.getElementById("bubbles-pop-up").style.display = "block";
         document.getElementById("bubbles-animation").style.display = "block";
