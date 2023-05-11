@@ -5,7 +5,7 @@ import AvatarPage from "./pages/AvatarPage";
 import AvatarLayout from "./components/AvatarLayout";
 import GamePage from "./pages/GamePage";
 import ResultsPage from "./pages/ResultsPage";
-import './App.css'
+import "./App.css";
 
 
 function App() {
@@ -16,19 +16,19 @@ function App() {
       <BrowserRouter>
         {/* <HeaderBar /> s*/}
         <Routes>
-          <Route path="/" element={<HomePage/>}/>
-          <Route path="/players" element={<NumPlayersPage/>}/>
-          
-          <Route path="/avatar" element={<AvatarLayout/>}>
-            <Route path=":currentID/:maxPlayers" element={<AvatarPage/>}/>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/players" element={<NumPlayersPage />} />
+
+          <Route path="/avatar" element={<AvatarLayout />}>
+            <Route path=":currentID/:maxPlayers" element={<AvatarPage />} />
           </Route>
 
-          <Route path="/game" element={<GamePage/>}/>
-          <Route path="/results" element={<ResultsPage/>}/>
+          <Route path="/game" element={<GamePage />} />
+          <Route path="/results" element={<ResultsPage />} />
         </Routes>
       </BrowserRouter>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
