@@ -50,6 +50,7 @@ function GamePage() {
   const [die1, setDie1] = useState("one");
   const [die2, setDie2] = useState("two");
 
+  const [rollDiceBtnEnabled, setRollDiceBtnEnabled] = useState(true);
 
   function roll(isHuman) {
     const s1 = Math.floor(Math.random() * sides.length);
@@ -83,7 +84,6 @@ function GamePage() {
   }
 
   async function checkSeaweedsBubbles() {
-    console.log("checkSeaweedsBubbles: " + players[currentID]["placement"]);
 
     for (let i = 0; i < seaweeds.length; i++) {
       if (players[currentID]["placement"] == seaweeds[i][0]) {
@@ -139,32 +139,26 @@ function GamePage() {
       <div id="game-page-content" className="game-page-content">
         <div className="div-1">
           <div className="container roll-dice">
-            <button
+            <button disabled={!rollDiceBtnEnabled}
               onClick={() => {
-                document.querySelector(".roll-dice button").disabled = true;
-                document.querySelector(".swim-btn").disabled = false;
+                setRollDiceBtnEnabled(false)
                 roll(true);
-                console.log("onClick");
                 reRender();
               }}>
               {"Click to Roll!"}
             </button>
           </div>
           <div className="container white-bgr">
-            {/* <div className="roll-dice"> */}
               <div className="roll-dice-container">
                 <Die face={die1} />
                 <Die face={die2} />
               </div>
-            {/* </div> */}
           </div>
           <div className="container">
             <button
-              className="swim-btn"
+              className="swim-btn" disabled={rollDiceBtnEnabled}
               onClick={() => {
-                console.log("onClick2");
-                document.querySelector(".roll-dice button").disabled = false;
-                document.querySelector(".swim-btn").disabled = true;
+                setRollDiceBtnEnabled(true)
                 reRender();
                 checkWinner();
                 checkSeaweedsBubbles();
