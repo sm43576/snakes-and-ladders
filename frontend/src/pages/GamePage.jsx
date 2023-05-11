@@ -50,6 +50,7 @@ function GamePage() {
 
     setTimeout(() => {
       setRollCount((prevRollCount) => prevRollCount + 1); // Use functional form of setRollCount
+      
       setRolling(false);
       setCurrentID((current) =>
         current + 1 >= players.length ? 0 : current + 1
@@ -61,9 +62,14 @@ function GamePage() {
 
   async function step(step1, step2) {
     const step = step1 + step2;
+    console.log("-------");
+    console.log("current player: "+players[currentID]["name"]);
     const id = players[currentID]["_id"];
     const para = players[currentID]["placement"] + step;
+    console.log("placement: ", para);
     movePlayer(id, para);
+    console.log("placement in players data "+players[currentID]["placement"]);
+    console.log("-------");
   }
 
   const handleBtn = rolling ? "RollDice-rolling" : "";

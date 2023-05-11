@@ -6,9 +6,9 @@ class GameBoard extends Component {
   componentDidMount() {
     const { players } = this.props; // Access the players prop directly
 
-    console.log("imported players: ");
+    // console.log("imported players: ");
     for (let i = 0; i < players.length; i++) {
-      console.log(players[i]["name"] + ": " + players[i]["placement"]);
+      // console.log(players[i]["name"] + ": " + players[i]["placement"]);
     }
 
     const renderBoardDiv = document.querySelector(".renderBoard");
