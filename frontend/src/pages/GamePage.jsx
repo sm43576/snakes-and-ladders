@@ -82,6 +82,7 @@ function GamePage() {
               className={handleBtn}
               onClick={() => {
                 roll();
+                // setRollCount(rollCount + 1); // Use functional form of setRollCount
               }}>
               {rolling ? "Rolling" : "Click to Roll!"}
             </button>
@@ -96,7 +97,7 @@ function GamePage() {
           <button
             className="dice-btn"
             onClick={() => {
-              setRollCount((prevRollCount) => prevRollCount + 1); // Use functional form of setRollCount
+              setRollCount(rollCount + 1); // Use functional form of setRollCount
             }}></button>
         </div>
         <div className="container">
@@ -123,7 +124,7 @@ function GamePage() {
       </div>
 
       <div className="div-2">
-        <GameBoard key={rollCount} players={players} />
+        <GameBoard key={rollCount} />
       </div>
 
       <div className="div-3">

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { useContext, useEffect } from "react";
 import "../css/GameBoard.css";
 import { AppContext } from "../AppContextProvider";
 
-class GameBoard extends Component {
-  componentDidMount() {
-    const { players } = this.props; // Access the players prop directly
+const GameBoard = () => {
+  const { players } = useContext(AppContext);
 
+  useEffect(() => {
     // console.log("imported players: ");
     for (let i = 0; i < players.length; i++) {
       // console.log(players[i]["name"] + ": " + players[i]["placement"]);
@@ -13,12 +13,12 @@ class GameBoard extends Component {
 
     const renderBoardDiv = document.querySelector(".renderBoard");
     if (renderBoardDiv && renderBoardDiv.children.length === 0) {
-      const table = this.createBoard(players);
+      const table = createBoard(players);
       renderBoardDiv.appendChild(table);
     }
-  }
+  }, [players]);
 
-  createBoard(players) {
+  const createBoard = (players) => {
     const table = document.createElement("table");
     let num = 100;
 
@@ -38,7 +38,7 @@ class GameBoard extends Component {
             num -= 11;
             newRow = false;
           }
-          var avatars = this.matchPlayer(num, players);
+          var avatars = matchPlayer(num, players);
           if (avatars.length > 0) {
             console.log("avatar length > 0");
             var avatar = `url(/src/assets/selectable_avatars/${avatars[0]})`;
@@ -50,7 +50,7 @@ class GameBoard extends Component {
             num -= 9;
             newRow = false;
           }
-          var avatars = this.matchPlayer(num, players);
+          var avatars = matchPlayer(num, players);
           if (avatars.length > 0) {
             console.log("avatar length > 0");
             var avatar = `url(/src/assets/selectable_avatars/${avatars[0]})`;
@@ -67,29 +67,21 @@ class GameBoard extends Component {
     }
 
     return table;
-  }
+  };
 
-  matchPlayer(num, players) {
+  const matchPlayer = (num, players) => {
     var avatars = [];
 
     for (let i = 0; i < players.length; i++) {
-      // console.log("-------BEFORE--------");
-      // console.log(i + ": " + players[i]["image"]);
-      // console.log("NUM " + num);
-      // console.log("PLACEMENT " + players[i]["placement"]);
-      // console.log("-------AFTER--------");
-
       if (num == players[i]["placement"]) {
         avatars.push(players[i]["image"]);
       }
     }
 
     return avatars;
-  }
+  };
 
-  render() {
-    return <div className="renderBoard"></div>;
-  }
-}
+  return <div className="renderBoard"></div>;
+};
 
 export default GameBoard;
