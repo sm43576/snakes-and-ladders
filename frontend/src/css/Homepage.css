@@ -6,13 +6,58 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-image: url( "../assets/waves_background.png");
+
     background-repeat: no-repeat;
     background-size:cover;
     background-position: center top;
+    overflow: hidden;
     background-color: #4B5683;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   
 }
+.title{
+    z-index: 2;
+    
+}
+.layer1{
+
+    width: 120%;
+    height: 400px;
+    transform: translateY(20%);
+    z-index: 3;
+}
+.layer2{
+
+    width: 120%;
+    height: 400px;
+    transform: translateY(-20%);
+    z-index: 4;
+}
+.layer3{
+    width: 120%;
+    height: 400px;
+    transform: translateY(-60%);
+    z-index: 5;
+}
+
+.layer4{
+
+    width: 120%;
+    height: 400px;
+    transform: translateY(-120%);
+    z-index: 5;
+}
+
+  
+
+@keyframes wave {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
 
 .home-page h1 {
     position: relative;
@@ -32,6 +77,7 @@
     background-color: white;
     border: 1px solid #4B5683;
     color: #4B5683;
+    z-index: 2;
 }
 
 .button-start:hover {
