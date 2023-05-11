@@ -422,7 +422,7 @@ table td::before {
   display: none;
   width: 100%;
   animation-name: slide-down;
-  animation-duration: 1s;
+  animation-duration: 1.5s;
   position: absolute;
   bottom: -100%;
   z-index: 1;

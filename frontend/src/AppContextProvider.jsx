@@ -83,7 +83,7 @@ function AppContextProvider({ children }) {
     [56, 53],
     [64, 60],
     [93, 73],
-    [95, 75],
+    [95, 76],
     [98, 78],
   ];
 
