@@ -8,14 +8,14 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #F7DA86;
+    background-color: #4B5683;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .bubbles-animation {
     width: 100%;
     animation-name: float-up;
-    animation-duration: 1s;
+    animation-duration: 2s;
     position: absolute;
     top: -20%;
     z-index: 1;
@@ -55,7 +55,7 @@
 }
 
 .winner-tag {
-    color: #FFFFFF;
+    color: #f7da86;
     font-size: 30px;
     text-align: center;
     margin: 0;
@@ -64,7 +64,7 @@
 }
 
 .winner-player-tag {
-    color: #FFFFFF;
+    color: white;
     font-size: 80px;
     text-align: center;
     text-transform: uppercase;
@@ -77,14 +77,15 @@
     top: 15vh;
     height: 30vh;
     width: 30vh;
-    background-color: white;
-    border: 5px solid #4B5683;
+    background-color: #f7da86;
+    border: 2px solid white;
     border-radius: 50%;
     color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2;
+    box-shadow: -1px -1px 10px 1px white, 1px 1px 10px 1px white;
 }
 
 .winner-player-image {
@@ -95,16 +96,18 @@
     height: 100vh;
     width: 100vh;
     border-radius: 50%;
-    background-color: #7F89B4;
+    background-color: #4B5683;
     position: absolute;
     bottom: -50vh;
     z-index: 1;
+    background-image: url(../assets/Bubble2.png);
+    background-size: cover;
 }
 
 
 .seaweed {
     position: absolute;
-    width: 105vh;
+    width: 110vh;
     bottom: -5%;
     z-index: 2;
 }
