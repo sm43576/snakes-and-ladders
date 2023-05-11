@@ -42,7 +42,7 @@ The game ends when a player lands on 100.
 
 1. Click the Play button.
 2. Select number of human players and number of computer players.
-3. Select icon that you wish to be represented as on the board.
+3. Select avatar that you wish to be represented as on the board.
 4. Roll the dice when your turn comes.
 5. Win.
 
@@ -83,7 +83,7 @@ Frontend Page that handles showing who the winner was. This also handles the cle
 After existing, will take you back to the `HomePage`
 
 7. TutorialPopup
-Frontend Page that appears between 
+Frontend Page that appears before game starts to  introduce the game mechanics, controls and rules to the player. The tutorial popup provides intructions and guidance to how to play the game, so that the player can understand the objectives and how to achieve them. The tutorial popup is accessible as a button on the right hand side of the game page, making it easy for users to find and access.
 
 
 #### Backend
@@ -105,9 +105,9 @@ When routing throughout the pages we utilise `link` and the appropriate page nam
 This project was created by project-group-indigo-impalas consisting of :
 
 Hayoon Seo
-Juwong Jung
+Juwon Jung
 Julie Kim
-Min sun Kim
+Min Sun Kim
 Shou Miyamoto
 Rachel Nataatmadja
 
