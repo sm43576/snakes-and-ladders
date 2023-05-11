@@ -14,7 +14,6 @@ import Die from "../components/Die";
 import "../css/GameBoard.css";
 import "../css/RollDice.css";
 
-
 function GamePage() {
   document.body.style.backgroundColor = "#A5ACCD";
 
@@ -51,8 +50,6 @@ function GamePage() {
     setRolling(true);
 
     setTimeout(() => {
-      setRollCount((prevRollCount) => prevRollCount + 1); // Use functional form of setRollCount
-      
       setRolling(false);
       setCurrentID((current) =>
         current + 1 >= players.length ? 0 : current + 1
@@ -65,12 +62,12 @@ function GamePage() {
   async function step(step1, step2) {
     const step = step1 + step2;
     console.log("-------");
-    console.log("current player: "+players[currentID]["name"]);
+    console.log("current player: " + players[currentID]["name"]);
     const id = players[currentID]["_id"];
     const para = players[currentID]["placement"] + step;
     console.log("placement: ", para);
     movePlayer(id, para);
-    console.log("placement in players data "+players[currentID]["placement"]);
+    console.log("placement in players data " + players[currentID]["placement"]);
     console.log("-------");
   }
 
@@ -96,7 +93,11 @@ function GamePage() {
           </div>
         </div>
         <div className="container">
-          <button className="dice-btn">Swim</button>
+          <button
+            className="dice-btn"
+            onClick={() => {
+              setRollCount((prevRollCount) => prevRollCount + 1); // Use functional form of setRollCount
+            }}></button>
         </div>
         <div className="container">
           <p className="current-player-tag">
@@ -122,7 +123,7 @@ function GamePage() {
       </div>
 
       <div className="div-2">
-        <GameBoard key={rolling} players={players} />
+        <GameBoard key={rollCount} players={players} />
       </div>
 
       <div className="div-3">
