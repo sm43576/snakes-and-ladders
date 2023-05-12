@@ -1,14 +1,10 @@
 import '@testing-library/jest-dom';
 import { expect, test, vi } from 'vitest';
-import { render,screen,fireEvent,getByRole} from '@testing-library/react';
+import { render,screen,fireEvent} from '@testing-library/react';
 import { MemoryRouter, Route, Routes, Router } from 'react-router-dom';
 import { AppContext } from '../AppContextProvider';
-
-import HomePage from "./pages/Homepage";
+import HomePage from '../pages/HomePage';
 import NumPlayersPage from '../pages/NumPlayersPage';
-
-
-
 
 test('test HomePage render/',() => {
   const   player = [{
