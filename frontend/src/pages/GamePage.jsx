@@ -116,8 +116,8 @@ function GamePage() {
 
   function checkWinner() {
     if (players[currentID]["placement"] >= 100) {
+      new Audio(crowdClappingSound).play();
       setTimeout(() => {
-        new Audio(crowdClappingSound).play();
         navigate("/results"); // Navigate to the results page
       }, 2000);
     }
