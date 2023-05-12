@@ -38,7 +38,7 @@ function TutorialPopUp(props) {
 
       <div>
         <img className="bubble-top-left" src={bubbleCornerTop} />
-        <button className="close-btn" onClick={() => props.setTrigger(false)}>
+        <button className="close-btn" aria-label="closeTutorialBtn" onClick={() => props.setTrigger(false)}>
           {/* {'X'} */}
         </button>
       </div>

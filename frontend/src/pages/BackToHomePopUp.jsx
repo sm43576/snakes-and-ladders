@@ -29,13 +29,17 @@ function BackToHomePopUp(props) {
 
                     {/* Resumes game. Exits popup */}
                     <button className="cancel-button"
+                        aria-label="resumeGameBtn"
                         onClick={() => props.setTrigger(false)}>
                         Resume
                     </button>
 
                     {/* Quits game. Users are directed back to home page and all data is removed from database. */}
                     <Link to="/">
-                        <button className="backtohome-button" onClick={() => clearDatabse()}>
+                        <button className="backtohome-button" 
+                        aria-label="quiteGameBtn"
+                        onClick={() => clearDatabse()}
+                        >
                             Quit
                         </button>
                     </Link>
