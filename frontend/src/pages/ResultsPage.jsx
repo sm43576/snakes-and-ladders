@@ -1,10 +1,13 @@
 import "../css/ResultsPage.css";
 import { Link } from "react-router-dom";
 import bubblesBackground from "../assets/bubbles.png";
+import comAvatar from "../assets/selectable_avatars/avatar_com.png"; //placeholder
 import seaweed from "../assets/results_seaweed.gif";
+
 import resultSound from "../music/tadaa.mp3";
 import { AppContext } from "../AppContextProvider";
 import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
 
 function ResultsPage() {
   const { players } = useContext(AppContext);
