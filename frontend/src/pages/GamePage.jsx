@@ -13,6 +13,7 @@ import BackToHomePopUp from "./BackToHomePopUp";
 import bgm from "../music/baby-shark-bgm.mp3";
 import seaweedSound from "../music/whistle-down.mp3";
 import bubbleSound from "../music/soap-bubbles-pop.mp3";
+import crowdClappingSound from "../music/crowd-clapping.mp4";
 import bubblesBackground from "../assets/bubbles.png";
 import seaweedBackground from "../assets/seaweed_popup.png";
 import ResultsPage from "./ResultsPage";
@@ -96,7 +97,7 @@ function GamePage() {
       if (players[currentID]["placement"] == seaweeds[i][0]) {
         movePlayer(players[currentID]["_id"], seaweeds[i][1]);
         new Audio(seaweedSound).play();
-        getElementById("game-page-content").style.opacity = "50%";
+        document.getElementById("game-page-content").style.opacity = "50%";
         document.getElementById("seaweed-pop-up").style.display = "block";
         document.getElementById("seaweed-animation").style.display = "block";
       }
@@ -115,6 +116,7 @@ function GamePage() {
 
   function checkWinner() {
     if (players[currentID]["placement"] >= 100) {
+      new Audio(crowdClappingSound).play();
       setTimeout(() => {
         navigate("/results"); // Navigate to the results page
       }, 2000);
@@ -153,7 +155,6 @@ function GamePage() {
               onClick={() => {
                 setRollDiceBtnEnabled(false)
                 roll(true);
-                reRender();
               }}>
               {"Click to Roll!"}
             </button>
