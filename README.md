@@ -5,6 +5,8 @@ Snakes and ladder is a recreation of the original board game implemented into a 
 
 ## Table of Contents
 1. [Installation](#setup)
+    -[Backend](#backend)
+    -[Frontend](#frontend)
 2. [Documentation](#documentation)
     - [Instructions](#file-structure)
     - [Components](#components)
@@ -51,7 +53,8 @@ The game ends when a player lands on 100.
 2. Select number of human players and number of computer players.
 3. Select the avatar that you wish to be represented as on the board.
 4. Roll the dice when your turn comes.
-5. Reach 100 to win !
+5. Press the swim button to make your avatar move.
+6. Reach 100 to win !
 
 ### Backend
 The backend is connected to [MongoDB](https://www.mongodb.com/), and is written with **Express** and **Mongoose** database driver.
@@ -78,7 +81,7 @@ Frontend Page that handles the amount of players that want to play the game.The 
 Frontend Page that handles showing who the winner was. This also handles the clearing of data from the database as the game is over and the players no longer needed to be stored. After existing, will take you back to the `HomePage`
 
 7. TutorialPopup
-Frontend Page that appears before game starts to  introduce the game mechanics, controls and rules to the player. The tutorial popup provides intructions and guidance to how to play the game, so that the player can understand the objectives and how to achieve them. The tutorial popup is accessible as a button on the right hand side of the game page, making it easy for users to find and access.
+Frontend Page that appears before game starts to  introduce the game mechanics, controls and rules to the player. The tutorial popup provides instructions and guidance to how to play the game, so that the player can understand the objectives and how to achieve them. The tutorial popup is accessible as a button on the right hand side of the game page, making it easy for users to find and access.
 
 ### Routing
 Routing in our game is achieved with the `react-router-dom"` library. The Browse Router 
@@ -92,5 +95,5 @@ This project was designed and created by project-group-indigo-impalas:
 - Juwon Jung
 - Julie Kim
 - Min Sun Kim
-- Shou Miyamoto
 - Rachel Nataatmadja
+- Shou Miyamoto
