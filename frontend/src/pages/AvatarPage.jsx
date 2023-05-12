@@ -98,6 +98,7 @@ function AvatarPage() {
             clearAvatarSelectionAndNameInput();
             if (currentID > 0) {
               setCurrentID(currentID - 1);
+              setInputName(players[currentID-1]['name']);
             }
           }}>
         </button>
