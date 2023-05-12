@@ -16,14 +16,16 @@ function NumPlayersPage() {
     addPlayer,
   } = useContext(AppContext);
 
-  // Increases/decrease number of players accordingly - ensures total number of players (including COM) is max 6
+  // Increases/decrease number of players accordingly
+  // Ensures total number of players (including COM) is max 6
   function handlePlayerCount(string) {
     if (string == ">" && maxPlayers + maxCommies != 6) setMaxPlayers(maxPlayers + 1);
     else if (string == "<" && maxPlayers != 1) setMaxPlayers(maxPlayers - 1);
     console.log("maxPlayers: " + maxPlayers);
   }
 
-  // Increases/decrease number of COM players accordingly - ensures total number of players (including human players) is max 6
+  // Increases/decrease number of COM players accordingly
+  // Ensures total number of players (including human players) is max 6
   function handleComCount(string) {
     if (string == ">" && maxPlayers + maxCommies != 6) changeCom(maxCommies + 1);
     else if (string == "<" && maxCommies != 0) changeCom(maxCommies - 1);
