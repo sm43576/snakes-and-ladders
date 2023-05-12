@@ -5,8 +5,14 @@ import { MemoryRouter, Route, Routes, Router } from 'react-router-dom';
 import { AppContext } from '../AppContextProvider';
 import ResultsPage from '../pages/ResultsPage';
 
+/* Checks that the Result page can 
+  - receive requests from API
+  - Process that the winner is the player with >=100 steps
+  - displays the proper image
+  - displays the proper name
+  - functionality of the page is properly working.
 
-
+*/
 test('AppContextProvider makes GET request to API to render player', ()=>{
     const   player = [{
         name:"Player 1",
@@ -27,7 +33,6 @@ test('AppContextProvider makes GET request to API to render player', ()=>{
 
     const { getByText, queryByText } = render(
 
-        // needs to use initState since removePlayer() is called in this page
         <MemoryRouter initialEntries={['/results']}>
           <AppContext.Provider value={initState}>
             <ResultsPage/>
@@ -35,6 +40,7 @@ test('AppContextProvider makes GET request to API to render player', ()=>{
         </MemoryRouter>
       );
 
+      //Checks that the player who won is player 2
       expect(getByText('Player 2')).toBeInTheDocument();
 
 

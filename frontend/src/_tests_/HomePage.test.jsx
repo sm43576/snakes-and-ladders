@@ -7,6 +7,8 @@ import { AppContext } from '../AppContextProvider';
 import NumPlayersPage from '../pages/NumPlayersPage';
 import HomePage from '../pages/Homepage';
 
+
+//Tests that the homepage is rendered correctly and all necessary text is visible.
 test('test HomePage render/',() => {
   const   player = [{
     name:"Player 1",
@@ -19,12 +21,6 @@ test('test HomePage render/',() => {
       removePlayer: vi.fn()
 };
   const { getByText, queryByText } = render(
-      // <MemoryRouter initialEntries={['/']}>
-      // <Routes>
-      //   <Route path="/" element={<HomePage/>} />
-      // </Routes>
-      // </MemoryRouter>
-      // needs to use initState since removePlayer() is called in this page
       <MemoryRouter initialEntries={['/']}>
         <AppContext.Provider value={initState}>
           <HomePage/>
@@ -38,6 +34,7 @@ test('test HomePage render/',() => {
   expect(queryByText('Play')).not.toBeInTheDocument();
 })
 
+//Tests navigation to the /players route via simulating a button click
 test('clicking button navigates to the specified route', async () => {
     const   player = [{
       name:"Player 1",
@@ -50,13 +47,7 @@ test('clicking button navigates to the specified route', async () => {
         removePlayer: vi.fn()
   };
     
-    const { getByText, queryByText } = render(
-        // <MemoryRouter initialEntries={['/']}>
-        //   <Routes>
-        //     <Route path="/" element={<HomePage/>} />
-        //     <Route path="/players" element={<NumPlayersPage/>} />
-        //   </Routes>
-        // </MemoryRouter>
+    const { getByText} = render(
         <MemoryRouter initialEntries={['/']}>
         <AppContext.Provider value={initState}>
           <HomePage/>
