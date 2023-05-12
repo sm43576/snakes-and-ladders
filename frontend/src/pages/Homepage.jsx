@@ -49,6 +49,7 @@ function HomePage() {
         </button>
       </Link>
 
+
       {/* Waves */}
       <Wave
         className="layer1"

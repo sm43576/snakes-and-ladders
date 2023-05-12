@@ -6,7 +6,7 @@ import NumPlayersPage from '../pages/NumPlayersPage';
 import userEvent from '@testing-library/user-event'
 import { AppContext } from '../AppContextProvider';
 
-
+//Tests that the page can be rendered correctly
 test('test NumPage render', () => {
     const { getByText, queryByText } = render(
       <MemoryRouter initialEntries={['/players']}>
@@ -22,7 +22,10 @@ test('test NumPage render', () => {
     expect(queryByText('About me!')).not.toBeInTheDocument();
 })
 
-//in progress
+/* Checks the increase button value
+  -Shows that the button is working and thus logically all the buttons are, as they use the same code.
+  -Text updates iteratively with the variable that holds player number.
+*/
 test('renders MyComponent for /path', () => {
       const initState = {
         currentID: 0, 

@@ -41,14 +41,13 @@ function AvatarPage() {
   const [activeAvatar, setActiveAvatar] = useState(""); // To control visual indicator for avatar selection
   const [nextPlayerBtnState, setNextBtnState] = useState(false); // To control visual indicator for next avatar selection
   const refNameInput = useRef(null);
-
-  let inputName = "Player " + (currentID + 1); // Default player name
+  const [inputName, setInputName] = useState("Player "+(currentID+1));
 
   // Updates player name if user input custom name
   function handleNameChange(newName) {
     newName.length > 0
-      ? (inputName = newName)
-      : (inputName = "Player " + (currentID + 1));
+      ? (setInputName(newName))
+      : (setInputName("Player " + (currentID + 1)));
   }
 
   // Updates player avatar when user confirms avatar selection
@@ -110,6 +109,7 @@ function AvatarPage() {
             clearAvatarSelectionAndNameInput();
             if (currentID > 0) {
               setCurrentID(currentID - 1);
+              setInputName(players[currentID-1]['name']);
             }
           }}>
         </button>
@@ -118,10 +118,11 @@ function AvatarPage() {
       <div className="avatar-container">
         {/* ------ Headings -----*/}
         <h1 className="heading-title">SELECT AVATAR</h1>
-        <h2 className="heading-subtitle">
+        <h2 className="heading-subtitle" aria-label="nameSubtitle">
           {inputName}
         </h2>
         <input
+          aria-label="nicknameInput"
           className="nickname-input"
           type="text"
           ref={refNameInput}
@@ -164,6 +165,7 @@ function AvatarPage() {
             onClick={() => {
               editAvatar(currentID, inputName, activeAvatar);
               clearAvatarSelectionAndNameInput();
+              setInputName("Player " + (currentID+2)); // reset for next player's default name
               setCurrentID(currentID + 1);
               setNextBtnState(false); // reset for next page
             }}>
