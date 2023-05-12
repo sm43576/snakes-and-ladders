@@ -7,6 +7,7 @@ import Wave from "react-wavify";
 function HomePage() {
   const { players, removePlayer } = useContext(AppContext);
 
+  // Different layers for wave on homepage
   const waveoptions = {
     height: 50,
     amplitude: 40,
@@ -47,7 +48,8 @@ function HomePage() {
           PLAY
         </button>
       </Link>
-      
+
+      {/* Waves */}
       <Wave
         className="layer1"
         fill="#99A0C4"

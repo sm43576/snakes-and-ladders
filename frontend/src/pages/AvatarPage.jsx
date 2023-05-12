@@ -30,17 +30,19 @@ function AvatarPage() {
 
   const [gameBtnState, setGameBtnState] = useState(false); // To control enablement/disablement of start game button
   const [activeAvatar, setActiveAvatar] = useState(""); // To control visual indicator for avatar selection
-  const [nextPlayerBtnState, setNextBtnState] = useState(false);
+  const [nextPlayerBtnState, setNextBtnState] = useState(false); // To control visual indicator for next avatar selection
   const refNameInput = useRef(null);
 
-  let inputName = "Player " + (currentID + 1);
+  let inputName = "Player " + (currentID + 1); // Default player name
 
+  // Updates player name if user input custom name
   function handleNameChange(newName) {
     newName.length > 0
       ? (inputName = newName)
       : (inputName = "Player " + (currentID + 1));
   }
 
+  // Updates player avatar when user confirms avatar selection
   function handleAvatarBtnClick(avatarFileName) {
     setActiveAvatar(avatarFileName);
     if (currentID + 1 < maxPlayers) { // only enable the next button if the current ID is not the max number of players and an avatar is selected
@@ -52,16 +54,17 @@ function AvatarPage() {
   // Enables "Start game" button if last player has chosen an avatar
   function canPlayersStartGame(hasChosen) {
     if (hasChosen && currentID + 1 == maxPlayers) {
-      setGameBtnState(true);
+      setGameBtnState(true);   // Last player has selected avatar
     } else {
-      setGameBtnState(false);
+      setGameBtnState(false);  // More players need to select avatar
     }
   }
 
+  // Clears previous player avatar and name
   function clearAvatarSelectionAndNameInput() {
-    refNameInput.current.value = "";
+    refNameInput.current.value = ""; // Clears input field
     if (activeAvatar.length > 0) {
-      setActiveAvatar("");
+      setActiveAvatar(""); // Clears avatar
     }
   }
 
@@ -101,7 +104,6 @@ function AvatarPage() {
             }
           }}>
         </button>
-        {/**reset current avatar selection visual indicator when going back  */}
       </Link>
 
       <div className="avatar-container">
@@ -142,7 +144,7 @@ function AvatarPage() {
           ))}
         </div>
 
-        {/* ------ Next button & start game button -----*/}
+        {/* ------ Next button -----*/}
         <img className="bubble-bot" src={bubbleCornerBtm} />
         <NavLink
           to={"/avatar/" + nextID.toString() + "/" + maxPlayers.toString()}>
@@ -158,6 +160,7 @@ function AvatarPage() {
             }}>
           </button>
         </NavLink>
+                {/* ------ Start game button -----*/}
         <Link to="/game">
           <button
             className="start-game-btn"
