@@ -13,6 +13,7 @@ import BackToHomePopUp from "./BackToHomePopUp";
 import bgm from "../music/baby-shark-bgm.mp3";
 import seaweedSound from "../music/whistle-down.mp3";
 import bubbleSound from "../music/soap-bubbles-pop.mp3";
+import crowdClappingSound from "../music/crowd-clapping.mp4";
 import bubblesBackground from "../assets/bubbles.png";
 import seaweedBackground from "../assets/seaweed_popup.png";
 import ResultsPage from "./ResultsPage";
@@ -116,6 +117,7 @@ function GamePage() {
   function checkWinner() {
     if (players[currentID]["placement"] >= 100) {
       setTimeout(() => {
+        new Audio(crowdClappingSound).play();
         navigate("/results"); // Navigate to the results page
       }, 2000);
     }
