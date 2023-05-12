@@ -215,6 +215,7 @@ function GamePage() {
           <div className="justify-left">
             <button
               className="pop-up-button gold-dark-bgr home btn"
+              aria-label="home-btn"
               onClick={() => setBackToHomeButtonPopUp(true)}
             />
             <BackToHomePopUp
