@@ -12,8 +12,10 @@ import { useParams } from "react-router-dom";
 function ResultsPage() {
   const { players } = useContext(AppContext);
 
+  // Function to check the player winner
   var winner;
   for (let i = 0; i < players.length; i++) {
+    // Navigate through list of players to find current player on last hundredth grid.
     if (players[i]["placement"] >= 100) {
       winner = players[i];
     }
@@ -21,7 +23,9 @@ function ResultsPage() {
 
   return (
     <div className="results-page">
+      {/* Play music on start result page */}
       <audio id="player" src={resultSound} autoPlay></audio>
+      {/* Play animated bubbles background */}
       <img className="bubbles-animation" src={bubblesBackground} />
 
       <div className="results-content">
@@ -37,6 +41,7 @@ function ResultsPage() {
         </div>
       </div>
 
+      {/* Move back to home page */}
       <Link to="/">
         <button className="next-btn"></button>
       </Link>
