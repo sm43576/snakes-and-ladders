@@ -16,7 +16,7 @@ test('Renders avatar page correctly', ()=>{
     const initState = {
         currentID: 0, 
         maxPlayers:2,
-        players: [player],
+        players: player,
     };
     const {getByText, queryByText} =  render(
         <MemoryRouter initialEntries={['/avatar/0/2']}>
@@ -38,7 +38,7 @@ test('Pufferfish avatar is clicked and yellow border is shown', async ()=>{
     const initState = {
         currentID: 0, 
         maxPlayers:2,
-        players: [player],
+        players: player,
     };
      render(
         <MemoryRouter initialEntries={['/avatar/0/2']}>
@@ -70,7 +70,7 @@ test('The next button and start game is disabled on render', async ()=>{
     const initState = {
         currentID: 0, 
         maxPlayers:2,
-        players: [player],
+        players: player,
     };
      render(
         <MemoryRouter initialEntries={['/avatar/0/2']}>
