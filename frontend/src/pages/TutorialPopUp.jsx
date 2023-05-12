@@ -9,12 +9,14 @@ function TutorialPopUp(props) {
     <div className="tutorial-popup">
       <div className="popup-inner">
         <div>
+          {/* Tutorials heading */}
           <div className="tutorial-header">
             <h1>
               HOW TO PLAY
               <img className="how-to-play" src={HowToPlay} />
             </h1>
           </div>
+          {/* Tutorials content  */}
           <div className="tutorial-content">
             <div className="board-image">
               <img className="board-image" src={TutorialImage} />
@@ -36,6 +38,7 @@ function TutorialPopUp(props) {
         </div>
       </div>
 
+      {/* The close button */}
       <div>
         <img className="bubble-top-left" src={bubbleCornerTop} />
         <button className="close-btn" onClick={() => props.setTrigger(false)}>
@@ -43,6 +46,7 @@ function TutorialPopUp(props) {
         </button>
       </div>
 
+      {/* Bubble corner effects */}
       <div>
         <div className="placing-btn"></div>
         <img className="bubble-bot-right" src={bubbleCornerBtm} />
