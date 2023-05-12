@@ -1,5 +1,5 @@
 import "../css/GamePage.css";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AppContext } from "../AppContextProvider";
 
@@ -16,8 +16,6 @@ import bubbleSound from "../music/soap-bubbles-pop.mp3";
 import crowdClappingSound from "../music/crowd-clapping.mp4";
 import bubblesBackground from "../assets/bubbles.png";
 import seaweedBackground from "../assets/seaweed_popup.png";
-import ResultsPage from "./ResultsPage";
-import axios from "axios";
 
 function GamePage() {
   document.body.style.backgroundColor = "#A5ACCD";
@@ -33,11 +31,9 @@ function GamePage() {
     movePlayer,
     seaweeds,
     bubbles,
-    goToResults,
   } = useContext(AppContext);
 
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(true);
-  const [showResultsPopup, setShowResultsPopup] = useState(false);
   const [backToHomeButtonPopUp, setBackToHomeButtonPopUp] = useState(false);
   const [rollCount, setRollCount] = useState(0); // New state variable
   const [rollDiceBtnEnabled, setRollDiceBtnEnabled] = useState(true);
@@ -84,10 +80,13 @@ function GamePage() {
     movePlayer(id, para);
   }
 
-  async function checkCom() {
+
+  function checkCom() {
     if (!players[nextID]["isHuman"]) {
-      reRender();
-      roll(false);
+      setRollDiceBtnEnabled(false)
+      setTimeout(() => {
+        roll(false);
+      }, 1000);
     }
   }
 
@@ -151,12 +150,12 @@ function GamePage() {
       <div id="game-page-content" className="game-page-content">
         <div className="div-1">
           <div className="container roll-dice">
-            <button disabled={!rollDiceBtnEnabled}
+            <button className={handleBtn} disabled={!rollDiceBtnEnabled}
               onClick={() => {
                 setRollDiceBtnEnabled(false)
                 roll(true);
               }}>
-              {"Click to Roll!"}
+              Click to Roll!
             </button>
           </div>
           <div className="container white-bgr">
@@ -174,12 +173,16 @@ function GamePage() {
                 checkWinner();
                 checkSeaweedsBubbles();
                 checkCom();
-                setCurrentID((current) =>
+                
+                setTimeout(() => {
+                  setCurrentID((current) =>
                   current + 1 >= players.length ? 0 : current + 1
                 );
                 setNextID((next) =>
                   next + 1 >= players.length ? 0 : next + 1
                 );
+
+                }, 300);
               }}>
               Swim!
             </button>
@@ -243,11 +246,6 @@ function GamePage() {
               setTrigger={setTutorialButtonPopup}
             />
           </div>
-
-          {/* <ResultsPage
-            trigger={showResultsPopup}
-            setTrigger={setShowResultsPopup}
-          /> */}
         </div>
       </div>
 
