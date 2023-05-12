@@ -15,7 +15,7 @@ test('test HomePage render/',() => {
     isHuman: true
   }];
   const initState = {
-      players: [player],
+      players: player,
       removePlayer: vi.fn()
 };
   const { getByText, queryByText } = render(
@@ -46,7 +46,7 @@ test('clicking button navigates to the specified route', async () => {
       isHuman: true
     }];
     const initState = {
-        players: [player],
+        players: player,
         removePlayer: vi.fn()
   };
     
