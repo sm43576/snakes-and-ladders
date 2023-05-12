@@ -64,7 +64,7 @@ function GamePage() {
     setTimeout(() => {
       setRolling(false);
       step(s1 + 1, s2 + 1, isHuman);
-    }, 1000);
+    }, 700);
   }
 
   async function step(step1, step2, isHuman) {
@@ -80,22 +80,24 @@ function GamePage() {
     movePlayer(id, para);
   }
 
-
   function checkCom() {
     if (!players[nextID]["isHuman"]) {
-      setRollDiceBtnEnabled(false)
+      setRollDiceBtnEnabled(false);
       setTimeout(() => {
         roll(false);
-      }, 1000);
+      }, 700);
     }
   }
 
-  async function checkSeaweedsBubbles() {
+  const [newPosition, setNewPosition] = useState("-1");
+  // var newPosition = -1;
 
+  async function checkSeaweedsBubbles() {
     for (let i = 0; i < seaweeds.length; i++) {
       if (players[currentID]["placement"] == seaweeds[i][0]) {
         movePlayer(players[currentID]["_id"], seaweeds[i][1]);
         new Audio(seaweedSound).play();
+        setNewPosition(seaweeds[i][1]);
         document.getElementById("game-page-content").style.opacity = "50%";
         document.getElementById("seaweed-pop-up").style.display = "block";
         document.getElementById("seaweed-animation").style.display = "block";
@@ -106,6 +108,7 @@ function GamePage() {
       if (players[currentID]["placement"] == bubbles[i][0]) {
         movePlayer(players[currentID]["_id"], bubbles[i][1]);
         new Audio(bubbleSound).play();
+        setNewPosition(bubbles[i][1]);
         document.getElementById("game-page-content").style.opacity = "50%";
         document.getElementById("bubbles-pop-up").style.display = "block";
         document.getElementById("bubbles-animation").style.display = "block";
@@ -118,7 +121,7 @@ function GamePage() {
       new Audio(crowdClappingSound).play();
       setTimeout(() => {
         navigate("/results"); // Navigate to the results page
-      }, 2000);
+      }, 1000);
     }
   }
 
@@ -150,9 +153,11 @@ function GamePage() {
       <div id="game-page-content" className="game-page-content">
         <div className="div-1">
           <div className="container roll-dice">
-            <button className={handleBtn} disabled={!rollDiceBtnEnabled}
+            <button
+              className={handleBtn}
+              disabled={!rollDiceBtnEnabled}
               onClick={() => {
-                setRollDiceBtnEnabled(false)
+                setRollDiceBtnEnabled(false);
                 roll(true);
               }}>
               Click to Roll!
@@ -166,23 +171,23 @@ function GamePage() {
           </div>
           <div className="container">
             <button
-              className="swim-btn" disabled={rollDiceBtnEnabled}
+              className="swim-btn"
+              disabled={rollDiceBtnEnabled}
               onClick={() => {
-                setRollDiceBtnEnabled(true)
+                setRollDiceBtnEnabled(true);
                 reRender();
                 checkWinner();
                 checkSeaweedsBubbles();
                 checkCom();
-                
-                setTimeout(() => {
-                  setCurrentID((current) =>
+
+                // setTimeout(() => {
+                setCurrentID((current) =>
                   current + 1 >= players.length ? 0 : current + 1
                 );
                 setNextID((next) =>
                   next + 1 >= players.length ? 0 : next + 1
                 );
-
-                }, 300);
+                // }, 300);
               }}>
               Swim!
             </button>
@@ -252,7 +257,7 @@ function GamePage() {
       {/* Seaweed Pop Up */}
       <div id="seaweed-pop-up" className="seaweed-bubbles-pop-up">
         <div className="seaweed-bubbles-pop-up-inner">
-          <p>{`Slide down to ${players[nextID]["placement"]} :(`}</p>
+          <p>{`Slide down to ${newPosition} :(`}</p>
           <button
             className="continue-button"
             onClick={() => {
@@ -268,7 +273,7 @@ function GamePage() {
       {/* Bubbles Pop Up */}
       <div id="bubbles-pop-up" className="seaweed-bubbles-pop-up">
         <div className="seaweed-bubbles-pop-up-inner">
-          <p>{`Float up to ${players[nextID]["placement"]} !`}</p>
+          <p>{`Float up to ${newPosition} !`}</p>
           <button
             className="continue-button"
             onClick={() => {
