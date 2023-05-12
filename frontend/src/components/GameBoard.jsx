@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import "../css/GameBoard.css";
 import { AppContext } from "../AppContextProvider";
 
@@ -6,11 +6,6 @@ const GameBoard = () => {
   const { players } = useContext(AppContext);
 
   useEffect(() => {
-    // console.log("imported players: ");
-    for (let i = 0; i < players.length; i++) {
-      // console.log(players[i]["name"] + ": " + players[i]["placement"]);
-    }
-
     const renderBoardDiv = document.querySelector(".renderBoard");
     if (renderBoardDiv && renderBoardDiv.children.length === 0) {
       const table = createBoard(players);
@@ -42,7 +37,7 @@ const GameBoard = () => {
           if (avatars.length > 0) {
             console.log("avatar length > 0");
             var avatar = `url(/src/assets/selectable_avatars/${avatars[0]})`;
-            td.style.backgroundImage = (avatar, avatar);
+            td.style.backgroundImage = (avatar);
           }
           num--;
         } else {
@@ -54,7 +49,7 @@ const GameBoard = () => {
           if (avatars.length > 0) {
             console.log("avatar length > 0");
             var avatar = `url(/src/assets/selectable_avatars/${avatars[0]})`;
-            td.style.backgroundImage = (avatar, avatar);
+            td.style.backgroundImage = (avatar);
           }
           num++;
         }
