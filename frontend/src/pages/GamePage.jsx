@@ -18,10 +18,13 @@ import bubblesBackground from "../assets/bubbles.png";
 import seaweedBackground from "../assets/seaweed_popup.png";
 
 function GamePage() {
+  // Set the background color of the body
   document.body.style.backgroundColor = "#A5ACCD";
 
+  // Add font awesome icons to the library
   library.add(fas);
 
+  // Access data from the AppContext
   const {
     currentID,
     nextID,
@@ -33,11 +36,13 @@ function GamePage() {
     bubbles,
   } = useContext(AppContext);
 
+  // State variables
   const [tutorialButtonPopup, setTutorialButtonPopup] = useState(true);
   const [backToHomeButtonPopUp, setBackToHomeButtonPopUp] = useState(false);
   const [rollCount, setRollCount] = useState(0); // New state variable
   const [rollDiceBtnEnabled, setRollDiceBtnEnabled] = useState(true);
 
+  // Audio mute button
   const button = document.querySelector(".sound");
   const audioMute = () => {
     document.getElementById("player").muted =
@@ -45,15 +50,18 @@ function GamePage() {
     button.classList.toggle("active");
   };
 
-  // Face numbers passes as default props
+  // Define the faces of the die
   const sides = ["one", "two", "three", "four", "five", "six"];
 
+  // State variables for the dice and rolling state
   const [die1, setDie1] = useState("one");
   const [die2, setDie2] = useState("two");
   const [rolling, setRolling] = useState(false);
 
-  const navigate = useNavigate(); // Use the useNavigate hook
+  // Use the useNavigate hook to navigate to different pages
+  const navigate = useNavigate();
 
+  // Function to roll the dice
   function roll(isHuman) {
     const s1 = Math.floor(Math.random() * sides.length);
     const s2 = Math.floor(Math.random() * sides.length);
@@ -67,6 +75,7 @@ function GamePage() {
     }, 700);
   }
 
+  // Function to move the player
   async function step(step1, step2, isHuman) {
     const step = step1 + step2;
     var id, para;
@@ -80,6 +89,7 @@ function GamePage() {
     movePlayer(id, para);
   }
 
+  // Function to check if it's the computer's turn
   function checkCom() {
     if (!players[nextID]["isHuman"]) {
       setRollDiceBtnEnabled(false);
@@ -88,10 +98,9 @@ function GamePage() {
       }, 700);
     }
   }
-
   const [newPosition, setNewPosition] = useState("-1");
-  // var newPosition = -1;
 
+  // Function to check if the player landed on seaweeds or bubbles
   async function checkSeaweedsBubbles() {
     for (let i = 0; i < seaweeds.length; i++) {
       if (players[currentID]["placement"] == seaweeds[i][0]) {
@@ -116,6 +125,7 @@ function GamePage() {
     }
   }
 
+  // Function to check if there's a winner
   function checkWinner() {
     if (players[currentID]["placement"] >= 100) {
       new Audio(crowdClappingSound).play();
@@ -125,10 +135,12 @@ function GamePage() {
     }
   }
 
+  // Function to re-render the page
   async function reRender() {
     setRollCount(rollCount + 1); // Use functional form of setRollCount
   }
 
+  // Function to close the pop-ups
   function closePopUps() {
     document.getElementById("game-page-content").style.opacity = "100%";
     document.getElementById("seaweed-pop-up").style.display = "none";
@@ -136,6 +148,7 @@ function GamePage() {
     document.getElementById("seaweed-animation").style.display = "none";
     document.getElementById("bubbles-animation").style.display = "none";
   }
+
   const handleBtn = rolling ? "roll-dice-rolling" : "";
 
   return (
