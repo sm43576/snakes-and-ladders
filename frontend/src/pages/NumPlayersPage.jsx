@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AppContext } from "../AppContextProvider";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
+import Wave from "react-wavify";
 
 function NumPlayersPage() {
   const {
@@ -15,6 +16,13 @@ function NumPlayersPage() {
     changeCom,
     addPlayer,
   } = useContext(AppContext);
+
+  const waveoptions = {
+    height: 40,
+    amplitude: 60,
+    speed: 0.15,
+    points: 6,
+};
 
   // Increases/decrease number of players accordingly
   // Ensures total number of players (including COM) is max 6
@@ -43,6 +51,7 @@ function NumPlayersPage() {
       console.log(newPlayer);
     }
   }
+
 
   return (
     <div className="num-players-page">
@@ -103,6 +112,15 @@ function NumPlayersPage() {
           }}>
         </button>
       </NavLink>
+
+      <div className="test">
+        <Wave
+          className="test"
+          fill="#99A0C4"
+          paused={false}
+          options={waveoptions}
+        />
+      </div>
     </div>
   );
 }

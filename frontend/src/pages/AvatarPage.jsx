@@ -4,6 +4,7 @@ import { useState, useRef, useContext } from "react";
 import { AppContext } from "../AppContextProvider";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
+import Wave from "react-wavify";
 
 const avatarImageFiles = [
   "avatar_pufferfish.png",
@@ -24,6 +25,14 @@ function AvatarPage() {
     players,
     editPlayer,
   } = useContext(AppContext);
+
+  const waveoptions = {
+    height: 40,
+    amplitude: 60,
+    speed: 0.15,
+    points: 6,
+  };
+
 
   const nextID = currentID + 1;
   const previousID = currentID - 1;
@@ -174,6 +183,15 @@ function AvatarPage() {
           </button>
         </Link>
       </div>
+      <div className="test1">
+        <Wave
+          className="test1"
+          fill="#99A0C4"
+          paused={false}
+          options={waveoptions}
+        />
+      </div>
+
     </div>
   );
 }
