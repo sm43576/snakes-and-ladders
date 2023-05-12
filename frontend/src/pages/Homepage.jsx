@@ -38,7 +38,8 @@ function HomePage() {
   return (
     <div className="home-page">
       <h1 className="title">Seaweed and Bubbles</h1>
-      <Link to="/players">
+      
+      <Link className="button-start" to="/players">
         <button
           className="button-start"
           aria-label="button-start"
@@ -47,6 +48,7 @@ function HomePage() {
           PLAY
         </button>
       </Link>
+      
       <Wave
         className="layer1"
         fill="#99A0C4"
