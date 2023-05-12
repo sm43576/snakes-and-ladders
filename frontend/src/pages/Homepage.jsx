@@ -2,31 +2,30 @@ import "../css/HomePage.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../AppContextProvider";
-import Wave from 'react-wavify'
+import Wave from "react-wavify";
 
 function HomePage() {
   const { players, removePlayer } = useContext(AppContext);
 
- const waveoptions= {
+  const waveoptions = {
     height: 50,
     amplitude: 40,
     speed: 0.2,
-    points: 18
-  }
+    points: 18,
+  };
 
-  const waveoptions2= {
+  const waveoptions2 = {
     height: 50,
     amplitude: 40,
     speed: 0.2,
-    points: 18
-  }
-  const waveoptions3= {
+    points: 18,
+  };
+  const waveoptions3 = {
     height: 30,
     amplitude: 40,
     speed: 0.2,
-    points: 18
-  }
-
+    points: 18,
+  };
 
   // Removes all existing players from the database
   async function clearDatabase() {
@@ -39,53 +38,57 @@ function HomePage() {
   return (
     <div className="home-page">
       <h1 className="title">Seaweed and Bubbles</h1>
-      <button
-        className="button-start"
-        aria-label="button-start"
-        onClick={() => clearDatabase()}
-      >
-        <Link to="/players">
-        PLAY
-        </Link>
-      </button>
-      <Wave 
+      <Link to="/players">
+        <button
+          className="button-start"
+          aria-label="button-start"
+          onClick={() => clearDatabase()}
+        >
+          PLAY
+        </button>
+      </Link>
+      <Wave
         className="layer1"
-        fill='#99A0C4'
+        fill="#99A0C4"
         paused={false}
-        options={waveoptions}/>
+        options={waveoptions}
+      />
 
-      <Wave 
+      <Wave
         className="layer2"
-        fill='#F6E1A7'
+        fill="#F6E1A7"
         paused={false}
-        options={waveoptions2}/>
+        options={waveoptions2}
+      />
 
-      <Wave 
+      <Wave
         className="layer3"
-        fill='#BBC3DB'
+        fill="#BBC3DB"
         paused={false}
-        options={waveoptions2}/>
+        options={waveoptions2}
+      />
 
-      <Wave 
+      <Wave
         className="layer4"
-        fill='#596391'
+        fill="#596391"
         paused={false}
-        options={waveoptions2}/>
-    
+        options={waveoptions2}
+      />
 
-        <Wave 
+      <Wave
         className="layer5"
-        fill='#99A0C4'
+        fill="#99A0C4"
         paused={false}
-        options={waveoptions2}/>
+        options={waveoptions2}
+      />
 
-      <Wave 
+      <Wave
         className="layer6"
-        fill='#F6E1A7'
+        fill="#F6E1A7"
         paused={false}
-        options={waveoptions3}/>
+        options={waveoptions3}
+      />
     </div>
-
   );
 }
 

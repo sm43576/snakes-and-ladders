@@ -13,9 +13,9 @@
   display: flex;
 }
 
+/* ------------ LEFT SIDE CONTAINER ---------- */
 .div-1 {
   width: 35%;
-  /* height: fit-content; */
   margin: 50px 50px 50px 0;
   display: flex;
   flex-direction: column;
@@ -23,27 +23,6 @@
   align-items: center;
 }
 
-.div-2 {
-  width: 60%;
-  height: fit-content;
-  margin: 30px 0px 20px 20px;
-  overflow: auto;
-  display: flex;
-  padding: 7px;
-  justify-content: center;
-  background-image: url("../assets/game_board.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-
-.div-3 {
-  width: 10%;
-  height: fit-content;
-  padding: 45px 0 45px 50px;
-}
-
-/* DIV 1 */
 .container {
   width: 100%;
   height: fit-content;
@@ -105,7 +84,118 @@
   width: 40px;
 }
 
-/* DIV 2 */
+/* SWIM BUTTON */
+
+.swim-btn {
+  background-repeat: repeat;
+  background-size: contain;
+  background-image: url(../assets/Bubble2.png);
+  width: 100%;
+  line-height: 20px;
+  min-height: 40px;
+  color: #4b5683;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-color: transparent;
+  border-radius: 20px;
+  padding: 5px;
+  border: solid white 2px;
+  display: block;
+  font-weight: bold;
+}
+
+.swim-btn:hover {
+  filter: brightness(100%);
+  background-color: #4b5683;
+  color: white;
+  border: solid white 2px;
+}
+
+.swim-btn:disabled {
+  opacity: 0;
+  cursor: context-menu;
+}
+
+.swim-btn:hover:disabled {
+  cursor: context-menu;
+}
+
+/* ROLL DICE */
+
+.roll-dice {
+  display: flex;
+  flex-flow: column nowrap;
+  border: none;
+  width: 100%;
+}
+
+/* Shows each dice in one row */
+.roll-dice-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border: none;
+  width: 100%;
+}
+
+/* Styling roll-dice button */
+.roll-dice button {
+  height: fit-content;
+  width: 100%;
+  line-height: 20px;
+  color: #4b5683;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-color: #f7da86;
+  border-radius: 20px;
+  padding: 5px;
+  display: block;
+  border: 2px solid #4B5683;
+  font-weight: bold;
+}
+
+/* Setting hover effect on button */
+.roll-dice button:hover {
+  cursor: pointer;
+}
+
+/* Styling roll-dice button */
+.roll-dice button:disabled {
+  opacity: 0;
+  cursor: context-menu;
+}
+
+/* Setting hover effect on button */
+.roll-dice button:hover:disabled {
+  cursor: context-menu;
+}
+
+.roll-dice-rolling {
+  height: fit-content;
+  color: #4b5683;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-color: #a5accd !important;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+/* ------------ GAME BOARD ---------- */
+
+.div-2 {
+  width: 60%;
+  height: fit-content;
+  margin: 30px 0px 20px 20px;
+  overflow: auto;
+  display: flex;
+  padding: 7px;
+  justify-content: center;
+  background-image: url("../assets/game_board.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
 table {
   table-layout: fixed;
   width: 100%;
@@ -138,7 +228,14 @@ table td::before {
   display: block;
 }
 
-/* DIV 3 */
+/* ------------ RIGHT HAND BUTTONS ---------- */
+
+.div-3 {
+  width: 10%;
+  height: fit-content;
+  padding: 45px 0 45px 50px;
+}
+
 .pop-up-button {
   min-height: 80px;
   max-height: 80px;
@@ -253,103 +350,7 @@ table td::before {
   }
 }
 
-.swim-btn {
-  background-repeat: repeat;
-  background-size: contain;
-  background-image: url(../assets/Bubble2.png);
-  width: 100%;
-  line-height: 20px;
-  min-height: 40px;
-  color: #4b5683;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  background-color: transparent;
-  border-radius: 20px;
-  padding: 5px;
-  border: solid white 2px;
-  display: block;
-  font-weight: bold;
-}
-
-.swim-btn:hover {
-  filter: brightness(100%);
-  background-color: #4b5683;
-  color: white;
-  border: solid white 2px;
-}
-
-.swim-btn:disabled {
-  opacity: 0;
-  cursor: context-menu;
-}
-
-.swim-btn:hover:disabled {
-  cursor: context-menu;
-}
-
-.roll-dice {
-  display: flex;
-  flex-flow: column nowrap;
-  border: none;
-  width: 100%;
-}
-
-/* Shows each dice in one row */
-.roll-dice-container {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  border: none;
-  width: 100%;
-}
-
-/* Styling roll-dice button */
-.roll-dice button {
-  height: fit-content;
-  width: 100%;
-  line-height: 20px;
-  /* min-height: 40px;
-  min-width: 300px; */
-  color: #4b5683;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  background-color: #f7da86;
-  border-radius: 20px;
-  padding: 5px;
-  display: block;
-  border: 2px solid #4B5683;
-  font-weight: bold;
-}
-
-/* Setting hover effect on button */
-.roll-dice button:hover {
-  cursor: pointer;
-  /* border: none; */
-}
-
-/* Styling roll-dice button */
-.roll-dice button:disabled {
-  opacity: 0;
-  cursor: context-menu;
-  /* display: none; */
-}
-
-/* Setting hover effect on button */
-.roll-dice button:hover:disabled {
-  cursor: context-menu;
-}
-
-.roll-dice-rolling {
-  height: fit-content;
-  color: #4b5683;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  background-color: #a5accd !important;
-  border-radius: 20px;
-  padding: 5px;
-}
-
-/* BUBBLES/SEAWEED POP UP */
+/* ------------ BUBBLES/SEAWEED POP UP ---------- */
 .seaweed-bubbles-pop-up {
   display: none;
   position: absolute;
