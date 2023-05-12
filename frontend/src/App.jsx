@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/Homepage";
+import HomePage from "./pages/HomePage";
 import NumPlayersPage from "./pages/NumPlayersPage";
 import AvatarPage from "./pages/AvatarPage";
 import AvatarLayout from "./components/AvatarLayout";

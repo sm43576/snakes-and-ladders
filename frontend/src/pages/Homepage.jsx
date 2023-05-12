@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { AppContext } from "../AppContextProvider";
 import Wave from 'react-wavify'
 
-
 function HomePage() {
   const { players, removePlayer } = useContext(AppContext);
 
