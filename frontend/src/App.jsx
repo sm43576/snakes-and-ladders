@@ -8,6 +8,7 @@ import ResultsPage from "./pages/ResultsPage";
 import "./App.css";
 
 
+
 function App() {
   // const [count, setCount] = useState(0)
 
@@ -16,7 +17,7 @@ function App() {
       <BrowserRouter>
         {/* <HeaderBar /> s*/}
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage/>} />
           <Route path="/players" element={<NumPlayersPage />} />
 
           <Route path="/avatar" element={<AvatarLayout />}>
