@@ -96,7 +96,7 @@ function GamePage() {
       if (players[currentID]["placement"] == seaweeds[i][0]) {
         movePlayer(players[currentID]["_id"], seaweeds[i][1]);
         new Audio(seaweedSound).play();
-        getElementById("game-page-content").style.opacity = "50%";
+        document.getElementById("game-page-content").style.opacity = "50%";
         document.getElementById("seaweed-pop-up").style.display = "block";
         document.getElementById("seaweed-animation").style.display = "block";
       }
@@ -153,7 +153,6 @@ function GamePage() {
               onClick={() => {
                 setRollDiceBtnEnabled(false)
                 roll(true);
-                reRender();
               }}>
               {"Click to Roll!"}
             </button>
