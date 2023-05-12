@@ -10,7 +10,7 @@ let players;
 beforeEach(async ()=>{
     players = [
         {name:"Player 1",
-        placement: 0,
+        placement: 12,
         image: "avatar_pufferfish.png",
         isHuman: true},
         {name:"Player 2",
@@ -62,3 +62,10 @@ test('Renders Back to Home pop up on Home button click', async ()=>{
     expect(quitGameBtn).toBeInTheDocument();
 });
 
+test('Player 1 is placed in the 12th spot', ()=>{
+    // Find the table and the cell (9,8) for the 12th square
+    const gameBoard = screen.getByRole('table');
+    const cell = gameBoard.querySelector('tr:nth-child(9) td:nth-child(8)');
+    // Expect the avatar image of player 1 to occupy that square
+    expect(cell).toHaveStyle(`background-image: /src/assets/selectable_avatars/${players[0]['image']}`);
+});
