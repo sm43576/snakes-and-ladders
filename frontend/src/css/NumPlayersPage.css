@@ -24,7 +24,7 @@
     width: 210px;
     top: 50px;
     left: 50px;
-    z-index: 2;
+    z-index: 4;
 }
 
 .bubble-bot {
@@ -33,7 +33,7 @@
     width: 134px;
     bottom: 50px;
     right: 50px;
-    z-index: 2;
+    z-index: 4;
 }
 
 .back-btn {
@@ -46,7 +46,7 @@
     background-color: #7F89B4;
     border-radius: 50%;
     padding: 0;
-    z-index: 2;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,6 +54,8 @@
     background-repeat: no-repeat;
     background-size: 60%;
     background-position: center;
+    z-index: 4;
+    
 }
 
 .next-btn {
@@ -74,24 +76,27 @@
     background-repeat: no-repeat;
     background-size: 60%;
     background-position: center;
+    z-index: 4;
 }
 
 .next-btn:disabled {
     cursor: not-allowed;
     /* opacity: 25%; */
     background-image: url("../assets/next_button_disabled.png");
+    z-index: 4;
 }
 
 .next-btn-disabled-img {
     width: 50px;
     opacity: 25%;
     cursor: pointer;
+    z-index: 4;
 }
 
 /* ------------ NUM PLAYERS BUBBLES ---------- */
 .bubbles-div {
     display: flex;
-    z-index: 1;
+    z-index: 4;
 }
 
 .bubble-flex {
@@ -155,13 +160,29 @@
     font-size: 30pt;
     font-weight: bold;
     margin: 50px 0 0 0;
+    z-index: 4;
 }
+
 
 .player-count {
     color: white;
     position: relative;
     font-size: 150pt;
     padding: 0 50px 0 50px;
+    z-index: 4;
+}
+
+.test{
+
+    position: absolute;
+    height: 75%;
+    width: 100%;
+    z-index: 1;    
+    bottom: 0%;
+    left:0%;
+    right:0%;
+    transform: translateY(0%);
+
 }
 
 /* ------------ SMALLER SCREEN ---------- */
@@ -239,4 +260,7 @@
         font-size: 90pt;
         padding: 0 30px 0 30px;
     }
+
+
+
 }

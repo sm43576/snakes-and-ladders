@@ -4,6 +4,7 @@ import { useState, useRef, useContext } from "react";
 import { AppContext } from "../AppContextProvider";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
+import Wave from "react-wavify";
 
 const avatarImageFiles = [
   "avatar_pufferfish.png",
@@ -25,22 +26,31 @@ function AvatarPage() {
     editPlayer,
   } = useContext(AppContext);
 
+  const waveoptions = {
+    height: 40,
+    amplitude: 60,
+    speed: 0.15,
+    points: 6,
+  };
+
+
   const nextID = currentID + 1;
   const previousID = currentID - 1;
 
   const [gameBtnState, setGameBtnState] = useState(false); // To control enablement/disablement of start game button
   const [activeAvatar, setActiveAvatar] = useState(""); // To control visual indicator for avatar selection
-  const [nextPlayerBtnState, setNextBtnState] = useState(false);
+  const [nextPlayerBtnState, setNextBtnState] = useState(false); // To control visual indicator for next avatar selection
   const refNameInput = useRef(null);
-
   const [inputName, setInputName] = useState("Player "+(currentID+1));
 
+  // Updates player name if user input custom name
   function handleNameChange(newName) {
     newName.length > 0
       ? (setInputName(newName))
       : (setInputName("Player " + (currentID + 1)));
   }
 
+  // Updates player avatar when user confirms avatar selection
   function handleAvatarBtnClick(avatarFileName) {
     setActiveAvatar(avatarFileName);
     if (currentID + 1 < maxPlayers) { // only enable the next button if the current ID is not the max number of players and an avatar is selected
@@ -52,16 +62,17 @@ function AvatarPage() {
   // Enables "Start game" button if last player has chosen an avatar
   function canPlayersStartGame(hasChosen) {
     if (hasChosen && currentID + 1 == maxPlayers) {
-      setGameBtnState(true);
+      setGameBtnState(true);   // Last player has selected avatar
     } else {
-      setGameBtnState(false);
+      setGameBtnState(false);  // More players need to select avatar
     }
   }
 
+  // Clears previous player avatar and name
   function clearAvatarSelectionAndNameInput() {
-    refNameInput.current.value = "";
+    refNameInput.current.value = ""; // Clears input field
     if (activeAvatar.length > 0) {
-      setActiveAvatar("");
+      setActiveAvatar(""); // Clears avatar
     }
   }
 
@@ -102,7 +113,6 @@ function AvatarPage() {
             }
           }}>
         </button>
-        {/**reset current avatar selection visual indicator when going back  */}
       </Link>
 
       <div className="avatar-container">
@@ -144,7 +154,7 @@ function AvatarPage() {
           ))}
         </div>
 
-        {/* ------ Next button & start game button -----*/}
+        {/* ------ Next button -----*/}
         <img className="bubble-bot" src={bubbleCornerBtm} />
         <NavLink
           to={"/avatar/" + nextID.toString() + "/" + maxPlayers.toString()}>
@@ -161,6 +171,7 @@ function AvatarPage() {
             }}>
           </button>
         </NavLink>
+                {/* ------ Start game button -----*/}
         <Link to="/game">
           <button
             className="start-game-btn"
@@ -174,6 +185,15 @@ function AvatarPage() {
           </button>
         </Link>
       </div>
+      <div className="test1">
+        <Wave
+          className="test1"
+          fill="#99A0C4"
+          paused={false}
+          options={waveoptions}
+        />
+      </div>
+
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AppContext } from "../AppContextProvider";
 import bubbleCornerTop from "../assets/bubble_top_left.png";
 import bubbleCornerBtm from "../assets/bubble_btm_right.png";
+import Wave from "react-wavify";
 
 function NumPlayersPage() {
   const {
@@ -16,14 +17,23 @@ function NumPlayersPage() {
     addPlayer,
   } = useContext(AppContext);
 
-  // Increases/decrease number of players accordingly - ensures total number of players (including COM) is max 6
+  const waveoptions = {
+    height: 40,
+    amplitude: 60,
+    speed: 0.15,
+    points: 6,
+};
+
+  // Increases/decrease number of players accordingly
+  // Ensures total number of players (including COM) is max 6
   function handlePlayerCount(string) {
     if (string == ">" && maxPlayers + maxCommies != 6) setMaxPlayers(maxPlayers + 1);
     else if (string == "<" && maxPlayers != 1) setMaxPlayers(maxPlayers - 1);
     console.log("maxPlayers: " + maxPlayers);
   }
 
-  // Increases/decrease number of COM players accordingly - ensures total number of players (including human players) is max 6
+  // Increases/decrease number of COM players accordingly
+  // Ensures total number of players (including human players) is max 6
   function handleComCount(string) {
     if (string == ">" && maxPlayers + maxCommies != 6) changeCom(maxCommies + 1);
     else if (string == "<" && maxCommies != 0) changeCom(maxCommies - 1);
@@ -41,6 +51,7 @@ function NumPlayersPage() {
       console.log(newPlayer);
     }
   }
+
 
   return (
     <div className="num-players-page">
@@ -101,6 +112,15 @@ function NumPlayersPage() {
           }}>
         </button>
       </NavLink>
+
+      <div className="test">
+        <Wave
+          className="test"
+          fill="#99A0C4"
+          paused={false}
+          options={waveoptions}
+        />
+      </div>
     </div>
   );
 }

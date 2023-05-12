@@ -6,6 +6,7 @@ const GameBoard = () => {
   const { players } = useContext(AppContext);
 
   useEffect(() => {
+    // When the "players" dependency changes, create or update the game board
     const renderBoardDiv = document.querySelector(".renderBoard");
     if (renderBoardDiv && renderBoardDiv.children.length === 0) {
       const table = createBoard(players);
@@ -13,6 +14,7 @@ const GameBoard = () => {
     }
   }, [players]);
 
+  // Creates a 10x10 table where each cell is rendered with appropriate board values for the game board.
   const createBoard = (players) => {
     const table = document.createElement("table");
     let num = 100;
@@ -37,7 +39,8 @@ const GameBoard = () => {
           if (avatars.length > 0) {
             console.log("avatar length > 0");
             var avatar = `url(/src/assets/selectable_avatars/${avatars[0]})`;
-            td.style.backgroundImage = (avatar);
+            // sets appropriate avatar image as background for current cell
+            td.style.backgroundImage = avatar;
           }
           num--;
         } else {
@@ -49,11 +52,11 @@ const GameBoard = () => {
           if (avatars.length > 0) {
             console.log("avatar length > 0");
             var avatar = `url(/src/assets/selectable_avatars/${avatars[0]})`;
-            td.style.backgroundImage = (avatar);
+            // sets appropriate avatar image as background for current cell
+            td.style.backgroundImage = avatar;
           }
           num++;
         }
-
         tr.appendChild(td);
       }
 
