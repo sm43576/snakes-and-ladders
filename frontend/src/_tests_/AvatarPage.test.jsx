@@ -222,3 +222,33 @@ test('5 avatar buttons should be disabled since they have been chosen before the
     expect(fishBtn).toBeEnabled();
     expect(octopusBtn).toBeEnabled();
 });
+
+test('Entering the nickname "Fishy" updates the subtitle from "Player 1" to "Fishy"', async ()=>{
+    const   player = [{
+        name:"Player 1",
+        placement: 0,
+        image: "",
+        isHuman: true
+    }];
+    const initState = {
+        currentID: 0, 
+        maxPlayers:2,
+        players: [player],
+    };
+    render(
+        <MemoryRouter initialEntries={['/avatar/0/2']}>
+            <AppContext.Provider value={initState}>
+                <AvatarPage/>
+            </AppContext.Provider>
+        </MemoryRouter>
+    ); 
+    // Find nickname input and type in a new nickname "Fishy"
+    const nicknameInput = screen.getByRole("textbox", {name:/nicknameInput/i});
+    await userEvent.type(nicknameInput,"Fishy");
+    await userEvent.tab();
+
+    // Find the heading that has the player's name and verify it has changed to Fishy
+    const nicknameSubtitle =  screen.getByRole('heading',{name:/nameSubtitle/i});
+    expect(nicknameSubtitle).toHaveTextContent("Fishy");
+    expect(nicknameSubtitle).not.toHaveTextContent("Player 1");
+});
